@@ -1,5 +1,5 @@
 ---
-title: 论文阅读笔记-Deep learning based RecSys utilizing visual content(1)
+title: Notes-Deep learning based RecSys utilizing visual content(1)
 date: 2019-04-04 10:02:03
 tags:
     - RecSys
