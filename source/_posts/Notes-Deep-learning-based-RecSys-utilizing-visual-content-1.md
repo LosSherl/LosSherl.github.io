@@ -24,7 +24,7 @@ tags:
 
 #### 利用用户偏好
 文章使用余弦距离作图片间的相似度估计，如公式(1)所示。因此，通过计算用户偏好档案中的图像特征向量与其余图像的特征向量的相似度，获得与用户偏好相近的图片。用户偏好档案由多个图像的特征表示组成。
-![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/Formula1.png)
+![Formula1.png](https://i.loli.net/2019/04/07/5ca9a62c632c2.png)
 
 #### 应用
 应用于酒店推荐以及酒店页面个性化定制,推荐最近邻图片对应的酒店，没有相关实验结果介绍。
@@ -34,7 +34,7 @@ tags:
 #### 介绍
 诸如图片推荐等以用户为中心的任务不仅需要高效的图片表示，还需要对用户的偏好和意图进行表示。文章提出的方法将用户和图片映射到同一隐空间中，再通过计算图片表示与用户表示的距离做决策。文章还提出一种名为比较深度学习(CDL)的方法，在不增加额外计算代价的前提下，使用了更多的训练数据，取得了比传统训练方法更好的效果，超越了state of the art图片推荐系统。文章提出的模型包含两个深度网络，分别抽取图片和用户偏好表示，CDL方法使用三元组(用户、正例图片，反例图片)做输入，学习正反例照片的相对距离，如图1所示。
 
-![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/Figure1.png) 
+![Figure1.PNG](https://i.loli.net/2019/04/07/5ca9a62c755ec.png)
 
 #### 相关研究
 
@@ -60,14 +60,14 @@ tags:
 #### 比较学习
 
 在社交网络中，用户对于图片的负向反馈十分匮乏，因此，使用传统方法训练的效果十分受限。文章中提出的比较学习方法，以公式1所示的三元组集合作为输入，目标是习得图片和用户偏好的映射函数，满足公式2，即相对反例图片，用户偏好向量与正例图片的向量表示的距离更近。其中距离尺度可以是简单的欧几里得距离，为了使正反例图片表示的距离尽可能地远，进一步采用交叉熵作为损失函数，相关定义如公式3，4，5。
-![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/F1.png) ![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/F2.png)
-![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/F3.png) ![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/F4.png)
-![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/F5.png)
+![F1.PNG](https://i.loli.net/2019/04/07/5ca9a62c2f0d6.png) ![F2.PNG](https://i.loli.net/2019/04/07/5ca9a62c2f5a2.png)
+![F3.PNG](https://i.loli.net/2019/04/07/5ca9a62c404b2.png) ![F4.PNG](https://i.loli.net/2019/04/07/5ca9a62c404b7.png)
+![F5.PNG](https://i.loli.net/2019/04/07/5ca9a62c40524.png)
 双网络结构如图2所示，上方与下方的网络分别用于抽取正反例图片的表示，有着相同定义(类似AlexNet)并共享参数。中间的网络用于捕获用户的偏好信息，由多个全连接层组成，网络的输入向量需要人为的特征选择。
-![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/Figure2.png)
+![Figure2.PNG](https://i.loli.net/2019/04/07/5ca9a62c873d9.png)
 使用CDL方法的有两个需要解决的问题，一是如何对用户数据进行预处理生成输入用户向量，二是如何准备训练集中的三元组。对于第一个问题，由于用户标签过于稀疏，文章中采用的方法是将标签通过word2vec映射成向量，再将所有标签向量通过k均值算法聚成1024个聚类，因此用户可以表示成1024维的向量。对于第二个问题，正例图片可通过用户点赞行为获取，对于反例图片，因为用户未点赞的图片未必是用户不喜欢的（可能从未见过），文章中通过融入社交关系，从作者未点赞的图片和好友社区也未点赞的图片集中采样反例图片，从而生成训练所需的三元组。推荐时，首先选择一个候选集，候选集中的图片至少拥有一个用户喜好的标签，然后将用户与图片同时映射到同一隐空间中，用K近邻算法获取推荐图片列表。
 
 #### 实验
 
 实验使用在Flickr上爬取的数据集，包含101496张图片，54173个用户，6439个群组，35844个图片标签，平均每位用户有23.5给喜好标签和5.8张点赞图片。由于数据集过于稀疏，无法使用如协同过滤等传统算法进行推荐，故未与此类算法进行比较。比较实验结果如图5，6所示，由实验结果可见应用交叉熵损失的CDL效果好过使用铰链损失，基于人工特征提取的BoW和LMNN方法表现极差，BoW预测精度接近随机猜测，应用ImageNet特征的SIDL取得了第三好的结果，体现了深度学习的优势。通过融入社交信息，LMNN的表现提高显著，
-![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/Figure5.png) ![.](Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/Figure6.png)
+![Figure5.PNG](https://i.loli.net/2019/04/07/5ca9a62c74abc.png) ![Figure6.PNG](https://i.loli.net/2019/04/07/5ca9a62c74b19.png)
