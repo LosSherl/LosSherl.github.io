@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://lossherl.club">
   <title>Notes-Deep learning based RecSys utilizing visual content(1) | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考文献[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016.[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Repre">
+  <meta name="description" content="参考文献[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016. (MMM)[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid">
 <meta name="keywords" content="RecSys,User preference modeling">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes-Deep learning based RecSys utilizing visual content(1)">
 <meta property="og:url" content="http://lossherl.club/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="参考文献[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016.[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Repre">
+<meta property="og:description" content="参考文献[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016. (MMM)[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/04/07/5ca9a62c632c2.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/07/5ca9a62c755ec.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://i.loli.net/2019/04/07/5ca9a62c873d9.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/07/5ca9a62c74abc.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/07/5ca9a62c74b19.png">
-<meta property="og:updated_time" content="2019-04-07T07:35:05.062Z">
+<meta property="og:updated_time" content="2019-04-09T09:28:50.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes-Deep learning based RecSys utilizing visual content(1)">
-<meta name="twitter:description" content="参考文献[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016.[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Repre">
+<meta name="twitter:description" content="参考文献[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016. (MMM)[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid">
 <meta name="twitter:image" content="https://i.loli.net/2019/04/07/5ca9a62c632c2.png">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
@@ -181,7 +181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016.<br>[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Representations for Image Recommendations[J]. 2016.</p>
+        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016. (MMM)<br>[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Representations for Image Recommendations[J]. 2016. (CVPR)</p>
 <h2 id="Applying-Visual-User-Interest-Profiles-for-Recommendation-and-Personalisation"><a href="#Applying-Visual-User-Interest-Profiles-for-Recommendation-and-Personalisation" class="headerlink" title="Applying Visual User Interest Profiles for Recommendation and Personalisation"></a>Applying Visual User Interest Profiles for Recommendation and Personalisation</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>文献[1]认为用户的兴趣偏好可以从其曾经发布的照片中获取，通过使用深度学习中的技术从图片集中获取用户的视觉偏好信息，并用于酒店推荐及页面个性化定制。</p>
 <h4 id="视觉特征提取"><a href="#视觉特征提取" class="headerlink" title="视觉特征提取"></a>视觉特征提取</h4><p>在基于内容的图片检索领域中，一些诸如颜色、文本等低级语义信息被用于表示图像以及计算图像相似度，但是这些低级语义并不能很好地表示用户偏好。文献[1]假设通过结合深度学习，对用户特征进行更高语义层面的提取将使得基于内容的推荐更加有效。<br>文章中的方法利用AlexNet对图像作特征提取，将分类结果（1000个类别的概率分布）作为图像特征。</p>
 <a id="more"></a>
@@ -208,7 +208,7 @@
 <li>基于社交嵌入的图片表示的投票方法。</li>
 </ul>
 <h4 id="比较学习"><a href="#比较学习" class="headerlink" title="比较学习"></a>比较学习</h4><p>在社交网络中，用户对于图片的负向反馈十分匮乏，因此，使用传统方法训练的效果十分受限。文章中提出的比较学习方法，以公式1所示的三元组集合作为输入，目标是习得图片和用户偏好的映射函数，满足公式2，即相对反例图片，用户偏好向量与正例图片的向量表示的距离更近。其中距离尺度可以是简单的欧几里得距离，为了使正反例图片表示的距离尽可能地远，进一步采用交叉熵作为损失函数，相关定义如公式3，4，5。<br><img src="https://i.loli.net/2019/04/07/5ca9a62c2f0d6.png" alt="F1.PNG"> <img src="https://i.loli.net/2019/04/07/5ca9a62c2f5a2.png" alt="F2.PNG"><br><img src="https://i.loli.net/2019/04/07/5ca9a62c404b2.png" alt="F3.PNG"> <img src="https://i.loli.net/2019/04/07/5ca9a62c404b7.png" alt="F4.PNG"><br><img src="https://i.loli.net/2019/04/07/5ca9a62c40524.png" alt="F5.PNG"><br>双网络结构如图2所示，上方与下方的网络分别用于抽取正反例图片的表示，有着相同定义(类似AlexNet)并共享参数。中间的网络用于捕获用户的偏好信息，由多个全连接层组成，网络的输入向量需要人为的特征选择。<br><img src="https://i.loli.net/2019/04/07/5ca9a62c873d9.png" alt="Figure2.PNG"><br>使用CDL方法的有两个需要解决的问题，一是如何对用户数据进行预处理生成输入用户向量，二是如何准备训练集中的三元组。对于第一个问题，由于用户标签过于稀疏，文章中采用的方法是将标签通过word2vec映射成向量，再将所有标签向量通过k均值算法聚成1024个聚类，因此用户可以表示成1024维的向量。对于第二个问题，正例图片可通过用户点赞行为获取，对于反例图片，因为用户未点赞的图片未必是用户不喜欢的（可能从未见过），文章中通过融入社交关系，从作者未点赞的图片和好友社区也未点赞的图片集中采样反例图片，从而生成训练所需的三元组。推荐时，首先选择一个候选集，候选集中的图片至少拥有一个用户喜好的标签，然后将用户与图片同时映射到同一隐空间中，用K近邻算法获取推荐图片列表。</p>
-<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>实验使用在Flickr上爬取的数据集，包含101496张图片，54173个用户，6439个群组，35844个图片标签，平均每位用户有23.5给喜好标签和5.8张点赞图片。由于数据集过于稀疏，无法使用如协同过滤等传统算法进行推荐，故未与此类算法进行比较。比较实验结果如图5，6所示，由实验结果可见应用交叉熵损失的CDL效果好过使用铰链损失，基于人工特征提取的BoW和LMNN方法表现极差，BoW预测精度接近随机猜测，应用ImageNet特征的SIDL取得了第三好的结果，体现了深度学习的优势。通过融入社交信息，LMNN的表现提高显著，<br><img src="https://i.loli.net/2019/04/07/5ca9a62c74abc.png" alt="Figure5.PNG"> <img src="https://i.loli.net/2019/04/07/5ca9a62c74b19.png" alt="Figure6.PNG"></p>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>实验使用在Flickr上爬取的数据集，包含101496张图片，54173个用户，6439个群组，35844个图片标签，平均每位用户有23.5给喜好标签和5.8张点赞图片。由于数据集过于稀疏，无法使用如协同过滤等传统算法进行推荐，故未与此类算法进行比较。比较实验结果如图5，6所示，由实验结果可见应用交叉熵损失的CDL效果好过使用铰链损失，基于人工特征提取的BoW和LMNN方法表现极差，BoW预测精度接近随机猜测，应用ImageNet特征的SIDL取得了第三好的结果，体现了深度学习的优势。通过融入社交信息，LMNN的表现提高显著。<br><img src="https://i.loli.net/2019/04/07/5ca9a62c74abc.png" alt="Figure5.PNG"> <img src="https://i.loli.net/2019/04/07/5ca9a62c74b19.png" alt="Figure6.PNG"></p>
 
       
 
@@ -316,6 +316,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Notes-Deep learning based RecSys utilizing visual content(2)
+        
+      </div>
+    </a>
   
   
     <a href="/2017/03/23/hihoCoder-1290-Demo-Day/" id="article-nav-older" class="article-nav-link-wrap">
@@ -438,6 +447,14 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RecSys</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">User preference modeling</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
@@ -446,19 +463,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hihoCoder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RecSys</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">User preference modeling</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,18 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.club">
-  <title>Archives | Sherl&#39;s</title>
+  <title>Notes-Deep learning based RecSys utilizing visual content(2) | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Sherl&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sherl&#39;s">
-<meta property="og:url" content="http://lossherl.club/archives/page/2/index.html">
+  <meta name="description" content="参考文献[1] Li Z , Zhao H , Liu Q , et al. Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors[J]. 2018. (KDD)[2]  Learning from History and Present:">
+<meta name="keywords" content="RecSys,User preference modeling">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes-Deep learning based RecSys utilizing visual content(2)">
+<meta property="og:url" content="http://lossherl.club/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="Sherl&apos;s blog">
+<meta property="og:description" content="参考文献[1] Li Z , Zhao H , Liu Q , et al. Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors[J]. 2018. (KDD)[2]  Learning from History and Present:">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac62432b607.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cada5c5c1fd3.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cad9b789b6e5.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cad9b78aceb6.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cadae7f86d2f.png">
+<meta property="og:updated_time" content="2019-04-11T02:20:16.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sherl&#39;s">
-<meta name="twitter:description" content="Sherl&apos;s blog">
+<meta name="twitter:title" content="Notes-Deep learning based RecSys utilizing visual content(2)">
+<meta name="twitter:description" content="参考文献[1] Li Z , Zhao H , Liu Q , et al. Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors[J]. 2018. (KDD)[2]  Learning from History and Present:">
+<meta name="twitter:image" content="https://i.loli.net/2019/04/09/5cac62432b607.png">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -148,152 +156,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Notes-Deep learning based RecSys utilizing visual content(2)
+    </h1>
+  
+
+        
+        <a href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/" class="archive-article-date">
+  	<time datetime="2019-04-09T08:10:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Li Z , Zhao H , Liu Q , et al. Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors[J]. 2018. (KDD)<br>[2] </p>
+<h2 id="Learning-from-History-and-Present-Next-item-Recommendation-via-Discriminatively-Exploiting-User-Behaviors"><a href="#Learning-from-History-and-Present-Next-item-Recommendation-via-Discriminatively-Exploiting-User-Behaviors" class="headerlink" title="Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors"></a>Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>电子商务中，顾客的行为包含了大量信息，包括消费习惯，变化的偏好等，session-based的推荐越来越流行。文章指出现有研究工作仅关注了短期内的行为，忽略了用户的长期偏好和演化过程。提出了Behavior-Intensive Neural Network(BINN)，通过结合用户的长期偏好和当前消费动机对下一件访问的物品进行推荐。模型包含两个组件，其一是基于用户交互用于获得物品统一表示的嵌入方法，其二是基于嵌入物品以及交互序列的判别行为学习，学习目标用户历史偏好和当前动机。图1展示了文章的思想。<br><img src="https://i.loli.net/2019/04/09/5cac62432b607.png" alt="Figure1"><br>与传统基于文本或图片的嵌入方法不同，文章中提出的嵌入方法直接利用用户与物品的交互序列。对于第二个组件，文章中用两个深层网络共同地学习用户的当前动机与历史偏好。最终，候选物品也映射到同一隐空间中，由BINN为用户生成推荐，整体结构如图2所示。<br><img src="https://i.loli.net/2019/04/10/5cada5c5c1fd3.png" alt="Figure2"></p>
+<h4 id="物品嵌入方法-w-item2vec"><a href="#物品嵌入方法-w-item2vec" class="headerlink" title="物品嵌入方法(w-item2vec)"></a>物品嵌入方法(w-item2vec)</h4><p>w-item2vec通过物品访问序列习得物品间的相似度，从而得到每个物品的向量表示，核心思想是表现出相似吸引性（访问序列相似）的物品往往很相似。受Item2vec启发，w-item2vec也使用了Skip-gram model with Negative Sampling，w-item2vec中的Skip-gram最大化的目标函数如公式1，加入负采样，并将物品在序列中的频度作为采样权重后，最终的目标函数如公式5所示，其中w为物品的向量表示，v为上下文物品的向量表示。<br><img src="https://i.loli.net/2019/04/10/5cad9b789b6e5.png" alt="F1"> <img src="https://i.loli.net/2019/04/10/5cad9b78aceb6.png" alt="F5"></p>
+<h4 id="Discriminative-Behaviors-Learning"><a href="#Discriminative-Behaviors-Learning" class="headerlink" title="Discriminative Behaviors Learning"></a>Discriminative Behaviors Learning</h4><p>该组件包含两个基于LSTM的网络，用于学习用户的短期动机和长期偏好。两个网络的输出经过一个全连接层后生成一个d维向量，为下件物品进行推荐。</p>
+<h5 id="Session-Behaviors-Learning-SBL"><a href="#Session-Behaviors-Learning-SBL" class="headerlink" title="Session Behaviors Learning(SBL)"></a>Session Behaviors Learning(SBL)</h5><p>如图2所示，SBL中的每一个隐状态由上一时刻隐状态、当前物品向量、交互动作(one-hot向量)更新，ts指示session的长度，默认为10，最终SBL的输出为t-1时刻的隐状态。</p>
+<h5 id="Preference-Behaviors-Learning-PBL"><a href="#Preference-Behaviors-Learning-PBL" class="headerlink" title="Preference Behaviors Learning(PBL)"></a>Preference Behaviors Learning(PBL)</h5><p>该网络试图对用户长期的偏好进行建模，考虑用户历史偏好物品（添加购物车、购买、收藏等）。由于长期偏好波动不大，因此SBL的网络结果不适用于PBL，PBL采用了类似双向LSTM的结构，更新方式与SBL类似。每个时刻的隐状态由前向和后向的隐状态向量连接得到，PBL最终输出为各时刻的隐状态均值。</p>
+<h5 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h5><p>训练采用均方误差作为损失函数，如公式10所示。生成k维向量v后，在嵌入空间中计算v与其他物品表示的相似度，将最相似的前k个物品作为推荐。</p>
+<p><img src="https://i.loli.net/2019/04/10/5cadae7f86d2f.png" alt="F10"></p>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>实验采用了京东和天池(<a href="https://tianchi.aliyun.com/getStart/information.htm?spm=5176.100067.5678.2.30a8b6d933N6Rr&amp;raceId=231522)数据集。由于加入了频度作为负采样权重，w-item2vec的表现优于item2vec。评测尺度采用Recall@20和MRR@20，根据与其他模型的比较实验结果，强调了对用户长期偏好进行建模的有效性。对于冷启动问题，实验中用预训练的模型fit新用户，从第二个交互开始预测，实验中发现深度学习模型能够较好地面对冷启动现象。此外，在对用户历史偏好建模分析中，利用的历史交互次数越多模型表现越好。" target="_blank" rel="noopener">https://tianchi.aliyun.com/getStart/information.htm?spm=5176.100067.5678.2.30a8b6d933N6Rr&amp;raceId=231522)数据集。由于加入了频度作为负采样权重，w-item2vec的表现优于item2vec。评测尺度采用Recall@20和MRR@20，根据与其他模型的比较实验结果，强调了对用户长期偏好进行建模的有效性。对于冷启动问题，实验中用预训练的模型fit新用户，从第二个交互开始预测，实验中发现深度学习模型能够较好地面对冷启动现象。此外，在对用户历史偏好建模分析中，利用的历史交互次数越多模型表现越好。</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/17/LeetCode-141-Linked-List-Cycle/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/17/LeetCode-141-Linked-List-Cycle/">LeetCode 141.Linked List Cycle</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.club/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/17/LeetCode-221-Maximal-square/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:17:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/17/LeetCode-221-Maximal-square/">LeetCode 221.Maximal square</a>
-    </h1>
+  
+    <a href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Notes-Deep learning based RecSys utilizing visual content(1)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Notes-Deep-learning-based-RecSys-utilizing-visual-content-2" data-title="Notes-Deep learning based RecSys utilizing visual content(2)" data-url="http://lossherl.club/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/06/CSP第九次认证-压缩编码/" class="archive-article-date">
-  	<time datetime="2017-03-06T11:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/06/CSP第九次认证-压缩编码/">CSP第九次认证 压缩编码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -316,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
