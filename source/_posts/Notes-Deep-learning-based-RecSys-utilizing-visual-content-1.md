@@ -7,8 +7,8 @@ tags:
 ---
 
 ### 参考文献
-[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016.
-[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Representations for Image Recommendations[J]. 2016.
+[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016. (MMM)
+[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Representations for Image Recommendations[J]. 2016. (CVPR)
 
 
 ## Applying Visual User Interest Profiles for Recommendation and Personalisation
@@ -69,5 +69,5 @@ tags:
 
 #### 实验
 
-实验使用在Flickr上爬取的数据集，包含101496张图片，54173个用户，6439个群组，35844个图片标签，平均每位用户有23.5给喜好标签和5.8张点赞图片。由于数据集过于稀疏，无法使用如协同过滤等传统算法进行推荐，故未与此类算法进行比较。比较实验结果如图5，6所示，由实验结果可见应用交叉熵损失的CDL效果好过使用铰链损失，基于人工特征提取的BoW和LMNN方法表现极差，BoW预测精度接近随机猜测，应用ImageNet特征的SIDL取得了第三好的结果，体现了深度学习的优势。通过融入社交信息，LMNN的表现提高显著，
+实验使用在Flickr上爬取的数据集，包含101496张图片，54173个用户，6439个群组，35844个图片标签，平均每位用户有23.5给喜好标签和5.8张点赞图片。由于数据集过于稀疏，无法使用如协同过滤等传统算法进行推荐，故未与此类算法进行比较。比较实验结果如图5，6所示，由实验结果可见应用交叉熵损失的CDL效果好过使用铰链损失，基于人工特征提取的BoW和LMNN方法表现极差，BoW预测精度接近随机猜测，应用ImageNet特征的SIDL取得了第三好的结果，体现了深度学习的优势。通过融入社交信息，LMNN的表现提高显著。
 ![Figure5.PNG](https://i.loli.net/2019/04/07/5ca9a62c74abc.png) ![Figure6.PNG](https://i.loli.net/2019/04/07/5ca9a62c74b19.png)
