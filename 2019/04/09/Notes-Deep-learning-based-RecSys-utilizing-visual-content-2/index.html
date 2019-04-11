@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/04/10/5cad9b789b6e5.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/10/5cad9b78aceb6.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/10/5cadae7f86d2f.png">
-<meta property="og:updated_time" content="2019-04-11T02:20:16.492Z">
+<meta property="og:updated_time" content="2019-04-11T02:49:00.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes-Deep learning based RecSys utilizing visual content(2)">
 <meta name="twitter:description" content="参考文献[1] Li Z , Zhao H , Liu Q , et al. Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors[J]. 2018. (KDD)[2]  Learning from History and Present:">
@@ -70,6 +70,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/题解/">题解</a></li>
+	        
+				<li><a href="/tags/RecSys/">RecSys</a></li>
 	        
 			</ul>
 		</nav>
@@ -123,6 +125,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,12 +140,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/题解/">题解</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/题解/">题解</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/RecSys/">RecSys</a></li>
 		        
 				</ul>
 			</nav>
@@ -184,7 +190,7 @@
 <h5 id="Preference-Behaviors-Learning-PBL"><a href="#Preference-Behaviors-Learning-PBL" class="headerlink" title="Preference Behaviors Learning(PBL)"></a>Preference Behaviors Learning(PBL)</h5><p>该网络试图对用户长期的偏好进行建模，考虑用户历史偏好物品（添加购物车、购买、收藏等）。由于长期偏好波动不大，因此SBL的网络结果不适用于PBL，PBL采用了类似双向LSTM的结构，更新方式与SBL类似。每个时刻的隐状态由前向和后向的隐状态向量连接得到，PBL最终输出为各时刻的隐状态均值。</p>
 <h5 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h5><p>训练采用均方误差作为损失函数，如公式10所示。生成k维向量v后，在嵌入空间中计算v与其他物品表示的相似度，将最相似的前k个物品作为推荐。</p>
 <p><img src="https://i.loli.net/2019/04/10/5cadae7f86d2f.png" alt="F10"></p>
-<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>实验采用了京东和天池(<a href="https://tianchi.aliyun.com/getStart/information.htm?spm=5176.100067.5678.2.30a8b6d933N6Rr&amp;raceId=231522)数据集。由于加入了频度作为负采样权重，w-item2vec的表现优于item2vec。评测尺度采用Recall@20和MRR@20，根据与其他模型的比较实验结果，强调了对用户长期偏好进行建模的有效性。对于冷启动问题，实验中用预训练的模型fit新用户，从第二个交互开始预测，实验中发现深度学习模型能够较好地面对冷启动现象。此外，在对用户历史偏好建模分析中，利用的历史交互次数越多模型表现越好。" target="_blank" rel="noopener">https://tianchi.aliyun.com/getStart/information.htm?spm=5176.100067.5678.2.30a8b6d933N6Rr&amp;raceId=231522)数据集。由于加入了频度作为负采样权重，w-item2vec的表现优于item2vec。评测尺度采用Recall@20和MRR@20，根据与其他模型的比较实验结果，强调了对用户长期偏好进行建模的有效性。对于冷启动问题，实验中用预训练的模型fit新用户，从第二个交互开始预测，实验中发现深度学习模型能够较好地面对冷启动现象。此外，在对用户历史偏好建模分析中，利用的历史交互次数越多模型表现越好。</a></p>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>实验采用了京东和天池(<a href="https://tianchi.aliyun.com/competition/entrance/231522/information)数据集。由于加入了频度作为负采样权重，w-item2vec的表现优于item2vec。评测尺度采用Recall@20和MRR@20，根据与其他模型的比较实验结果，强调了对用户长期偏好进行建模的有效性。对于冷启动问题，实验中用预训练的模型fit新用户，从第二个交互开始预测，实验中发现深度学习模型能够较好地面对冷启动现象。此外，在对用户历史偏好建模分析中，利用的历史交互次数越多模型表现越好。" target="_blank" rel="noopener">https://tianchi.aliyun.com/competition/entrance/231522/information)数据集。由于加入了频度作为负采样权重，w-item2vec的表现优于item2vec。评测尺度采用Recall@20和MRR@20，根据与其他模型的比较实验结果，强调了对用户长期偏好进行建模的有效性。对于冷启动问题，实验中用预训练的模型fit新用户，从第二个交互开始预测，实验中发现深度学习模型能够较好地面对冷启动现象。此外，在对用户历史偏好建模分析中，利用的历史交互次数越多模型表现越好。</a></p>
 
       
 
@@ -292,6 +298,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/04/11/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -414,14 +429,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RecSys</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">User preference modeling</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
@@ -430,11 +437,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hihoCoder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+                <a href="javascript:void(0)" class="js-tag color2">RecSys</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">User preference modeling</a>
               </li>
              
               <li class="article-tag-list-item">
