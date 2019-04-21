@@ -24,9 +24,9 @@
 <meta property="og:image" content="https://i.loli.net/2019/04/20/5cbad8a48fe17.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/20/5cbadd2e7da2b.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/20/5cbaed84a318d.png">
-<meta property="og:image" content="https://i.loli.net/2019/04/20/5cbaf85bc5477.pngg">
+<meta property="og:image" content="https://i.loli.net/2019/04/20/5cbaf85bc5477.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/20/5cbaf85bd654e.png">
-<meta property="og:updated_time" content="2019-04-21T02:57:15.161Z">
+<meta property="og:updated_time" content="2019-04-21T03:01:17.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes-Deep learning based RecSys utilizing visual content(2)">
 <meta name="twitter:description" content="参考文献[1] Li Z, Zhao H, Liu Q, et al. Learning from history and present: Next-item recommendation via discriminatively exploiting user behaviors[C]//Proceedings of the 24th ACM SIGKDD International Conf">
@@ -204,7 +204,7 @@
 <h5 id="民宿类型与用户类型嵌入"><a href="#民宿类型与用户类型嵌入" class="headerlink" title="民宿类型与用户类型嵌入"></a>民宿类型与用户类型嵌入</h5><p><img src="https://i.loli.net/2019/04/20/5cbaed84a318d.png" alt="Figure5"></p>
 <p>除短期浏览行为意外，用户的长期偏好对个性化推荐也具有重要意义，但是，用户的订单数据十分稀疏，因此，作者对用户类型和民宿类型进行建模。对于民宿类型划分，根据民宿类型、租金、面积等属性，通过基于规则的方法将每个民宿多对一地映射到某个民宿类型。用户类型的划分也使用类似民宿的基于规则的方法，值得注意的是，民宿类型与用户类型可能随属性改变而变化。为在同一空间表示用户类型和民宿类型，作者将用户类型加入了预定序列，训练过程如图5所示，预定序列由多个预定事件按时间顺序连接组成，预定事件为（用户类型、民宿类型）二元组。训练方法与民宿嵌入类似，同样基于skip-gram模型，目标函数取决于位于滑动窗口中心的元素为用户类型或民宿类型。与民宿嵌入不同的是，该序列已包含跨区域的预定事件，因此无需添加跨区域负采样。</p>
 <p>不同于浏览行为仅反映用户偏好，预定事件还包含了房东偏好信息，在训练过程中利用房东的拒绝事件可以在嵌入向量中反映房东的偏好。由于一些类型的民宿对信息不全，历史订单少的用户类型不敏感，作者希望这类民宿与用户类型更近，从而提高未来的预定成功率。因此，训练时添加了一类拒绝事件集合，包含（用户类型，民宿类型）二元组，主要关注预定失败后预定成功的情况。最终用户类型和民宿类型的目标函数如公式8，9所示。</p>
-<p><img src="https://i.loli.net/2019/04/20/5cbaf85bc5477.pngg" alt="F8"> <img src="https://i.loli.net/2019/04/20/5cbaf85bd654e.png" alt="F9"></p>
+<p><img src="https://i.loli.net/2019/04/20/5cbaf85bc5477.png" alt="F8"> <img src="https://i.loli.net/2019/04/20/5cbaf85bd654e.png" alt="F9"></p>
 <h4 id="实验-1"><a href="#实验-1" class="headerlink" title="实验"></a>实验</h4><p>作者利用得到的民宿向量、用户类型向量和民宿类型向量，与用户近期浏览的民宿（根据不同喜好程度分多个类别）计算相似度，得到多个相似度特征表示，最终将特征加入GBDT搜索排序模型中完成排序。</p>
 
       
