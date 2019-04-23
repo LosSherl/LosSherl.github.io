@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.club">
-  <title>LeetCode 221.Maximal square | Sherl&#39;s</title>
+  <title>hihoCoder 1364 奖券兑换 | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Description: Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area. For example, given the following matrix: 1 0 1 0 01 0 1 1 11 1 1 1 11 0">
-<meta name="keywords" content="题解,LeetCode">
+  <meta name="description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
+<meta name="keywords" content="题解,hihoCoder">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 221.Maximal square">
-<meta property="og:url" content="http://lossherl.club/2017/03/17/LeetCode-221-Maximal-square/index.html">
+<meta property="og:title" content="hihoCoder 1364 奖券兑换">
+<meta property="og:url" content="http://lossherl.club/2019/04/23/hihoCoder-1364-奖券兑换/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="Description: Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area. For example, given the following matrix: 1 0 1 0 01 0 1 1 11 1 1 1 11 0">
+<meta property="og:description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T08:21:19.904Z">
+<meta property="og:updated_time" content="2019-04-23T04:44:20.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 221.Maximal square">
-<meta name="twitter:description" content="Description: Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area. For example, given the following matrix: 1 0 1 0 01 0 1 1 11 1 1 1 11 0">
+<meta name="twitter:title" content="hihoCoder 1364 奖券兑换">
+<meta name="twitter:description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -156,66 +156,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode-221-Maximal-square" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-hihoCoder-1364-奖券兑换" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode 221.Maximal square
+      hihoCoder 1364 奖券兑换
     </h1>
   
 
         
-        <a href="/2017/03/17/LeetCode-221-Maximal-square/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:17:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+        <a href="/2019/04/23/hihoCoder-1364-奖券兑换/" class="archive-article-date">
+  	<time datetime="2019-04-23T04:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Description:</p>
-<p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area.</p>
-<p>For example, given the following matrix:</p>
-<p>1 0 1 0 0<br>1 0 1 1 1<br>1 1 1 1 1<br>1 0 0 1 0</p>
-<p>Return 4.</p>
+        <p>时间限制:20000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。</p>
+<p>可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。  </p>
+<p>小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？</p>
 <a id="more"></a>
-<p>动态规划可解</p>
-<p>代码:</p>
-<pre><code>class Solution {
-public:
-    int maximalSquare(vector&lt;vector&lt;char&gt;&gt;&amp; matrix) {
-        int n = matrix.size();
-        if(n == 0)
-            return 0;
-        int m = matrix[0].size();
-        if(m == 0)
-            return 0;
-        int ans = 0;
-        vector&lt;vector&lt;int&gt;&gt; dp(n + 1);
-        for(int i = 0; i &lt; dp.size(); i++)
-        {
-            dp[i].resize(m + 1);
-        }
-        for(int i = 1; i &lt;= n; i++)
-        {
-            for(int j = 1; j &lt;= m; j++)
-            {
-                if(matrix[i - 1][j - 1] == &apos;1&apos;)
-                {
-                    dp[i][j] = min(min(dp[i-1][j],dp[i][j-1]),dp[i-1][j-1]) + 1;
-                }
-                ans = max(ans,dp[i][j]);
-            }
-        }
-        return ans * ans;
+<p>输入<br>第一行两个整数N，M。  </p>
+<p>接下来N行，每行两个整数Wi，Pi。  </p>
+<p>对于 50%的数据： 1≤N,M≤1000  </p>
+<p>对于 100%的数据： 1≤N,M≤105,1≤Pi,Wi≤10。  </p>
+<p>输出<br>一行一个整数，表示最大的价值。</p>
+<p>样例输入<br>3 10<br>2 3<br>8 8<br>10 10<br>样例输出<br>11 </p>
+<h4 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h4><p>这道题一眼看去是个01背包问题。但是N和M范围都在10万，O(NM)的DP没办法在时限内出解。</p>
+<p>进一步分析我们可以发现Wi和Pi的范围都很小，在10以内，所有本质上不同的奖品最多有100种，每种物品可能有很多件。</p>
+<p>于是这道题又变成了一道多重背包问题。不过多重背包如果直接DP仍然是O(NM)的。这里我们介绍一种”二进制分解”的优化方法。</p>
+<p>这种优化的思想是这样的：假设我有100件费用是W、价值的P的物品(用(W, P)表示)，意味着最优解可能从中选取0~100件。现在我把这100件(W, P)换成：</p>
+<p>1) 1件(W, P)<br>2) 1件(2W, 2P)<br>3) 1件(4W, 4P)<br>4) 1件(8W, 8P)<br>5) 1件(16W, 16P)<br>6) 1件(32W, 32P)<br>7) 1件(37W， 37P)</p>
+<p>一种7件物品。我们可以发现，假设最优解选择了K件(W, P)，无论K是多少，都可以通过选择以上7件中的若干件使得总费用和总价值也是(KW, KP)。换句话说，与最优解等价。反之，无论从7件中选取哪种组合，也都有一个K(0 &lt;= K &lt;= 100)与之对应，使得选择K件(W, P)的总费用和总价值与这种组合等价。</p>
+<p>于是我们把100件相同的物品的背包，等价变成了7件不相同物品的背包。</p>
+<p>具体来说，就是：假设有C件(W, P)，我们把C拆成尽可能多的2的幂之和以及剩余不足下一个2的幂的部分R，即C=1+2+4+8+…+2^K+R，其中R &lt; 2^(K+1)。</p>
+<p>我们用(W, P), (2W, 2P), (4W, 4P), … (2^KW, 2^KP), (RW， RP)这K+2个物品代替原C个物品，新的背包问题与原问题是等价的。</p>
+<p>将每种物品都做相同的二进制分解之后，对所有分解后得到的物品做01背包。</p>
+<p>由于我们是把同类的C件物品分解成了O(logC)件物品。所以最大数据100种，总计10万件物品最多被分解成大约1000件物品。</p>
+<p>使用01背包的DP，复杂度O(1000M)。</p>
+<p>BTW多重背包还有一种使用单调队列优化的方法。大家感兴趣可以搜索相关的资料。</p>
 
-    }
-
-};
-</code></pre>
       
 
       
@@ -253,7 +237,7 @@ public:
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
         		</li>
       		
 		</ul>
@@ -309,7 +293,7 @@ public:
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.club/2017/03/17/LeetCode-221-Maximal-square/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.club/2019/04/23/hihoCoder-1364-奖券兑换/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -323,18 +307,9 @@ public:
   
 <nav id="article-nav">
   
-    <a href="/2017/03/17/LeetCode-141-Linked-List-Cycle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LeetCode 141.Linked List Cycle
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/06/CSP第九次认证-压缩编码/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSP第九次认证 压缩编码</div>
+    <a href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Notes-Deep learning based RecSys utilizing visual content(3)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -348,7 +323,7 @@ public:
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="LeetCode-221-Maximal-square" data-title="LeetCode 221.Maximal square" data-url="http://lossherl.club/2017/03/17/LeetCode-221-Maximal-square/"></div>
+	<div class="ds-thread" data-thread-key="hihoCoder-1364-奖券兑换" data-title="hihoCoder 1364 奖券兑换" data-url="http://lossherl.club/2019/04/23/hihoCoder-1364-奖券兑换/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

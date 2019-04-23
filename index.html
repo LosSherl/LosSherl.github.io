@@ -156,6 +156,151 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hihoCoder-1364-奖券兑换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/23/hihoCoder-1364-奖券兑换/">hihoCoder 1364 奖券兑换</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/23/hihoCoder-1364-奖券兑换/" class="archive-article-date">
+  	<time datetime="2019-04-23T04:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>时间限制:20000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。</p>
+<p>可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。  </p>
+<p>小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？</p>
+        
+          <a class="article-more-a" href="/2019/04/23/hihoCoder-1364-奖券兑换/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/23/hihoCoder-1364-奖券兑换/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/">Notes-Deep learning based RecSys utilizing visual content(3)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/" class="archive-article-date">
+  	<time datetime="2019-04-22T05:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Wu S, Tang Y, Zhu Y, et al. Session-based Recommendation with Graph Neural Networks[J]. arXiv preprint arXiv:1811.00855, 2018.(AAAI 2019)</p>
+<h2 id="Session-based-Recommendation-with-Graph-Neural-Networks"><a href="#Session-based-Recommendation-with-Graph-Neural-Networks" class="headerlink" title="Session-based Recommendation with Graph Neural Networks"></a>Session-based Recommendation with Graph Neural Networks</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>文章指出此前session-based的工作对序列进行建模以估计用户和物品的表示，尽管获得较好的效果，但不能得到准确的用户表示并在一定程度上忽略了浏览物品的变化过程。因此，作者提出了基于图神经网络的SR-GNN模型，将每个session建模成图的形式，用GNN获得各个物品的表示，再通过注意力网络获得每个session的表示，从而该表示融合了全局的偏好和当前session兴趣的信息，最后为每个session预测各物品下次点击的概率。模型架构如图1所示。<br><img src="https://i.loli.net/2019/04/22/5cbd7bdd1fe8d.png" alt="Figure1"></p>
+<h4 id="方法描述"><a href="#方法描述" class="headerlink" title="方法描述"></a>方法描述</h4><p><img src="https://i.loli.net/2019/04/23/5cbeaa1c3676b.png" alt="Figure2"></p>
+<h5 id="GNN"><a href="#GNN" class="headerlink" title="GNN"></a>GNN</h5><p>模型首先将各序列单独建有向图，再全局相连，由于序列中某个物品可能出现多次，故将边的权值设为边的出现次数除以边起点的出度，最终每个序列得到一个如图2所示n*2n的连接矩阵A。随后，将每个序列一一送入GNN中，获得各个物品的向量表示，GNN更新公式如公式1，2，3，4，5。公式1抽取相邻节点的向量表示，作为GNN的输入；公式2，3对应更新门和重置门的更新方法；公式4根据当前状态，上一时刻状态以及当前更新门状态产生候选状态；公式5结合上一时刻状态和候选状态，在更新门的控制下生成当前时刻状态。<br><img src="https://i.loli.net/2019/04/23/5cbeae16c84ec.png" alt="F1-5"></p>
+<h5 id="生成序列表示"><a href="#生成序列表示" class="headerlink" title="生成序列表示"></a>生成序列表示</h5><p>此前session-based的方法往往假设对应每个序列的用户都存在独立的表示，而SR-GNN中的序列表示直接由序列中的顶点表示产生。序列表示为短期兴趣和长期偏好的结合，其中短期兴趣简单地设为序列中最后一个物品的向量表示，长期偏好通过soft注意力机制产生，最终的序列表示通过短期兴趣和长期偏好表示连接后经过线性变换得到。</p>
+<h5 id="生成推荐以及训练方法"><a href="#生成推荐以及训练方法" class="headerlink" title="生成推荐以及训练方法"></a>生成推荐以及训练方法</h5><p>得到序列表示后，将序列表示乘以每个候选物品的向量得到得分z，再由softmax计算每个候选物品的概率。训练采用交叉熵作为损失函数，BPTT(Back-Propagation Through Time)更新参数。模型时间复杂度为O(m^2 * n)，其中m为平均序列长度，n为总体序列个数，实际上，m远小于n，因此模型复杂度接近线性。部署时，分为在线离线两个部分，离线计算每个物品的表示，从而在线计算推荐结果，</p>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>实验中验证了：引入深度学习的有效性；基于马尔可夫链的模型的独立假设（仅基于上衣状态）不可靠；注意力机制能更好地忽略噪声、表现长期的偏好；图建模的有效性。</p>
+<h5 id="不同建图方式的比较"><a href="#不同建图方式的比较" class="headerlink" title="不同建图方式的比较"></a>不同建图方式的比较</h5><p>将各个序列聚合成全局图：由于权值的存在，降低了自身序列中高度节点边的重要性，影响了序列整体性，当权值变化时，模型表现下降。<br>添加高阶节点间的连接：效果变差，并不是所有高阶节点都应该直接相连，中继节点有存在的必要。</p>
+<h5 id="不同序列表示的比较"><a href="#不同序列表示的比较" class="headerlink" title="不同序列表示的比较"></a>不同序列表示的比较</h5><p>证实了短期兴趣与长期偏好结合的必要；序列中噪声影响较大。<br><img src="https://i.loli.net/2019/04/23/5cbecd91b7e6f.png" alt="Figure4"></p>
+<h5 id="序列长度分析"><a href="#序列长度分析" class="headerlink" title="序列长度分析"></a>序列长度分析</h5><p>实验将数据集根据序列长度阈值5分割为短序列、长序列两个部分。NARM和STAMP模型面向长序列时表现下降，可能的原因分别是忽略了重复动作以及RNN面向长序列的困难。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -714,144 +859,6 @@
 
 
   
-    <article id="post-蓝桥杯-历届试题-国王的烦恼" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-国王的烦恼/">蓝桥杯 历届试题 国王的烦恼</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/蓝桥杯-历届试题-国王的烦恼/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:57:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述<br>　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。</p>
-<p>　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到达了，居民们就会一起抗议。</p>
-        
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-国王的烦恼/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-国王的烦恼/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-蓝桥杯-历届试题-最大子阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/">蓝桥杯 历届试题 最大子阵</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/蓝桥杯-历届试题-最大子阵/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:52:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述<br>　　给定一个n*m的矩阵A，求A中的一个非空子矩阵，使这个子矩阵中的元素和最大。</p>
-<p>　　其中，A的子矩阵指在A中行和列均连续的一块。</p>
-        
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -950,7 +957,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
+                <a href="javascript:void(0)" class="js-tag color2">RecSys</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">User preference modeling</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -958,11 +969,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RecSys</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">User preference modeling</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
               </li>
              
               <li class="article-tag-list-item">
