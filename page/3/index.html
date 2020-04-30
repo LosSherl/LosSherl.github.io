@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>蓝桥杯 历届试题 国王的烦恼 | Sherl&#39;s</title>
+  <title>Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。 　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到">
-<meta name="keywords" content="题解,蓝桥杯">
-<meta property="og:type" content="article">
-<meta property="og:title" content="蓝桥杯 历届试题 国王的烦恼">
-<meta property="og:url" content="http://lossherl.github.io/2017/03/17/蓝桥杯-历届试题-国王的烦恼/index.html">
+  <meta name="description" content="Sherl&apos;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sherl&#39;s">
+<meta property="og:url" content="http://lossherl.github.io/page/3/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="问题描述　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。 　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到">
+<meta property="og:description" content="Sherl&apos;s blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T08:21:19.904Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蓝桥杯 历届试题 国王的烦恼">
-<meta name="twitter:description" content="问题描述　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。 　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到">
+<meta name="twitter:title" content="Sherl&#39;s">
+<meta name="twitter:description" content="Sherl&apos;s blog">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -168,135 +166,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-蓝桥杯-历届试题-国王的烦恼" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-蓝桥杯-历届试题-最大子阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      蓝桥杯 历届试题 国王的烦恼
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/">蓝桥杯 历届试题 最大子阵</a>
     </h1>
   
 
         
-        <a href="/2017/03/17/蓝桥杯-历届试题-国王的烦恼/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:57:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+        <a href="/2017/03/17/蓝桥杯-历届试题-最大子阵/" class="archive-article-date">
+  	<time datetime="2017-03-17T14:52:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>问题描述<br>　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。</p>
-<p>　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到达了，居民们就会一起抗议。</p>
-<a id="more"></a>
-<p>　　现在C国的国王已经知道了每座桥能使用的天数，超过这个天数就不能使用了。现在他想知道居民们会有多少天进行抗议。<br>输入格式<br>　　输入的第一行包含两个整数n, m，分别表示小岛的个数和桥的数量。<br>　　接下来m行，每行三个整数a, b, t，分别表示该座桥连接a号和b号两个小岛，能使用t天。小岛的编号从1开始递增。<br>输出格式<br>　　输出一个整数，表示居民们会抗议的天数。<br>样例输入<br>4 4<br>1 2 2<br>1 3 2<br>2 3 1<br>3 4 3<br>样例输出<br>2<br>样例说明<br>　　第一天后2和3之间的桥不能使用，不影响。<br>　　第二天后1和2之间，以及1和3之间的桥不能使用，居民们会抗议。<br>　　第三天后3和4之间的桥不能使用，居民们会抗议。<br>数据规模和约定<br>　　对于30%的数据，1&lt;=n&lt;=20，1&lt;=m&lt;=100；<br>　　对于50%的数据，1&lt;=n&lt;=500，1&lt;=m&lt;=10000；<br>　　对于100%的数据，1&lt;=n&lt;=10000，1&lt;=m&lt;=100000，1&lt;=a, b&lt;=n， 1&lt;=t&lt;=100000。</p>
-<p>思路：<br>  使用并查集，按损坏时间倒序添加路径。</p>
-<p>AC代码:</p>
-<pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-struct node{
-    int s;
-    int e;
-    int t;
-}b[100010];
-
-bool cmp(node a,node b)
-{
-    return a.t &gt; b.t;
-}
-
-int a[10001] = {0};
-
-int find(int x)
-{
-    int tx = x;
-    int root;
-
-    while(a[tx] != tx)
-    {
-        tx = a[tx];
-    }
-    root = tx;
-    while(a[x] != root)
-    {
-        tx = a[x];
-        a[x] = root;
-        x = tx;
-    }
-    return root;
-}
-
-bool Union(int x,int y)
-{
-    int tx = find(x);
-    int ty = find(y);
-    if(tx != ty)
-    {
-        a[tx] = ty;
-        return true;
-    }
-    return false;
-}
-
-int n,m;
-
-int main()
-{
-    cin &gt;&gt; n &gt;&gt; m;
-
-    for(int i = 1; i &lt;= m; i++)
-    {
-        scanf(&quot;%d %d %d&quot;,&amp;b[i].s,&amp;b[i].e,&amp;b[i].t);
-    }
-
-    sort(b + 1, b + m + 1,cmp);
-
-    for(int i = 1; i &lt;= n; i++)
-    {
-        a[i] = i;
-    }
-    int cnt = 0;
-    int last = 0;
-    for(int i = 1; i &lt;= m; i++)
-    {
-        if(Union(b[i].s,b[i].e) &amp;&amp; last != b[i].t)
-        {
-            last = b[i].t;
-            cnt++;
-        }
-    }
-    cout &lt;&lt; cnt;
-}
-</code></pre>
+        <p>问题描述<br>　　给定一个n*m的矩阵A，求A中的一个非空子矩阵，使这个子矩阵中的元素和最大。</p>
+<p>　　其中，A的子矩阵指在A中行和列均连续的一块。</p>
+        
+          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/#more">more >></a>
+        
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -320,112 +218,240 @@ int main()
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2017/03/17/蓝桥杯-历届试题-国王的烦恼/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+
+
+
+
+
+
+
   
-<nav id="article-nav">
-  
-    <a href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
+    <article id="post-LeetCode-141-Linked-List-Cycle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
         
-          蓝桥杯 历届试题 高僧斗法
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/LeetCode-141-Linked-List-Cycle/">LeetCode 141.Linked List Cycle</a>
+    </h1>
+  
+
         
-      </div>
-    </a>
+        <a href="/2017/03/17/LeetCode-141-Linked-List-Cycle/" class="archive-article-date">
+  	<time datetime="2017-03-17T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<p>Given a linked list, determine if it has a cycle in it.</p>
+<p>Follow up:<br>Can you solve it without using extra space?</p>
+        
+          <a class="article-more-a" href="/2017/03/17/LeetCode-141-Linked-List-Cycle/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/17/LeetCode-141-Linked-List-Cycle/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-LeetCode-221-Maximal-square" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/LeetCode-221-Maximal-square/">LeetCode 221.Maximal square</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/17/LeetCode-221-Maximal-square/" class="archive-article-date">
+  	<time datetime="2017-03-17T14:17:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Description:</p>
+<p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area.</p>
+<p>For example, given the following matrix:</p>
+<p>1 0 1 0 0<br>1 0 1 1 1<br>1 1 1 1 1<br>1 0 0 1 0</p>
+<p>Return 4.</p>
+        
+          <a class="article-more-a" href="/2017/03/17/LeetCode-221-Maximal-square/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/17/LeetCode-221-Maximal-square/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSP第九次认证-压缩编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/06/CSP第九次认证-压缩编码/">CSP第九次认证 压缩编码</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/06/CSP第九次认证-压缩编码/" class="archive-article-date">
+  	<time datetime="2017-03-06T11:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述<br>　　给定一段文字，已知单词a1, a2, …, an出现的频率分别t1, t2, …, tn。可以用01串给这些单词编码，即将每个单词与一个01串对应，使得任何一个单词的编码（对应的01串）不是另一个单词编码的前缀，这种编码称为前缀码。<br>　　使用前缀码编码一段文字是指将这段文字中的每个单词依次对应到其编码。一段文字经过前缀编码后的长度为：<br>　　L=a1的编码长度×t1+a2的编码长度×t2+…+ an的编码长度×tn。<br>　　定义一个前缀编码为字典序编码，指对于1 ≤ i &lt; n，ai的编码（对应的01串）的字典序在ai+1编码之前，即a1, a2, …, an的编码是按字典序升序排列的。<br>　　例如，文字E A E C D E B C C E C B D B E中， 5个单词A、B、C、D、E出现的频率分别为1, 3, 4, 2, 5，则一种可行的编码方案是A:000, B:001, C:01, D:10, E:11，对应的编码后的01串为1100011011011001010111010011000111，对应的长度L为3×1+3×3+2×4+2×2+2×5=34。<br>　　在这个例子中，如果使用哈夫曼(Huffman)编码，对应的编码方案是A:000, B:01, C:10, D:001, E:11，虽然最终文字编码后的总长度只有33，但是这个编码不满足字典序编码的性质，比如C的编码的字典序不在D的编码之前。<br>　　在这个例子中，有些人可能会想的另一个字典序编码是A:000, B:001, C:010, D:011, E:1，编码后的文字长度为35。<br>　　请找出一个字典序编码，使得文字经过编码后的长度L最小。在输出时，你只需要输出最小的长度L，而不需要输出具体的方案。在上面的例子中，最小的长度L为34。<br>输入格式<br>　　输入的第一行包含一个整数n，表示单词的数量。<br>　　第二行包含n个整数，用空格分隔，分别表示a1, a2, …, an出现的频率，即t1, t2, …, tn。请注意a1, a2, …, an具体是什么单词并不影响本题的解，所以没有输入a1, a2, …, an。<br></p>
+        
+          <a class="article-more-a" href="/2017/03/06/CSP第九次认证-压缩编码/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/06/CSP第九次认证-压缩编码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
   
-    <a href="/2017/03/17/蓝桥杯-历届试题-最大子阵/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">蓝桥杯 历届试题 最大子阵</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
-</nav>
-
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="蓝桥杯-历届试题-国王的烦恼" data-title="蓝桥杯 历届试题 国王的烦恼" data-url="http://lossherl.github.io/2017/03/17/蓝桥杯-历届试题-国王的烦恼/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-  
-
-
 
 
           </div>
@@ -447,8 +473,8 @@ int main()
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

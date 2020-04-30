@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://lossherl.club">
+  <link rel="dns-prefetch" href="http://lossherl.github.io">
   <title>Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Sherl&apos;s blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sherl&#39;s">
-<meta property="og:url" content="http://lossherl.club/page/2/index.html">
+<meta property="og:url" content="http://lossherl.github.io/page/2/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
 <meta property="og:description" content="Sherl&apos;s blog">
 <meta property="og:locale" content="zh-CN">
@@ -64,6 +64,10 @@
 				<li><a href="/tags/题解/">题解</a></li>
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
+	        
+				<li><a href="/tag/CV/">视觉</a></li>
+	        
+				<li><a href="/tag/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -119,6 +123,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,11 +143,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/题解/">题解</a></li>
+					<li style="width: 20%"><a href="/tags/题解/">题解</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/RecSys/">推荐系统</a></li>
+					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
+		        
+					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+		        
+					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -155,6 +167,633 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/">Notes-Deep learning based RecSys utilizing visual content(3)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/" class="archive-article-date">
+  	<time datetime="2019-04-22T05:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Wu S, Tang Y, Zhu Y, et al. Session-based Recommendation with Graph Neural Networks[J]. arXiv preprint arXiv:1811.00855, 2018.(AAAI 2019)</p>
+<h2 id="Session-based-Recommendation-with-Graph-Neural-Networks"><a href="#Session-based-Recommendation-with-Graph-Neural-Networks" class="headerlink" title="Session-based Recommendation with Graph Neural Networks"></a>Session-based Recommendation with Graph Neural Networks</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>文章指出此前session-based的工作对序列进行建模以估计用户和物品的表示，尽管获得较好的效果，但不能得到准确的用户表示并在一定程度上忽略了浏览物品的变化过程。因此，作者提出了基于图神经网络的SR-GNN模型，将每个session建模成图的形式，用GNN获得各个物品的表示，再通过注意力网络获得每个session的表示，从而该表示融合了全局的偏好和当前session兴趣的信息，最后为每个session预测各物品下次点击的概率。模型架构如图1所示。<br><img src="https://i.loli.net/2019/04/22/5cbd7bdd1fe8d.png" alt="Figure1"></p>
+        
+          <a class="article-more-a" href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/">Notes-Deep learning based RecSys utilizing visual content(2)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/" class="archive-article-date">
+  	<time datetime="2019-04-09T08:10:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Li Z, Zhao H, Liu Q, et al. Learning from history and present: Next-item recommendation via discriminatively exploiting user behaviors[C]//Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining. ACM, 2018: 1734-1743.<br>[2] Grbovic M, Cheng H. Real-time personalization using embeddings for search ranking at Airbnb[C]//Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining. ACM, 2018: 311-320.</p>
+<h2 id="Learning-from-History-and-Present-Next-item-Recommendation-via-Discriminatively-Exploiting-User-Behaviors"><a href="#Learning-from-History-and-Present-Next-item-Recommendation-via-Discriminatively-Exploiting-User-Behaviors" class="headerlink" title="Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors"></a>Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>电子商务中，顾客的行为包含了大量信息，包括消费习惯，变化的偏好等，session-based的推荐越来越流行。文章指出现有研究工作仅关注了短期内的行为，忽略了用户的长期偏好和演化过程。提出了Behavior-Intensive Neural Network(BINN)，通过结合用户的长期偏好和当前消费动机对下一件访问的物品进行推荐。模型包含两个组件，其一是基于用户交互用于获得物品统一表示的嵌入方法，其二是基于嵌入物品以及交互序列的判别行为学习，学习目标用户历史偏好和当前动机。图1展示了文章的思想。<br><img src="https://i.loli.net/2019/04/09/5cac62432b607.png" alt="Figure1"><br>与传统基于文本或图片的嵌入方法不同，文章中提出的嵌入方法直接利用用户与物品的交互序列。对于第二个组件，文章中用两个深层网络共同地学习用户的当前动机与历史偏好。最终，候选物品也映射到同一隐空间中，由BINN为用户生成推荐，整体结构如图2所示。<br><img src="https://i.loli.net/2019/04/10/5cada5c5c1fd3.png" alt="Figure2"><br></p>
+        
+          <a class="article-more-a" href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/">Notes-Deep learning based RecSys utilizing visual content(1)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/" class="archive-article-date">
+  	<time datetime="2019-04-04T02:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016. (MMM)<br>[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Representations for Image Recommendations[J]. 2016. (CVPR)</p>
+<h2 id="Applying-Visual-User-Interest-Profiles-for-Recommendation-and-Personalisation"><a href="#Applying-Visual-User-Interest-Profiles-for-Recommendation-and-Personalisation" class="headerlink" title="Applying Visual User Interest Profiles for Recommendation and Personalisation"></a>Applying Visual User Interest Profiles for Recommendation and Personalisation</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>文献[1]认为用户的兴趣偏好可以从其曾经发布的照片中获取，通过使用深度学习中的技术从图片集中获取用户的视觉偏好信息，并用于酒店推荐及页面个性化定制。</p>
+<h4 id="视觉特征提取"><a href="#视觉特征提取" class="headerlink" title="视觉特征提取"></a>视觉特征提取</h4><p>在基于内容的图片检索领域中，一些诸如颜色、文本等低级语义信息被用于表示图像以及计算图像相似度，但是这些低级语义并不能很好地表示用户偏好。文献[1]假设通过结合深度学习，对用户特征进行更高语义层面的提取将使得基于内容的推荐更加有效。<br>文章中的方法利用AlexNet对图像作特征提取，将分类结果（1000个类别的概率分布）作为图像特征。</p>
+        
+          <a class="article-more-a" href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-hihoCoder-1290-Demo-Day" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/23/hihoCoder-1290-Demo-Day/">hihoCoder 1290 Demo Day</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/23/hihoCoder-1290-Demo-Day/" class="archive-article-date">
+  	<time datetime="2017-03-22T16:25:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>描述<br>You work as an intern at a robotics startup. Today is your company’s demo day. During the demo your company’s robot will be put in a maze and without any information about the maze, it should be able to find a way out.</p>
+<p>The maze consists of N * M grids. Each grid is either empty(represented by ‘.’) or blocked by an obstacle(represented by ‘b’). The robot will be release at the top left corner and the exit is at the bottom right corner.</p>
+<p>Unfortunately some sensors on the robot go crazy just before the demo starts. As a result, the robot can only repeats two operations alternatively: keep moving to the right until it can’t and keep moving to the bottom until it can’t. At the beginning, the robot keeps moving to the right.</p>
+<p>rrrrbb..<br>…r….     ====&gt; The robot route with broken sensors is marked by ‘r’.<br>…rrb..<br>…bb…<br>While the FTEs(full-time employees) are busy working on the sensors, you try to save the demo day by rearranging the maze in such a way that even with the broken sensors the robot can reach the exit successfully. You can change a grid from empty to blocked and vice versa. So as not to arouse suspision, you want to change as few grids as possible. What is the mininum number?</p>
+        
+          <a class="article-more-a" href="/2017/03/23/hihoCoder-1290-Demo-Day/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/23/hihoCoder-1290-Demo-Day/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-hihoCoder-1238-Total-Highway-Distance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/">hihoCoder 1238 Total Highway Distance</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/" class="archive-article-date">
+  	<time datetime="2017-03-21T14:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>时间限制:10000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>Little Hi and Little Ho are playing a construction simulation game. They build N cities (numbered from 1 to N) in the game and connect them by N-1 highways. It is guaranteed that each pair of cities are connected by the highways directly or indirectly.</p>
+<p>The game has a very important value called Total Highway Distance (THD) which is the total distances of all pairs of cities. Suppose there are 3 cities and 2 highways. The highway between City 1 and City 2 is 200 miles and the highway between City 2 and City 3 is 300 miles. So the THD is 1000(200 + 500 + 300) miles because the distances between City 1 and City 2, City 1 and City 3, City 2 and City 3 are 200 miles, 500 miles and 300 miles respectively.</p>
+<p>During the game Little Hi and Little Ho may change the length of some highways. They want to know the latest THD. Can you help them?</p>
+        
+          <a class="article-more-a" href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-hihoCoder-1399-Shortening-Sequence" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/">hihoCoder 1399 Shortening Sequence</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/" class="archive-article-date">
+  	<time datetime="2017-03-21T14:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>时间限制:10000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>There is an integer array A1, A2 …AN. Each round you may choose two adjacent integers. If their sum is an odd number, the two adjacent integers can be deleted.</p>
+<p>Can you work out the minimum length of the final array after elaborate deletions?</p>
+        
+          <a class="article-more-a" href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-hihoCoder-1288-Font-Size" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/hihoCoder-1288-Font-Size/">hihoCoder 1288 Font Size</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/21/hihoCoder-1288-Font-Size/" class="archive-article-date">
+  	<time datetime="2017-03-21T14:21:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>时间限制:10000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>Steven loves reading book on his phone. The book he reads now consists of N paragraphs and the i-th paragraph contains ai characters.</p>
+<p>Steven wants to make the characters easier to read, so he decides to increase the font size of characters. But the size of Steven’s phone screen is limited. Its width is W and height is H. As a result, if the font size of characters is S then it can only show ⌊W / S⌋ characters in a line and ⌊H / S⌋ lines in a page. (⌊x⌋ is the largest integer no more than x)  </p>
+<p>So here’s the question, if Steven wants to control the number of pages no more than P, what’s the maximum font size he can set? Note that paragraphs must start in a new line and there is no empty line between paragraphs.</p>
+        
+          <a class="article-more-a" href="/2017/03/21/hihoCoder-1288-Font-Size/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/21/hihoCoder-1288-Font-Size/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-蓝桥杯-历届试题-小朋友排队" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/">蓝桥杯 历届试题 小朋友排队</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/" class="archive-article-date">
+  	<time datetime="2017-03-17T15:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述<br>　　n 个小朋友站成一排。现在要把他们按身高从低到高的顺序排列，但是每次只能交换位置相邻的两个小朋友。</p>
+<p>　　每个小朋友都有一个不高兴的程度。开始的时候，所有小朋友的不高兴程度都是0。</p>
+<p>　　如果某个小朋友第一次被要求交换，则他的不高兴程度增加1，如果第二次要求他交换，则他的不高兴程度增加2（即不高兴程度为3），依次类推。当要求某个小朋友第k次交换时，他的不高兴程度增加k。</p>
+<p>　　请问，要让所有小朋友按从低到高排队，他们的不高兴程度之和最小是多少。</p>
+        
+          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-蓝桥杯-历届试题-高僧斗法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/">蓝桥杯 历届试题 高僧斗法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/" class="archive-article-date">
+  	<time datetime="2017-03-17T15:00:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述<br>　　古时丧葬活动中经常请高僧做法事。仪式结束后，有时会有“高僧斗法”的趣味节目，以舒缓压抑的气氛。<br>　　节目大略步骤为：先用粮食（一般是稻米）在地上“画”出若干级台阶（表示N级浮屠）。又有若干小和尚随机地“站”在某个台阶上。最高一级台阶必须站人，其它任意。(如图1所示)<br>　　两位参加游戏的法师分别指挥某个小和尚向上走任意多级的台阶，但会被站在高级台阶上的小和尚阻挡，不能越过。两个小和尚也不能站在同一台阶，也不能向低级台阶移动。<br>　　两法师轮流发出指令，最后所有小和尚必然会都挤在高段台阶，再也不能向上移动。轮到哪个法师指挥时无法继续移动，则游戏结束，该法师认输。<br>　　对于已知的台阶数和小和尚的分布位置，请你计算先发指令的法师该如何决策才能保证胜出。</p>
+        
+          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-蓝桥杯-历届试题-国王的烦恼" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -225,288 +864,9 @@
 
 
   
-    <article id="post-蓝桥杯-历届试题-最大子阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/">蓝桥杯 历届试题 最大子阵</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/蓝桥杯-历届试题-最大子阵/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:52:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述<br>　　给定一个n*m的矩阵A，求A中的一个非空子矩阵，使这个子矩阵中的元素和最大。</p>
-<p>　　其中，A的子矩阵指在A中行和列均连续的一块。</p>
-        
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-最大子阵/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LeetCode-141-Linked-List-Cycle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/LeetCode-141-Linked-List-Cycle/">LeetCode 141.Linked List Cycle</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/LeetCode-141-Linked-List-Cycle/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Description:</p>
-<p>Given a linked list, determine if it has a cycle in it.</p>
-<p>Follow up:<br>Can you solve it without using extra space?</p>
-        
-          <a class="article-more-a" href="/2017/03/17/LeetCode-141-Linked-List-Cycle/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/LeetCode-141-Linked-List-Cycle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LeetCode-221-Maximal-square" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/LeetCode-221-Maximal-square/">LeetCode 221.Maximal square</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/LeetCode-221-Maximal-square/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:17:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Description:</p>
-<p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area.</p>
-<p>For example, given the following matrix:</p>
-<p>1 0 1 0 0<br>1 0 1 1 1<br>1 1 1 1 1<br>1 0 0 1 0</p>
-<p>Return 4.</p>
-        
-          <a class="article-more-a" href="/2017/03/17/LeetCode-221-Maximal-square/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/LeetCode-221-Maximal-square/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSP第九次认证-压缩编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/CSP第九次认证-压缩编码/">CSP第九次认证 压缩编码</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/06/CSP第九次认证-压缩编码/" class="archive-article-date">
-  	<time datetime="2017-03-06T11:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述<br>　　给定一段文字，已知单词a1, a2, …, an出现的频率分别t1, t2, …, tn。可以用01串给这些单词编码，即将每个单词与一个01串对应，使得任何一个单词的编码（对应的01串）不是另一个单词编码的前缀，这种编码称为前缀码。<br>　　使用前缀码编码一段文字是指将这段文字中的每个单词依次对应到其编码。一段文字经过前缀编码后的长度为：<br>　　L=a1的编码长度×t1+a2的编码长度×t2+…+ an的编码长度×tn。<br>　　定义一个前缀编码为字典序编码，指对于1 ≤ i &lt; n，ai的编码（对应的01串）的字典序在ai+1编码之前，即a1, a2, …, an的编码是按字典序升序排列的。<br>　　例如，文字E A E C D E B C C E C B D B E中， 5个单词A、B、C、D、E出现的频率分别为1, 3, 4, 2, 5，则一种可行的编码方案是A:000, B:001, C:01, D:10, E:11，对应的编码后的01串为1100011011011001010111010011000111，对应的长度L为3×1+3×3+2×4+2×2+2×5=34。<br>　　在这个例子中，如果使用哈夫曼(Huffman)编码，对应的编码方案是A:000, B:01, C:10, D:001, E:11，虽然最终文字编码后的总长度只有33，但是这个编码不满足字典序编码的性质，比如C的编码的字典序不在D的编码之前。<br>　　在这个例子中，有些人可能会想的另一个字典序编码是A:000, B:001, C:010, D:011, E:1，编码后的文字长度为35。<br>　　请找出一个字典序编码，使得文字经过编码后的长度L最小。在输出时，你只需要输出最小的长度L，而不需要输出具体的方案。在上面的例子中，最小的长度L为34。<br>输入格式<br>　　输入的第一行包含一个整数n，表示单词的数量。<br>　　第二行包含n个整数，用空格分隔，分别表示a1, a2, …, an出现的频率，即t1, t2, …, tn。请注意a1, a2, …, an具体是什么单词并不影响本题的解，所以没有输入a1, a2, …, an。<br></p>
-        
-          <a class="article-more-a" href="/2017/03/06/CSP第九次认证-压缩编码/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/06/CSP第九次认证-压缩编码/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -518,7 +878,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sherl
+    		&copy; 2020 Sherl
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -598,6 +958,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
@@ -611,10 +975,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hihoCoder</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
               </li>
              
               <li class="article-tag-list-item">

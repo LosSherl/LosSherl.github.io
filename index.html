@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://lossherl.club">
+  <link rel="dns-prefetch" href="http://lossherl.github.io">
   <title>Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Sherl&apos;s blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sherl&#39;s">
-<meta property="og:url" content="http://lossherl.club/index.html">
+<meta property="og:url" content="http://lossherl.github.io/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
 <meta property="og:description" content="Sherl&apos;s blog">
 <meta property="og:locale" content="zh-CN">
@@ -64,6 +64,10 @@
 				<li><a href="/tags/题解/">题解</a></li>
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
+	        
+				<li><a href="/tag/CV/">视觉</a></li>
+	        
+				<li><a href="/tag/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -119,6 +123,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,11 +143,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/题解/">题解</a></li>
+					<li style="width: 20%"><a href="/tags/题解/">题解</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/RecSys/">推荐系统</a></li>
+					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
+		        
+					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+		        
+					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -155,6 +167,1017 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020 Unpaired Photo-to-manga Translation Based on The" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing<br>date: 2020-04-27 12:29:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h3 id="Unpaired-Photo-to-manga-Translation-Based-on-The-Methodology-of-Manga-Drawing"><a href="#Unpaired-Photo-to-manga-Translation-Based-on-The-Methodology-of-Manga-Drawing" class="headerlink" title="Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing"></a>Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>首个彩色照片转黑白漫画的方法。</li>
+<li>细致地将每个面部区域转化成漫画风格。</li>
+<li>收集数据集，包含面部特征，特征点，身体等</li>
+<li>提出结构化平滑loss，用于平滑线条避免噪声像素。</li>
+<li>提出照片和漫画的相似度量</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li>漫画生成的挑战<ul>
+<li>相比现实照片，漫画中的人脸是抽象的、表情是夸张的。</li>
+<li>不同漫画家有不同的风格，外貌、位置、大小和风格这些要素很难仅用一个网络同时抽取。</li>
+<li>维持个体特征的同时融入漫画风格</li>
+<li>数据难获取</li>
+</ul>
+</li>
+<li>画家绘制漫画的过程<ul>
+<li>画出大致面部轮廓</li>
+<li>分布面部特征</li>
+<li>精细的绘制每个部分</li>
+</ul>
+</li>
+<li>MangaGAN遵循这个过程，使用多个GAN转换不同的部位特征，再用另外的GAN完成映射。</li>
+<li>利用相似度模块维持个体身份，并通过结构平滑loss避免噪声。</li>
+<li>主要贡献：<ul>
+<li>仿照绘制漫画的过程，使用多个部位GAN将照片转化为漫画</li>
+<li>提出相似度维持模块保证面部特征不变、提出平滑loss防止噪声。</li>
+<li>构造数据集</li>
+</ul>
+</li>
+</ul>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p><img src="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/MangaGAN.png" alt="MangaGAN"></p>
+<ul>
+<li>MangaGAN有两个分支<ul>
+<li>Geometric Transformation Network （GTN）学习面部的几何映射。</li>
+<li>Appearance Transformation Network （ATN）学习外貌映射。</li>
+</ul>
+</li>
+<li>最后由生成模块聚合各个组件，输出漫画头像。</li>
+</ul>
+<h5 id="ATN"><a href="#ATN" class="headerlink" title="ATN"></a>ATN</h5><ul>
+<li>包含四个局部GAN，分别对应眼睛、鼻子、嘴巴、头发。</li>
+</ul>
+<h5 id="眼睛和嘴"><a href="#眼睛和嘴" class="headerlink" title="眼睛和嘴"></a>眼睛和嘴</h5><ul>
+<li>眼睛和嘴是漫画中的最重要的部分，也是最难转换的<ul>
+<li>使用类似CycleGAN的方法来回映射</li>
+<li>生成器使用Resnet 6 blocks，辨别器使用马尔科夫70x70的patchGANs。</li>
+<li>均方误差loss代替极大似然作为对抗损失（更稳定）</li>
+<li>Cycle Loss采用一阶范数差</li>
+<li>上述两种Loss在实验中仍让不足以保证相似度。</li>
+</ul>
+</li>
+<li>提出Similarity Preserving (SP) module<ul>
+<li>主要思想是维持低分辨率时的相似度能够在上采样后给出尅死的空间分布和不同的像素细节。</li>
+<li>使用一个预训练的卷积网络抽取不同尺寸的图像特征</li>
+<li>最小化不同之尺寸下生成部件图像与真实部件图像的特征二阶范数和像素二阶范数</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/SP_Modules.png" alt="SP Module"></p>
+<ul>
+<li>训练编码器$E_{eye}$得到眼睛的01特征，对嘴巴同理，将其转化为二进制的线条。</li>
+<li>结构化平滑Loss<ul>
+<li>基于高斯模型。</li>
+<li>主要思想是给予灰度值接近黑和白的像素更低 loss，从而让结果更清晰。</li>
+</ul>
+</li>
+</ul>
+<h5 id="头发和鼻子"><a href="#头发和鼻子" class="headerlink" title="头发和鼻子"></a>头发和鼻子</h5><ul>
+<li><p>漫画脸中鼻子并不重要，因为大多数漫画人物的鼻子都很相似，因此鼻子的部分采用的是生成的方法，而不是转换的方法。</p>
+<ul>
+<li>采用类似ProGAN的方式，训练变分自编码器将鼻子编码为特征向量，再作为种子生成默认的漫画鼻子。</li>
+<li>允许用户对其进行修改。</li>
+</ul>
+</li>
+<li><p>头发的部分采用预训练的APDdrawingGAN，能够生成风格类似漫画的黑白头发。</p>
+<ul>
+<li>首先使用头发分割模型抽取粗略的头发区域，再去除背景区域。</li>
+</ul>
+</li>
+</ul>
+<h5 id="GTN"><a href="#GTN" class="headerlink" title="GTN"></a>GTN</h5><ul>
+<li><p>目标</p>
+<ul>
+<li>面部的几何特征（106个面部特征点）的风格迁移</li>
+</ul>
+</li>
+<li><p>将几何属性分为脸型、面部特征位置、大小，对应三个子GAN</p>
+<ul>
+<li>为增强多样性，使用相对位置而不是直接生成特征点坐标</li>
+<li>位置：<ul>
+<li>特征点坐标被表示成｛左眼、右眼、鼻子、嘴｝四个部分，每个部分用若干个相对位置标量表示，例如鼻子由到左侧脸颊的距离、到右侧脸颊的距离、到底部的距离表示。</li>
+</ul>
+</li>
+<li>大小：<ul>
+<li>眼睛、鼻子、嘴巴的宽度</li>
+</ul>
+</li>
+<li>脸型：<ul>
+<li>17个脸颊轮廓特征点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>训练同样采用Cycle Loss + Adversial Loss，额外加入角色Loss，通过比较一张脸与平均脸的差异（特征点的余弦相似度）</li>
+</ul>
+<p><img src="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/GTN_Pipeline.png" alt="GTN PipeLine" style="zoom:200%;"></p>
+<h5 id="生成组件"><a href="#生成组件" class="headerlink" title="生成组件"></a>生成组件</h5><ul>
+<li>首先缩放各面部部件并根据几何特征放置</li>
+<li>脸型部分用曲线链接生成的特征点（Piecewise Cubic Hermite Interpolating Polynomial (PCHIP)），该方法能够得到平滑曲线，维持面部形状</li>
+<li>对于耳朵区域，使用十个备选。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization<br>date: 2020-03-14 19:20:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h3 id="Attention-Convolutional-Binary-Neural-Tree-for-Fine-Grained-Visual-Categorization"><a href="#Attention-Convolutional-Binary-Neural-Tree-for-Fine-Grained-Visual-Categorization" class="headerlink" title="Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization"></a>Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</h3><h4 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h4><ul>
+<li>在树结构的边上结合卷积操作，使用路由方法定义叶子节点到根节点的计算路径，树的不同分支关注不同的局部区域，最终的预测结果为叶子节点的预测之和。</li>
+<li>卷积操作用于捕捉目标的特征表示，树结构使得网络能够以由粗到细的层级模式进行特征学习。</li>
+<li>使用attention transformer模块帮助网络捕捉具有高辨别力的区域。</li>
+</ul>
+<h4 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h4><ul>
+<li>（Peng 2017）Object-part Attention model,  证实使用多个深度模型关注目标的不同区域是有效的</li>
+<li>（Tanno 2019）类似本文的树结构方法，其中树结构随着学习进程推进增长。</li>
+</ul>
+<h4 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h4><ul>
+<li><p>Deep supervised methods</p>
+<ul>
+<li>（zhang 2014）双detector，在pose-normalized的特征表示上预测。</li>
+<li>（Llu 2016）fully convolutional attention networks, glimpses local discriminative regions to adapt to different fine-grained domains</li>
+<li>（Huang 2016）part-stacked CNN architecture，对目标各part的细微差别建模。</li>
+<li>这类方法依赖大量标注，限制了应用范围。</li>
+</ul>
+</li>
+<li><p>Deep weakly supervised methods</p>
+<ul>
+<li>（zheng 2017）Multi-attention CNN，part生成与特征学习互相促进。</li>
+<li>（Fu 2017）recurrent attention module，在不同尺寸上递归学习高辨别度区域注意力和区域特征表示并互相促进。</li>
+<li>（Sun 2018）使用多个目标part的注意力区域特征对不同输入图片的多个目标part进行约束（regulate）。</li>
+<li>上述方法近将注意力进制与单网络结合。</li>
+</ul>
+</li>
+<li>决策树<ul>
+<li>解释性优势</li>
+<li>（xiao 2017）神经决策树模型用于分类任务</li>
+<li>（Frosst 2017）将深度神经决策树模型用于理解一个特定case的决策机制</li>
+<li>本文结合决策树与神经网络同时实现分支选择和特征学习</li>
+</ul>
+</li>
+<li>注意力机制<ul>
+<li>级联注意力</li>
+<li>通道注意力</li>
+<li>结合区域注意力与特征矩阵注意力</li>
+<li>本文在树结构的分支上应用注意力</li>
+</ul>
+</li>
+</ul>
+<h4 id="Attention-Convolution-Binary-Neural-Tree-ACNet"><a href="#Attention-Convolution-Binary-Neural-Tree-ACNet" class="headerlink" title="Attention Convolution Binary Neural Tree ( ACNet )"></a>Attention Convolution Binary Neural Tree ( ACNet )</h4><p>ACNet表示为二元组$(\mathbb{T}, \mathbb{O})$，$\mathbb{T}$为树的拓扑，$\mathbb{O}$为树边上的操作集合。$\mathbb{T}={\mathcal{V}, \mathcal{E}},$ $\mathcal{V}=\left{v_{1}, \cdots, v_{n}\right}$ 为节点集合，$n$为节点个数， $\mathcal{E}=\left{e_{1}, \cdots, e_{k}\right}$为边的集合，由于树为二叉完全树，有$n=2^{h}-1$，$k=2^{h}-2$。树中的每个节点由路由模块产生，决定样本的传输分发路径。attention transform即边上的操作。</p>
+<p><img src="/2020/04/30/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/ACNet.png" alt="ACNet Architecture"></p>
+<ul>
+<li>Backbone Network<ul>
+<li>由于细粒度分类中的高辨别度区域通常是局部的，因此需要小感受野（小步长、小池化核），因此使用VGG-16（Conv1_1 to Conv4_3），预训练于ILSVRC CLS-LOC数据集。 </li>
+<li>输入图像尺寸修改为448 x 448（原本224 x 224）</li>
+<li>可使用其他网络作为主干</li>
+</ul>
+</li>
+<li>Branch Routing<ul>
+<li>用于确定样本接下来分发至左子树还是右子树</li>
+<li>1x1卷积 -&gt; global context block（Non-local与Squeeze-Excitation的融合）-&gt; 全局平均池化 -&gt;元素平方根、L2正则化 -&gt; 全连接层、Sigmoid得到[0,1]值，对应左子树及右子树的概率。</li>
+</ul>
+</li>
+<li>Attention Transformer Module<ul>
+<li><img src="/2020/04/30/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/Attention_Transformer.png" alt="Attention Transformer"></li>
+<li>在3x3卷积后插入注意力模块（如上图所示），产生通道注意力矩阵。</li>
+</ul>
+</li>
+<li>Label Prediction Module<ul>
+<li>由BN，1x1卷积、最大池化、平方根、L2政治则、全连接层组成。</li>
+<li>最终预测$\mathcal{C}\left(x_{j}\right)=\sum_{i=1}^{2^{h-1}} \mathcal{P}<em>{i}\left(x</em>{j}\right) r_{i}^{h}\left(x_{j}\right)$，其中$\mathcal{P}<em>{i}$为第i个叶子节点的分类概率，$r</em>{i}^{k}\left(x_{j}\right)$为由根节点分发到第k层第i个节点的概率。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Trainning"><a href="#Trainning" class="headerlink" title="Trainning"></a>Trainning</h4><ul>
+<li><p>数据增强</p>
+<ul>
+<li>crop, flip</li>
+<li>短边缩放到512像素</li>
+</ul>
+</li>
+<li>Loss Function<ul>
+<li>$\mathcal{L}=L\left(\mathcal{C}\left(x_{j}\right), y^{<em>}\right)+\sum_{i=1}^{2^{n-1}} L\left(\mathcal{P}<em>{i}\left(x</em>{j}\right), y^{</em>}\right)$</li>
+<li>分为所有叶子节点的预测loss之和，最终预测loss两部分</li>
+</ul>
+</li>
+<li>优化<ul>
+<li>哈维初始化</li>
+<li>前60轮fix VGG参数，之后finetune</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2019 Why do deep convolutional networks generalize so poorly to small image transformation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Why do deep convolutional networks generalize so poorly to small image transformation?<br>date: 2020-04-28 22:20:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h3 id="Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation"><a href="#Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation" class="headerlink" title="Why do deep convolutional networks generalize so poorly to small image transformation?"></a>Why do deep convolutional networks generalize so poorly to small image transformation?</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>CNN通常被认为是对较小的图像变换具有不变性的。<ul>
+<li>或因为卷积的架构</li>
+<li>或因为训练时进行了数据增强</li>
+</ul>
+</li>
+<li>近期，不少作者发现实际情况并不是这样。<ul>
+<li>较小的图像变换或缩放导致网络的预测结果变换极大。</li>
+</ul>
+</li>
+<li>本文对该现象进行了量化，分析了数据增强和卷积结构不足以带来不变性的原因。</li>
+<li>作者观点：<ul>
+<li>由于卷积架构忽视了传统的采样定理。</li>
+<li>数据增强仅能让CNN对类似训练集中的变换具有不变性。</li>
+</ul>
+</li>
+<li>提出两个解决方法：<ul>
+<li>对中间特征表示进行抗锯齿处理</li>
+<li>进一步进行数据增强</li>
+</ul>
+</li>
+<li>提出的解决方法仅解决了部分问题，因此如何使得模型具备轻微变换不变性仍然未被解决。</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li>深层卷积网络的成功已经彻底改变了计算机视觉领域<ul>
+<li>尤其在目标识别领域中，达到了super-human</li>
+</ul>
+</li>
+<li>CNN中的归纳偏置<ul>
+<li>CNN中卷积和池化操作的设计思路就是为了使网络对变换、缩放、变形等不敏感</li>
+<li>数据增强<ul>
+<li>crop：随机位置、随机大小，因此图像会以不同偏移形式或大小进行训练。</li>
+<li>从而让模型学到与平移缩放无关的判别特征。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实际上CNN十分脆弱，细微变化都带来巨大的预测变化，图1<ul>
+<li>一个像素的平移</li>
+<li>一个像素的缩放</li>
+<li>难以察觉的姿势变换</li>
+</ul>
+</li>
+<li>本文解释归纳偏置失败的原因<ul>
+<li>首先对该现象系统地进行量化</li>
+<li>并展示该现象出现在不同结构的CNN中，同时与缩放和变换算法无关，向下平移一个像素可能导致分类概率变化多达30%。</li>
+<li>分别介绍两个归纳偏置失败的原因<ul>
+<li>CNN忽略传统采样定理，因此锯齿效应导致不变性缺失</li>
+<li>数据增强使网络学到类似训练数据集中的变换模式，由于数据集中的分布本身就有bias，故导致与训练数据分布不同的图像缺失不变性。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Quantifying-the-lack-of-invariance-in-modern-CNNs"><a href="#Quantifying-the-lack-of-invariance-in-modern-CNNs" class="headerlink" title="Quantifying the lack of invariance in modern CNNs"></a>Quantifying the lack of invariance in modern CNNs</h4><ul>
+<li>使用六种不同CNN，为每种CNN以4种方式展示了1000张图片</li>
+<li>基础实验：<ul>
+<li>从ImageNet测试集中随机选取一张图片，用四种方式对图片进行一个像素的扰动，测量网络的敏感程度。</li>
+<li>敏感程度的测量使用两种方法：<ul>
+<li>P(Top-1 change)： Top-1预测的变化概率。</li>
+<li>mean absolute change： Top-1概率的平均变化值</li>
+<li>二者捕捉不同的稳定性特征：<ul>
+<li>P(Top-1 change) 对最后一层输出的单调变换具有不变性</li>
+<li>mean absolute change 用于排除相近类别带来的top1预测变化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>四种方式：<ul>
+<li>在图像中随机截取一个框再resize到224x224。再进行一个像素的对角线平移</li>
+<li>embedding: 保持长宽比降采样到短边尺寸为100，再随机嵌入到224x224图像中的随机位置，空余用黑色像素填充。再进行一个像素平移</li>
+<li>类似第二种方法，但是用图像修复算法补全空余部分。</li>
+<li>类似第二种方法，增大被嵌入图像一个像素单位。</li>
+<li>优劣势：<ul>
+<li>第一种方法可能导致重要信息丢失，平移后边缘信息会有区别。</li>
+<li>第二种方法虽然保留了所有信息，但是可能引入非典型边界像素。</li>
+</ul>
+</li>
+<li>带来的细微变化都是人类无法感知到的、可辨识度没有变化</li>
+<li>景观变化是人类难以感知的，但模型预测类别变化的概率可以达到30%，故此前论文中关于CNN缺乏不变性的报告不是偶然而有着很高的出现频率。</li>
+</ul>
+</li>
+<li>对于此结果的质疑可以是这些变换的图像在训练集中没有见过。引出两个对不变性的定义<ul>
+<li>完全不变性：对任何模式以及其变换的形式输出相同的结果</li>
+<li>部分不变性：在某种模式或与其类似的模式在训练集中出现的前提下，输出相同的结果。</li>
+</ul>
+</li>
+<li>实验结果指明CNN并不是完全不变性。</li>
+</ul>
+<h4 id="Ignoring-the-Sampling-Theorem"><a href="#Ignoring-the-Sampling-Theorem" class="headerlink" title="Ignoring the Sampling Theorem"></a>Ignoring the Sampling Theorem</h4><ul>
+<li><p>直觉上，如果网络所有层都是卷积的，那么特征表示应该随着图像变换而变换。</p>
+</li>
+<li><p>这种直觉忽视了CNN中的下采样。1992年文献”Shiftable multiscale transforms.”中提到：我们不能指望基于卷积和下采样的系统拥有变换不变性，除非变换的幅度为下采样的整数倍</p>
+</li>
+</ul>
+<blockquote>
+<p>“We cannot literally expect<br>translation invariance in a system based on convolution and subsampling: translation of<br>the input signal cannot produce simple translations of the transform coefficients, unless the<br>translation is a multiple of each of the subsampling factors in the system”.</p>
+</blockquote>
+<ul>
+<li>由于CNN包含很多下采样操作，因此网络深层的下采样系数会变得很大，因此变换不变性仅对某些特定的变换成立。文献“Making convolutional networks shift-invariant again.”正式了CNN确实能在平移恰好为下采样因子的整数倍时成立。</li>
+<li>Simoncelli还定义了变换不变性的一种较弱的形式“Shiftability”，并展示了它在存在下采样的系统中仍然成立，在此基础上，本文展示当“Shiftability”成立时，使用全局平均池化能够获得不变的特征表示。</li>
+<li>定义$r(x)$为特征提取器在位置$x$的response，$r(x)$是convolutional当且仅当平移输入图像$δ$个像素，得到的response也平移$δ$个像素。</li>
+<li>如果$r(x)$是convolutional的，全局池化$r=\sum_{x} r(x)$是平移不变的，不论该模式是否在训练集中出现。（卷积步长为1时）</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2019 Why do deep convolutional networks generalize so poorly to small image transformation/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2019 Stacked capsule autoencodersmd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Stacked capsule autoencoders<br>date: 2020-03-10 17:20:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h3 id="Stacked-capsule-autoencoders"><a href="#Stacked-capsule-autoencoders" class="headerlink" title="Stacked capsule autoencoders"></a>Stacked capsule autoencoders</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li><p><strong>物体是由一系列几何部分组成的</strong></p>
+</li>
+<li><p>提出了无监督胶囊自编码器（<strong>SCAE</strong>），利用物体各部分（template）之间的几何关系对物体进行推理</p>
+</li>
+<li><p>这些几何关系与视角无关，因此提出的模型对<strong>视角变换</strong>具有鲁棒性。</p>
+</li>
+<li><p><strong>SCEA</strong>由两个阶段组成</p>
+<ul>
+<li>第一阶段：Part CAE直接从图像中预测各part template的presence与pose，并尝试通过arrange这些template以重构图像。</li>
+<li>第二阶段：Object CAE预测一些物体胶囊的参数。首先组织此前发现part和pose得到一系列物体，再重构part和pose，其中inference是摊还的，且由现成的编码器实现。</li>
+</ul>
+</li>
+<li><p>与此前的胶囊网络不同</p>
+<blockquote>
+<p>object capsule presences are highly informative of the object class，which leads to state-of-the-art results for unsupervised classification on SVHN (55%) and MNIST (98.7%).</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li><p>CNN效果好过无权重分享网络的原因在于CNN的归纳偏倚（Inductive Bias）：如果一个局部特征在某个图像区域中有效，那么该特征在其他位置也很可能有效。</p>
+</li>
+<li><p>当CNN试图探索视角变换的影响时，CNN则通过将特征复制成不同尺寸、方向、角度等，但此举很快导致冗长的高维的特征矩阵。</p>
+</li>
+<li><blockquote>
+<p>An alternative to replicating features across the non-translational degrees of freedom is to <strong>explicitly learn transformations between the natural coordinate frame of a whole object and the natural coordinate frames of each of its parts. </strong></p>
+<p>学习整体的坐标系和每个其各部分的坐标系之间的转换关系。计算机图形学就是就是以这样一种Object-&gt;part 坐标变换规则以获得具有视角不变性的几何体。人类的认知也是基于坐标系的。</p>
+</blockquote>
+</li>
+<li><p>用神经网络学习整体层面的变换是可行的，但是每种变换的表示都不尽想通。而整体与part之间的关系却是与视角无关的，近似于常数可以简单地用学习到的参数表示。</p>
+</li>
+<li><blockquote>
+<p>With this representation, the pose of a single object is represented by its relationship to the viewer. Consequently, representing a single object does not necessitate replicating neural activations across space, unlike in CNNs. It is only processing two (or more) different instances of the same type of object in parallel that requires spatial replicas of both model parameters and neural activations.</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Every object capsule contributes components to each of these mixtures by multiplying its pose—the object-viewer-relationship (OV)—by the relevant object-part-relationship (OP).</p>
+</blockquote>
+<p><img src="/2020/04/30/2019 Stacked capsule autoencodersmd/SCAE.png" alt="SCAE"></p>
+</li>
+</ul>
+<h4 id="SCAE"><a href="#SCAE" class="headerlink" title="SCAE"></a>SCAE</h4><h5 id="Constellation-AutoEncoder-CCAE"><a href="#Constellation-AutoEncoder-CCAE" class="headerlink" title="Constellation AutoEncoder (CCAE)"></a>Constellation AutoEncoder (CCAE)</h5><ul>
+<li><p>$\left{\mathbf{x}<em>{m} | m=1, \ldots, M\right}$是输入的一个二维点集合，通过Set Transformer得到K个Object capsules，每一个capsule包含一个胶囊特征c，出现概率$a</em>{k} \in[0,1]$，以及Object-Viewer-relationship(OV)矩阵（表示物体（星座）和观察者的仿射变换）。</p>
+</li>
+<li><p>每一个胶囊各自用一个多层感知机根据c来预测N个候选part，出现概率a，标准差$\lambda$以及OV矩阵。输入坐标建模为高斯混合，每个一元高斯的均值为$\mu=OV\times OP$，标准差为$\lambda$。</p>
+</li>
+<li><p>使用无监督的方式训练，目标为最大化$p\left(\mathbf{x}_{1: M}\right)$的极大似然</p>
+<p>$$\mathrm{OV}<em>{1: K}, \mathbf{c}</em>{1: K}, a_{1: K}=\mathrm{h}^{\mathrm{caps}}\left(\mathbf{x}_{1: M}\right) \quad \text { predict object capsule parameters }=$$</p>
+<p>$$\mathrm{OP}<em>{k, 1: N}, a</em>{k, 1: N}, \lambda_{k, 1: N}=\mathrm{h}<em>{\mathrm{k}}^{\mathrm{part}}\left(\mathbf{c}</em>{k}\right) \quad \text { decode candidate parameters from } c_{k} \text { ‘s}$$</p>
+<p>$V_{k, n}=\mathrm{OV}<em>{k} \mathrm{OP}</em>{k, n} \quad \text { decode a part pose candidate } c_{k} \text { ‘s } $<br>$$p\left(\mathbf{x}<em>{m} | k, n\right)=\mathcal{N}\left(\mathbf{x}</em>{m} | \mu_{k, n}, \lambda_{k, n}\right) \quad \text { turn candidates into mixture components }$$</p>
+<p>$$p\left(\mathbf{x}<em>{1: M}\right)=\prod</em>{m=1}^{M} \sum_{k=1}^{K} \sum_{n=1}^{N} \frac{a_{k} a_{k, n}}{\sum_{i} a_{i} \sum_{j} a_{i, j}} p\left(\mathbf{x}_{m} | k, n\right)$$</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2019 Stacked capsule autoencodersmd/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Non-local Networks Meet Squeeze-Excitation Networks and Beyond<br>date: 2020-03-19 21:08:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h3 id="GCNet-Non-local-Networks-Meet-Squeeze-Excitation-Networks-and-Beyond"><a href="#GCNet-Non-local-Networks-Meet-Squeeze-Excitation-Networks-and-Beyond" class="headerlink" title="GCNet: Non-local Networks Meet Squeeze-Excitation Networks and Beyond"></a>GCNet: Non-local Networks Meet Squeeze-Excitation Networks and Beyond</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>发现在NL中，不同位置的query得到的反馈几乎是一样的</li>
+<li>本文提出基于query-independent formulation的简单网络，在保持NLNet精确度的同时大大减少了计算量。</li>
+<li>由于本文结构与SENet有着蕾丝的结构，因此本文将二者结合得到一个三步的全局上下文建模方法。</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li>在NL中，对于每个位置query，模块输出该位置与所有位置的两两关系，产生注意力矩阵，再将各位置的特征加权求和累加在query位置上。</li>
+<li>但是在可视化分析中发现，不同位置query得到的注意力矩阵几乎是一样的，这表明学习到的只是与query无关的依赖关系。</li>
+<li>基于上述观察，本文简化了NL块，对所有位置使用一致的注意力矩阵，减少了大量的计算，同时没有精度损失。</li>
+<li>SENet与简化后的NL类似，区别在于聚合、变换、加强特征等方法的选用。将这些方法抽象化，得到一个三步框架。<ul>
+<li>context modeling module：聚合所有位置的特征得到全局特征。</li>
+<li>feature transform module：捕捉通道间的依赖关系。</li>
+<li>fusion module：合并全局信息与各位置的信息。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Analysis-on-Non-local-Networks"><a href="#Analysis-on-Non-local-Networks" class="headerlink" title="Analysis on Non-local Networks"></a>Analysis on Non-local Networks</h4><p><img src="/2020/04/30/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/GCNet_A.png" alt="simplication"></p>
+<ul>
+<li>NL公式：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{z} \sum_{j=1}^{N_{p}} \frac{f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)}{\mathcal{C}(\mathbf{x})}\left(W_{v} \cdot \mathbf{x}<em>{j}\right)$，$\omega</em>{i j}=\frac{f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)}{\mathcal{C}(\mathbf{x})}$，Embedded Gaussian版本：$\omega_{i j}=\frac{\exp \left(\left\langle W_{q} \mathbf{x}<em>{i}, W</em>{k} \mathbf{x}<em>{j}\right\rangle\right)}{\sum</em>{m} \exp \left(\left\langle W_{q} \mathbf{x}<em>{i}, W</em>{k} \mathbf{x}<em>{m}\right\rangle\right)}$。最后一个卷积$W</em>{z}$加不加没有多大影响。</li>
+<li>NL可看作全局信息建模单元，将所有位置的信息加权君合到每个像素位置。复杂度是位置个数的四次方。</li>
+<li>对比输出特征矩阵之间的余弦距离可以发现不同位置得到的注意力矩阵相差不大。</li>
+</ul>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Simplify-NL-Block"><a href="#Simplify-NL-Block" class="headerlink" title="Simplify NL Block"></a>Simplify NL Block</h5><ul>
+<li>简化：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+\sum_{j=1}^{N_{p}} \frac{\exp \left(W_{k} \mathbf{x}<em>{j}\right)}{\sum</em>{m=1}^{N_{p}} \exp \left(W_{k} \mathbf{x}<em>{m}\right)}\left(W</em>{v} \cdot \mathbf{x}_{j}\right)$</li>
+<li>进一步简化降低复杂度，将$W_{v}$移到注意力模块后，最后的卷积复杂度从O（HWC^2）降低到O（CxC）：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{v} \sum_{j=1}^{N_{p}} \frac{\exp \left(W_{k} \mathbf{x}<em>{j}\right)}{\sum</em>{m=1}^{N_{p}} \exp \left(W_{k} \mathbf{x}<em>{m}\right)} \mathbf{x}</em>{j}$</li>
+<li>上述公式的第二项直接建模全局信息，并直接叠加到原本的各个像素位置。将原本的NL块替换为简化后的版本，精度没有太大损失。</li>
+</ul>
+<p><img src="/2020/04/30/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/GCNet_B.png" alt="Main Block"></p>
+<h5 id="Global-Context-Modeling-Framework"><a href="#Global-Context-Modeling-Framework" class="headerlink" title="Global Context Modeling Framework"></a>Global Context Modeling Framework</h5><ul>
+<li>最简化的NL Block可分为三步<ul>
+<li>global attention pooling：通过$W_{k}$和Softmax得到注意力权重，完成全局注意力池化</li>
+<li>feature transform： 1x1卷积$W_{v}$，建模通道间的依赖。</li>
+<li>feature aggregation：每个元素累加全局特征</li>
+</ul>
+</li>
+<li>公式化：$\mathbf{z}<em>{i}=F\left(\mathbf{x}</em>{i}, \delta\left(\sum_{j=1}^{N_{p}} \alpha_{j} \mathbf{x}_{j}\right)\right)$，对应上图a。</li>
+<li>SENet同样遵循上述流程。</li>
+</ul>
+<h5 id="Global-Context-Block"><a href="#Global-Context-Block" class="headerlink" title="Global Context Block"></a>Global Context Block</h5><ul>
+<li>结合NL的长距离依赖和SE的轻量级优势</li>
+<li>将SNL中的1x1卷积$W_{v}$替换为SE中的bottleneck减少计算量（CxC -&gt; 2 x C x C/r）RELU前添加layer norm。</li>
+<li>另一个角度相当于将SE中的全局池化换成SNL的1x1卷积+softmax。</li>
+<li><p>公式：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{v 2} \operatorname{Re} \mathrm{L} \mathrm{U}\left(\mathrm{LN}\left(W_{v 1} \sum_{j=1}^{N_{p}} \frac{e^{W_{k} \mathbf{x}<em>{j}}}{\sum</em>{m=1}^{N_{p}} e^{W_{k} \mathbf{x}<em>{m}}} \mathbf{x}</em>{j}\right)\right)$</p>
+</li>
+<li><p>三步：</p>
+<ul>
+<li>全局注意力池化</li>
+<li>bottleneck捕捉通道间依赖</li>
+<li>元素级加和聚合</li>
+</ul>
+</li>
+<li>GC-ResNet-50增加了9.89%的参数，0.26%的浮点运算。</li>
+</ul>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
+<li>GC Block插入位置不敏感</li>
+<li>在所有阶段使用好过单一阶段</li>
+<li>池化-聚合的策略：att+add &gt; avg+add &gt; att+scale &gt; avg+scale (SE)</li>
+<li></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2018 Non-local Neural Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Non-local Neural Networks<br>date: 2020-03-29 19:20:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h3 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>卷积和递归操作都是每次处理局部周边的信息。</li>
+<li>本文受Non-local means启发，提出一种Non-local Block用于长距离依赖，在Non-local中，每个位置的反馈为所有位置特征的加权求和，该block能够插入任意的神经网络中。</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li>捕捉长距离依赖的重要性<ul>
+<li>CNN：通过增大感受野</li>
+<li>RNN：序列递归</li>
+<li>上述两种操作分别在时间和空间上是局部的，因此长距离依赖仅能通过不断重复操作达到。</li>
+<li>重复操作有着许多局限性<ul>
+<li>计算不高效</li>
+<li>优化困难</li>
+<li>多跳依赖困难（信息在距离较远的位置间来回传播）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>本文提出的Non-local操作是Non-local means的一般化版本。其中，每个位置的反馈为所有位置特征的加权求和，这些位置可以是时间、空间或是时空（视频的不同帧）上的。</li>
+<li>Non-local的优势<ul>
+<li>与CNN、RNN逐步递进的方式不同，Non-local直接计算各位置间的交互获取长距离依赖，无视二者间的距离。</li>
+<li>运算高效，仅需要很少的层数就能达到好的效果。</li>
+<li>维持了输入特征的尺寸，因此容易和其他操作结合。</li>
+<li>在视频分类中，长距离依赖发生在时间上和空间上，单个Non-local block都能直接捕捉这些依赖，通过堆叠多个non-local block，本文提出的模型在视频任务中超过了2D和3D的CNN模型，且相比3D CNN，Non-local计算上更经济。</li>
+<li>实验中通过目标检测和姿势预测等任务证实了该模块在视觉任务上的效果，仅增加了些许额外计算代价便带来了精度提升。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><ul>
+<li><p>Non-local image processing</p>
+<ul>
+<li>非局部均值</li>
+<li>BM3D （图像去噪算法）</li>
+<li>Non-local匹配也在纹理生成、超分辨率以及图像修复等领域中有着重要作用。</li>
+</ul>
+</li>
+<li><p>图模型</p>
+<ul>
+<li>长距离依赖也可以用图建模，例如条件随机场 （CRF）。    </li>
+<li>在神经网络中，条件随机场可以用于后处理语义分割的结果。</li>
+<li>本文的Non-local是更简单的前馈操作。</li>
+</ul>
+</li>
+<li>序列的前馈建模<ul>
+<li>这类方法中，长距离依赖通过大感受野的一维卷积得到。且能够并行实现。</li>
+</ul>
+</li>
+<li>自注意力<ul>
+<li>本文提出的方法类似于机器翻译中的自注意力。</li>
+<li>机器翻译中的注意力是计算每个位置与其他位置的对其关系，得到加权平均值。</li>
+<li>自注意力可看作是非局部均值的一钟形式。</li>
+</ul>
+</li>
+<li>交互网络</li>
+<li>视频分类框架<ul>
+<li>沿用CNN并用RNN处理序列。</li>
+<li>光流和轨迹是有效的，包含了长距离非局部的依赖。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/04/30/2018 Non-local Neural Networks/Non-local_A.png" alt="Spacetime example"></p>
+<h4 id="Non-local-Neural-Networks-1"><a href="#Non-local-Neural-Networks-1" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h4><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><p>$$\mathbf{y}<em>{i}=\frac{1}{\mathcal{C}(\mathbf{x})} \sum</em>{\forall j} f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right) g\left(\mathbf{x}_{j}\right)$$</p>
+<p>其中，i为输出位置坐标，f为相似度计算函数，g计算每个输入信号的特征表示。</p>
+<ul>
+<li>由于所有位置都被考虑在内，故该操作为非局部操作。</li>
+<li>Non-local与全连接层也存在不同，Non-local的依据是位置间的相似关系，而fc仅使用学习到的参数。同时Non-local不限制输入的大小，且输出维持输入的尺寸。</li>
+<li>Non-local block是可扩展的，能够与卷积层或递归层一同使用。</li>
+</ul>
+<h5 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h5><ul>
+<li>Non-local对f和g函数的选取不敏感。</li>
+<li>简单起见，g使用线性映射：$g\left(\mathbf{x}<em>{j}\right)=W</em>{g} \mathbf{x}_{j}$</li>
+<li>类似Non-local means和双边滤波，f选用高斯函数：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=e^{\mathbf{x}<em>{i}^{T} \mathbf{x}</em>{j}}$。可简单扩展为：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=e^{\theta\left(\mathbf{x}<em>{i}\right)^{T} \phi\left(\mathbf{x}</em>{j}\right)}$，其中，$\theta\left(\mathbf{x}<em>{i}\right)=W</em>{\theta} \mathbf{x}<em>{i}$与$\phi\left(\mathbf{x}</em>{j}\right)=W_{\phi} \mathbf{x}<em>{j}$为两个嵌入。规格化函数：$\mathcal{C}(\mathbf{x})=\sum</em>{\forall j} f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)$</li>
+<li>机器翻译的自注意力可形式化为：$\mathbf{y}=\operatorname{softmax}\left(\mathbf{x}^{T} W_{\theta}^{T} W_{\phi} \mathbf{x}\right) g(\mathbf{x})$，本文将序列化的自注意力延伸到更一般的时空结构中。</li>
+<li>f还可以定义为点积：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=\theta\left(\mathbf{x}<em>{i}\right)^{T} \phi\left(\mathbf{x}</em>{j}\right)$，同时规格化因子变为：$\mathcal{C}(\mathbf{x})=N$，N为x中位置的数量。点积版本与高斯版本的区别在于是否使用softmax。</li>
+<li>连接版本：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=\operatorname{ReLU}\left(\mathbf{w}<em>{f}^{T}\left[\theta\left(\mathbf{x}</em>{i}\right), \phi\left(\mathbf{x}_{j}\right)\right]\right)$，规格化因子与点积版本相同。</li>
+</ul>
+<p><img src="/2020/04/30/2018 Non-local Neural Networks/non-local_B.png" alt="Non-local Block"></p>
+<h5 id="Non-local-Block"><a href="#Non-local-Block" class="headerlink" title="Non-local Block"></a>Non-local Block</h5><ul>
+<li>可定义为：$\mathbf{z}<em>{i}=W</em>{z} \mathbf{y}<em>{i}+\mathbf{x}</em>{i}$，$+\mathbf{x}<em>{i}$为残差连接，加入残差连接并将$W</em>{z}$初始化为零使得Non-local block可以插入任何预训练模型中，且不影响初始形态的动作。</li>
+<li>在计算上，pair间的计算可通过矩阵相乘完成，类似卷积层的计算量。</li>
+<li>实现上，$W_{g}, W_{\theta},$ 和 $W_{\phi}$的输出通道数减为x的一半，服从bottleneck的设计法则并减少了一半的计算量，最后的$W_{z}$将维度转换回x的维度。</li>
+<li>还可以通过下采样进一步降低计算量，在$\phi$ 和 $g$之后添加最大池化层。</li>
+</ul>
+<h4 id="视频分类模型"><a href="#视频分类模型" class="headerlink" title="视频分类模型"></a>视频分类模型</h4><ul>
+<li>2D卷积模型：时间维度上使用池化聚合各个帧的信息</li>
+<li>3D卷积模型：卷积核为t x k x k，覆盖t帧</li>
+<li><p>Non-local Network：在2D卷积和3D卷积模型中插入Non-local block</p>
+</li>
+<li></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2018 Non-local Neural Networks/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017 Squeeze-and-Excitation Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Squeeze-and-Excitation Networks<br>date: 2020-03-29 18:20:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h1 id="Squeeze-and-Excitation-Networks"><a href="#Squeeze-and-Excitation-Networks" class="headerlink" title="Squeeze-and-Excitation Networks"></a>Squeeze-and-Excitation Networks</h1><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示</li>
+<li>本文提出的<strong>Squeeze-and-Excitation（SE） Block</strong>通过建模通道间的相互依赖关系，重新刻画通道维度上的特征。</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li>本文提出的机制能够使网络能够利用全局信息来强调重要的特征同时压制不重要的部分。</li>
+<li>SE Block结构如下图：输入X由卷积操作得到特征矩阵U，特征U首先通过Squeeze操作，即在空间维度上聚合特征，目的是获得各个通道的全局分布特征。</li>
+<li>Excitation操作紧跟Squeeze操作，通过一个简单的self-gate机制，为输入的每个通道输出权重。这些权重随后应用在特征矩阵U上。</li>
+<li>SE块在网络的不同深度起到不同的作用。<ul>
+<li>在网络浅层，与类别无关，增强低层面公共的特征。</li>
+<li>在网络深层，越来越细化，给出与类别更为相关的反馈。</li>
+<li>因此，SE Block得到的特征增强会随着层数加深不断累积。</li>
+</ul>
+</li>
+<li>结构简单，可直接替换成熟网络中的block。</li>
+</ul>
+<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_Block.png" alt="SE Block"></p>
+<h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><ul>
+<li>此前跨通道的操作一般为1x1卷积，大多集中于降低模型计算复杂度。本文认为在通道间使用全局信息施加动态非线性依赖能够加快学习过程，并提升网络的特征表示能力。</li>
+</ul>
+<h4 id="Squeeze-and-Excitation-Blocks"><a href="#Squeeze-and-Excitation-Blocks" class="headerlink" title="Squeeze-and-Excitation Blocks"></a>Squeeze-and-Excitation Blocks</h4><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><p>输入：$\mathbf{X} \in \mathbb{R}^{H^{\prime} \times W^{\prime} \times C^{\prime}}$</p>
+<p>输出：$\mathbf{U} \in \mathbb{R}^{H \times W \times C}$，$\mathbf{U}=\left[\mathbf{u}<em>{1}, \mathbf{u}</em>{2}, \ldots, \mathbf{u}<em>{C}\right]$，$\mathbf{u}</em>{c} \in \mathbb{R}^{H \times W}$</p>
+<p>卷积核：$$\mathbf{V}=\left[\mathbf{v}<em>{1}, \mathbf{v}</em>{2}, \dots, \mathbf{v}_{C}\right]$$，</p>
+<p>$$\mathbf{u}<em>{c}=\mathbf{v}</em>{c} <em> \mathbf{X}=\sum_{s=1}^{C^{\prime}} \mathbf{v}_{c}^{s} </em> \mathbf{x}^{s}$$</p>
+<ul>
+<li>实质上，卷积输出是各个通道间结果的加和，因此，通道间的依赖关系也隐含在了卷积核$\mathbf{V}_{c}$中，但是与卷积核捕捉到局部关联性纠缠在了一起。</li>
+<li>因此SE-block用全局信息以显式地建模通道间的关系。</li>
+</ul>
+<h5 id="Squeeze"><a href="#Squeeze" class="headerlink" title="Squeeze"></a>Squeeze</h5><ul>
+<li><p>卷积操作仅在局部感受野上操作，因此输出的每个单元都无法利区域周边的信息。</p>
+</li>
+<li><p>为减轻上述问题，Squeeze操作将空间上的全局信息作为通道描述信息（Global Avgpooling），$z_{c}=\mathbf{F}<em>{s q}\left(\mathbf{u}</em>{c}\right)=\frac{1}{H \times W} \sum_{i=1}^{n} \sum_{j=1}^{w} u_{c}(i, j)$</p>
+</li>
+</ul>
+<h5 id="Excitation：Adaptive-Recalibration"><a href="#Excitation：Adaptive-Recalibration" class="headerlink" title="Excitation：Adaptive Recalibration"></a>Excitation：Adaptive Recalibration</h5><ul>
+<li>利用Squeeze得到的全局信息，捕捉通道间的依赖关系。</li>
+<li>两点要求：<ul>
+<li>此操作能够学习通道间的非线性交互关系</li>
+<li>学习的是不互斥的关系，我们需要多个通道可以被同时高亮。</li>
+</ul>
+</li>
+<li>简单地用sigmoid激活：$\mathbf{s}=\mathbf{F}<em>{e x}(\mathbf{z}, \mathbf{W})=\sigma(g(\mathbf{z}, \mathbf{W}))=\sigma\left(\mathbf{W}</em>{2} \delta\left(\mathbf{W}<em>{1 \mathbf{Z}}\right)\right)$，其中，$\mathbf{W}</em>{1} \in \mathbb{R}^{\frac{c}{r} \times C}$， $\mathbf{W}_{2} \in \mathbb{R}^{C \times \frac{c}{r}}$，δ为ReLU。即两个FC层之间插入非线性层。</li>
+<li>$\widetilde{\mathbf{x}}<em>{c}=\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)=s_{c} \mathbf{u}<em>{c}$，$\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)$为通道维度乘法。</li>
+<li>Excitation操作将输入的通道描述映射为一系列的通道权重。可视为通道上的自注意力机制，但不局限于感受野的大小。</li>
+</ul>
+<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_ResNet.png" alt="SE_ResNet"></p>
+<h4 id="模型与计算复杂度"><a href="#模型与计算复杂度" class="headerlink" title="模型与计算复杂度"></a>模型与计算复杂度</h4><ul>
+<li>相比ResNet，SE-ResNet增加了0.26%的浮点运算次数（3.87GFLOPs），得到的精度接近ResNet-101（7.58GFLOPs）。</li>
+<li>增加的参数数量为两个fc的参数。</li>
+</ul>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
+<li><p>SE在各个深度网络中得到的收益是一致的，表明SE block得到的收益可以与深度提升的收益互补。</p>
+</li>
+<li><p>r的选取是鲁邦的， 提高复杂度并不能不断提高准确度，r=16是平衡的取值。</p>
+</li>
+<li>Squeeze操作中，平均池化与最大池化效果相当，平均池化略好。</li>
+<li>Excitation中，非线性函数改用ReLU的效果最差，tanh居中，Sigmoid最好，非线性函数的选取较为重要。</li>
+<li>在不同阶段添加SE Block精度均有提升，且不同阶段的提升是互补的，在所有阶段均添加能得到最大的提升。</li>
+<li>比较SE添加的位置（残差前、残差后等），发现SE对添加的位置也具有鲁棒性。</li>
+<li>若将全局池化替换为1x1卷积，失去了全剧信息，精度略有下降，但仍高于原本的ResNet。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2017 Squeeze-and-Excitation Networks/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017 Attention Is All You Need" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Attention Is All You Need<br>date: 2020-04-07 22:16:48<br>tags:</p>
+<ul>
+<li>NLP</li>
+</ul>
+<h3 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li><p>序列转换模型通常基于复杂的RNN或CNN，包含一个编码器和一个解码器。最表现最好的模型还在编解码器之间使用注意力机制链接。</p>
+</li>
+<li><p>他提出一个简单的网络结构<strong>Transformer</strong>，仅基于注意力机制。</p>
+</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li>序列化计算瓶颈：<ul>
+<li>循环神经网络将序列位置对齐到计算时的时间步，继承了序列的自然形式但使得并行计算无法进行。</li>
+</ul>
+</li>
+<li>注意力机制在许多任务模型中变得不可或缺，它使得不论二者在序列中距离远近都可以对其依赖关系进行建模。</li>
+</ul>
+<h4 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h4><ul>
+<li>大多数序列转换模型都采用编解码器结构，编码器将输入编号序列$x$转化为表示序列$z$，给定$z$，解码器生成输出序列$y$，生成时每一步的输入为上一时刻输出的编号。</li>
+<li>Transformer遵循类似的框架，编码器与解码器均是堆叠自注意力层、点乘和全连接层。</li>
+<li>编码器包含N=6个相同层，每层有两个子层，均采用参差连接紧接着一个Layer Normalization。<ul>
+<li>多头自注意力层。</li>
+<li>position-wise全连接前馈层。</li>
+</ul>
+</li>
+<li>解码器也包含N=6个相同层，在编码器两个子层的基础上添加了第三个子层，在编码器的输出上进行多头注意力机制。同时在自注意力层加上了mask，使得预测时仅能依赖前序已知的输出。</li>
+</ul>
+<p><img src="/2020/04/30/2017 Attention Is All You Need/transformer.png" alt="TransFormer"></p>
+<ul>
+<li>注意力可被看作是query与一系列key-val对匹配，得到输出。输出是val的加权和，每个val的权值通过query和对应key的相关程度计算得到。</li>
+</ul>
+<p><img src="/2020/04/30/2017 Attention Is All You Need/Multi-Head.png" alt="MultiHead"></p>
+<ul>
+<li>Scaled Dot-Product Attetnion<ul>
+<li>$Attention (Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V$</li>
+<li>Q,K的维度为 $d_k$，V的维度为$d_v$</li>
+<li>注意力两种常见形式：Additive Attention和dot-product。后者计算更亏且空间更高效（由于高效的矩阵乘法），Additive Attention是通过有一个隐层的前馈网络计算相似度的。二者在$d_k$较小时表现相当，但若$d_k$变大且没有scale（保证方差为1，维持标准正态分布）项时，前者表现更好。</li>
+</ul>
+</li>
+<li>Multi-Head Attention<ul>
+<li>实验发现使用多个不同线性层分别映射QKV到各自子空间带来了好的效果。在各自子空间计算输出后再连接并经过线性映射得到最终输出。</li>
+<li>$\operatorname{MultiHead}(Q, K, V) { Concat(head }<em>{1}, \ldots, \text { head }</em>{\mathbf{h}}) W^{O}$</li>
+<li>$head <em>{\mathbf{i}}Attention(Q W</em>{i}^{Q}, K W_{i}^{K}, V W_{i}^{V})$</li>
+<li>$W_{i}^{Q} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{K} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{V} \in \mathbb{R}^{d_{\text {model }} \times d_{v}}$ and $W^{O} \in \mathbb{R}^{h d_{u} \times d_{\text {matel }}}$</li>
+<li>文章中h=8，$d_k=d_v=d_{model}/h=64$，随着维度降低，总体计算复杂度与单头类似、</li>
+</ul>
+</li>
+<li>Transformer中使用了三种形式的注意力<ul>
+<li>Encoder-Decoder Attention：Query来自前一层的解码器，key和value来自编码器的输出，使得解码器的每个位置都可以注意到输入序列的每个位置。类似传统编解码器结构。</li>
+<li>编码器自注意力：qkv均为上一层的编码器输出，编码器的每个位置都可以关注到上一层编码器输出的所有位置。</li>
+<li>解码器自注意力：类似编码器中的自注意力，但是使用mask阻断由后往前不合法的连接。</li>
+</ul>
+</li>
+<li><p>另外一个子层为Position-wise前馈层。包含两个线性层以及一个ReLU。</p>
+</li>
+<li><p>使用embedding得到每个输入token的$d_{model}$向量形式，同时使用线性层和softmax将解码器输出转换为下一个单词的预测概率。</p>
+</li>
+<li>Positional Encoding<ul>
+<li>由于没有循环和卷积操作，为了让模型感知输入序列的顺序，必须置入token之间的相关位置或绝对位置信息。</li>
+<li>Positional Encoding和输入有着相同的维度，直接加和。</li>
+<li>使用不同频率的正余弦函数构造出各位置的独立编码。</li>
+<li>使正余弦函数的原因：作者假设模型能够简单地学到如何attend by relative positions，由于对于任何offset k，在正余弦函数中， $PE_{pos+k}$都能通过$PE_{pos}$的线性变换表示。</li>
+<li>由于后续注意力前都使用线性层映射特征到低维形式，输入特征都被重组，因此相加和拼接差别应该不大，直接累加起到的作用可能是神经网络在训练中识别得出的。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Why-Self-Attention"><a href="#Why-Self-Attention" class="headerlink" title="Why Self-Attention"></a>Why Self-Attention</h4><ul>
+<li>单层计算复杂度</li>
+<li>可并行计算的计算量</li>
+<li>最长距离依赖的计算路径长度（对学习长期依赖十分关键），距离越短越容易学习关系（在网络中传输的次数越少）</li>
+<li>可解释性</li>
+</ul>
+<p><img src="/2020/04/30/2017 Attention Is All You Need/Self-Attention VS.png" alt="Versus"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2017 Attention Is All You Need/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017 Aggregated Residual Transformations for Deep Neural Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: Aggregated Residual Transformations for Deep Neural Networks<br>date: 2020-03-15 21:14:48<br>tags:</p>
+<pre><code>- CV
+</code></pre><h3 id="Aggregated-Residual-Transformations-for-Deep-Neural-Networks"><a href="#Aggregated-Residual-Transformations-for-Deep-Neural-Networks" class="headerlink" title="Aggregated Residual Transformations for Deep Neural Networks"></a>Aggregated Residual Transformations for Deep Neural Networks</h3><h4 id="Abstract-amp-Introduction"><a href="#Abstract-amp-Introduction" class="headerlink" title="Abstract &amp; Introduction"></a>Abstract &amp; Introduction</h4><ul>
+<li>VGG模型展示一种简单高效的网络搭建策略：堆叠相同构造的block。ResNet继承了这一策略，减少了超参的可选度，使得网络深度成为一个需要重要考量的维度。作者认为这种简单的策略同时减少了过拟合数据集的风险。</li>
+<li>Inception系列的网络通过精细设计网络拓扑，使得其能在低复杂度的情况下达到很高的准确率。在Inception模块中，一个核心的策略为<strong>split-transform-merge</strong>，输入先由1x1卷积分成多个低通道的嵌入，再分别经过一组变换（不同卷积核大小的卷积）后，连接得到结果。正是由这种策略达到高效且低计算复杂度。但是，精细设计的Inception模块中有很多超参（卷积核大小、个数等）需要设定，不易迁移到其他数据集。</li>
+<li>本文贡献：<ul>
+<li>提出一个简单的网络架构，类似VGG/ResNet的堆叠相同层，同时以简单可扩展的形式利用split-transfrom-merge策略，各transform使用相同的拓扑结构，通过累加结果进行聚合，这种设计使得网络能够在不进行特殊改造的情况下扩展。</li>
+<li>主张提升<strong>cardinality</strong>（Transform set的大小）是相比于宽提升度和深度更为高效的提升准确率的途径。</li>
+<li>证实了在相同参数和计算量的情况下好过原本的ResNet。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_A.png" alt="ResNext Compared to ResNet"></p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h5><p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_B.png" alt="ResNext Blocks"></p>
+<ul>
+<li><p>ResNeXt是通过堆叠残差块构成的。</p>
+</li>
+<li><p>这些残差块有着相同的拓扑结构，并遵循两个规则：</p>
+<ul>
+<li>每个残差块输出相同大小的feature map，卷积核大小和个数相同。</li>
+<li>每当feature map降采样为1/2，残差块宽度（通道数）乘以2。</li>
+</ul>
+</li>
+</ul>
+<h5 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h5><h6 id="Simple-Neuron"><a href="#Simple-Neuron" class="headerlink" title="Simple Neuron"></a>Simple Neuron</h6><p>$$\sum_{i=1}^{D} w_{i} x_{i}$$</p>
+<h6 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h6><p>$$\mathbf{y}=\mathbf{x}+\sum_{i=1}^{C} \mathcal{T}_{i}(\mathbf{x})$$</p>
+<h5 id="Equivalent"><a href="#Equivalent" class="headerlink" title="Equivalent"></a>Equivalent</h5><p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_C.png" alt="Equivalent"><br><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_D.png" alt="Proof"></p>
+<h5 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h5><p>ResNeXt-50 (32×4d) 输入输出通道数为256，32x4d 指的是 32组3x3卷积核，每个卷积核的通道数为4，</p>
+<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><ul>
+<li>相比于ResNet-50，32×4d ResNeXt-50的错误率降低了1.7%，同时随着Cardinalty从1增大到32，其错误率逐渐降低。且32×4d ResNeXt-50相比ResNet，训练错误了也低了很多，因此该模型的准确度提升并不是来源于正则化，而是在特征表达上得到了提升。</li>
+<li>在维持复杂度不变的情况下，相比提升宽度和深度，提升基数对性能提升更好。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-hihoCoder-1364-奖券兑换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -226,642 +1249,9 @@
 
 
   
-    <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/">Notes-Deep learning based RecSys utilizing visual content(3)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/" class="archive-article-date">
-  	<time datetime="2019-04-22T05:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Wu S, Tang Y, Zhu Y, et al. Session-based Recommendation with Graph Neural Networks[J]. arXiv preprint arXiv:1811.00855, 2018.(AAAI 2019)</p>
-<h2 id="Session-based-Recommendation-with-Graph-Neural-Networks"><a href="#Session-based-Recommendation-with-Graph-Neural-Networks" class="headerlink" title="Session-based Recommendation with Graph Neural Networks"></a>Session-based Recommendation with Graph Neural Networks</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>文章指出此前session-based的工作对序列进行建模以估计用户和物品的表示，尽管获得较好的效果，但不能得到准确的用户表示并在一定程度上忽略了浏览物品的变化过程。因此，作者提出了基于图神经网络的SR-GNN模型，将每个session建模成图的形式，用GNN获得各个物品的表示，再通过注意力网络获得每个session的表示，从而该表示融合了全局的偏好和当前session兴趣的信息，最后为每个session预测各物品下次点击的概率。模型架构如图1所示。<br><img src="https://i.loli.net/2019/04/22/5cbd7bdd1fe8d.png" alt="Figure1"></p>
-<h4 id="方法描述"><a href="#方法描述" class="headerlink" title="方法描述"></a>方法描述</h4><p><img src="https://i.loli.net/2019/04/23/5cbeaa1c3676b.png" alt="Figure2"></p>
-<h5 id="GNN"><a href="#GNN" class="headerlink" title="GNN"></a>GNN</h5><p>模型首先将各序列单独建有向图，再全局相连，由于序列中某个物品可能出现多次，故将边的权值设为边的出现次数除以边起点的出度，最终每个序列得到一个如图2所示n*2n的连接矩阵A。随后，将每个序列一一送入GNN中，获得各个物品的向量表示，GNN更新公式如公式1，2，3，4，5。公式1抽取相邻节点的向量表示，作为GNN的输入；公式2，3对应更新门和重置门的更新方法；公式4根据当前状态，上一时刻状态以及当前更新门状态产生候选状态；公式5结合上一时刻状态和候选状态，在更新门的控制下生成当前时刻状态。<br><img src="https://i.loli.net/2019/04/23/5cbeae16c84ec.png" alt="F1-5"></p>
-<h5 id="生成序列表示"><a href="#生成序列表示" class="headerlink" title="生成序列表示"></a>生成序列表示</h5><p>此前session-based的方法往往假设对应每个序列的用户都存在独立的表示，而SR-GNN中的序列表示直接由序列中的顶点表示产生。序列表示为短期兴趣和长期偏好的结合，其中短期兴趣简单地设为序列中最后一个物品的向量表示，长期偏好通过soft注意力机制产生，最终的序列表示通过短期兴趣和长期偏好表示连接后经过线性变换得到。</p>
-<h5 id="生成推荐以及训练方法"><a href="#生成推荐以及训练方法" class="headerlink" title="生成推荐以及训练方法"></a>生成推荐以及训练方法</h5><p>得到序列表示后，将序列表示乘以每个候选物品的向量得到得分z，再由softmax计算每个候选物品的概率。训练采用交叉熵作为损失函数，BPTT(Back-Propagation Through Time)更新参数。模型时间复杂度为O(m^2 * n)，其中m为平均序列长度，n为总体序列个数，实际上，m远小于n，因此模型复杂度接近线性。部署时，分为在线离线两个部分，离线计算每个物品的表示，从而在线计算推荐结果，</p>
-<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><p>实验中验证了：引入深度学习的有效性；基于马尔可夫链的模型的独立假设（仅基于上衣状态）不可靠；注意力机制能更好地忽略噪声、表现长期的偏好；图建模的有效性。</p>
-<h5 id="不同建图方式的比较"><a href="#不同建图方式的比较" class="headerlink" title="不同建图方式的比较"></a>不同建图方式的比较</h5><p>将各个序列聚合成全局图：由于权值的存在，降低了自身序列中高度节点边的重要性，影响了序列整体性，当权值变化时，模型表现下降。<br>添加高阶节点间的连接：效果变差，并不是所有高阶节点都应该直接相连，中继节点有存在的必要。</p>
-<h5 id="不同序列表示的比较"><a href="#不同序列表示的比较" class="headerlink" title="不同序列表示的比较"></a>不同序列表示的比较</h5><p>证实了短期兴趣与长期偏好结合的必要；序列中噪声影响较大。<br><img src="https://i.loli.net/2019/04/23/5cbecd91b7e6f.png" alt="Figure4"></p>
-<h5 id="序列长度分析"><a href="#序列长度分析" class="headerlink" title="序列长度分析"></a>序列长度分析</h5><p>实验将数据集根据序列长度阈值5分割为短序列、长序列两个部分。NARM和STAMP模型面向长序列时表现下降，可能的原因分别是忽略了重复动作以及RNN面向长序列的困难。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/">Notes-Deep learning based RecSys utilizing visual content(2)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/" class="archive-article-date">
-  	<time datetime="2019-04-09T08:10:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Li Z, Zhao H, Liu Q, et al. Learning from history and present: Next-item recommendation via discriminatively exploiting user behaviors[C]//Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining. ACM, 2018: 1734-1743.<br>[2] Grbovic M, Cheng H. Real-time personalization using embeddings for search ranking at Airbnb[C]//Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining. ACM, 2018: 311-320.</p>
-<h2 id="Learning-from-History-and-Present-Next-item-Recommendation-via-Discriminatively-Exploiting-User-Behaviors"><a href="#Learning-from-History-and-Present-Next-item-Recommendation-via-Discriminatively-Exploiting-User-Behaviors" class="headerlink" title="Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors"></a>Learning from History and Present: Next-item Recommendation via Discriminatively Exploiting User Behaviors</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>电子商务中，顾客的行为包含了大量信息，包括消费习惯，变化的偏好等，session-based的推荐越来越流行。文章指出现有研究工作仅关注了短期内的行为，忽略了用户的长期偏好和演化过程。提出了Behavior-Intensive Neural Network(BINN)，通过结合用户的长期偏好和当前消费动机对下一件访问的物品进行推荐。模型包含两个组件，其一是基于用户交互用于获得物品统一表示的嵌入方法，其二是基于嵌入物品以及交互序列的判别行为学习，学习目标用户历史偏好和当前动机。图1展示了文章的思想。<br><img src="https://i.loli.net/2019/04/09/5cac62432b607.png" alt="Figure1"><br>与传统基于文本或图片的嵌入方法不同，文章中提出的嵌入方法直接利用用户与物品的交互序列。对于第二个组件，文章中用两个深层网络共同地学习用户的当前动机与历史偏好。最终，候选物品也映射到同一隐空间中，由BINN为用户生成推荐，整体结构如图2所示。<br><img src="https://i.loli.net/2019/04/10/5cada5c5c1fd3.png" alt="Figure2"><br></p>
-        
-          <a class="article-more-a" href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/09/Notes-Deep-learning-based-RecSys-utilizing-visual-content-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Notes-Deep-learning-based-RecSys-utilizing-visual-content-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/">Notes-Deep learning based RecSys utilizing visual content(1)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/" class="archive-article-date">
-  	<time datetime="2019-04-04T02:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Zhou J, Albatal R, Gurrin C. Applying Visual User Interest Profiles for Recommendation and Personalisation.[J]. 2016. (MMM)<br>[2] Lei C , Liu D , Li W , et al. Comparative Deep Learning of Hybrid Representations for Image Recommendations[J]. 2016. (CVPR)</p>
-<h2 id="Applying-Visual-User-Interest-Profiles-for-Recommendation-and-Personalisation"><a href="#Applying-Visual-User-Interest-Profiles-for-Recommendation-and-Personalisation" class="headerlink" title="Applying Visual User Interest Profiles for Recommendation and Personalisation"></a>Applying Visual User Interest Profiles for Recommendation and Personalisation</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>文献[1]认为用户的兴趣偏好可以从其曾经发布的照片中获取，通过使用深度学习中的技术从图片集中获取用户的视觉偏好信息，并用于酒店推荐及页面个性化定制。</p>
-<h4 id="视觉特征提取"><a href="#视觉特征提取" class="headerlink" title="视觉特征提取"></a>视觉特征提取</h4><p>在基于内容的图片检索领域中，一些诸如颜色、文本等低级语义信息被用于表示图像以及计算图像相似度，但是这些低级语义并不能很好地表示用户偏好。文献[1]假设通过结合深度学习，对用户特征进行更高语义层面的提取将使得基于内容的推荐更加有效。<br>文章中的方法利用AlexNet对图像作特征提取，将分类结果（1000个类别的概率分布）作为图像特征。</p>
-        
-          <a class="article-more-a" href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RecSys</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">User preference modeling</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/04/Notes-Deep-learning-based-RecSys-utilizing-visual-content-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hihoCoder-1290-Demo-Day" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/23/hihoCoder-1290-Demo-Day/">hihoCoder 1290 Demo Day</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/23/hihoCoder-1290-Demo-Day/" class="archive-article-date">
-  	<time datetime="2017-03-22T16:25:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>描述<br>You work as an intern at a robotics startup. Today is your company’s demo day. During the demo your company’s robot will be put in a maze and without any information about the maze, it should be able to find a way out.</p>
-<p>The maze consists of N * M grids. Each grid is either empty(represented by ‘.’) or blocked by an obstacle(represented by ‘b’). The robot will be release at the top left corner and the exit is at the bottom right corner.</p>
-<p>Unfortunately some sensors on the robot go crazy just before the demo starts. As a result, the robot can only repeats two operations alternatively: keep moving to the right until it can’t and keep moving to the bottom until it can’t. At the beginning, the robot keeps moving to the right.</p>
-<p>rrrrbb..<br>…r….     ====&gt; The robot route with broken sensors is marked by ‘r’.<br>…rrb..<br>…bb…<br>While the FTEs(full-time employees) are busy working on the sensors, you try to save the demo day by rearranging the maze in such a way that even with the broken sensors the robot can reach the exit successfully. You can change a grid from empty to blocked and vice versa. So as not to arouse suspision, you want to change as few grids as possible. What is the mininum number?</p>
-        
-          <a class="article-more-a" href="/2017/03/23/hihoCoder-1290-Demo-Day/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/23/hihoCoder-1290-Demo-Day/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hihoCoder-1238-Total-Highway-Distance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/">hihoCoder 1238 Total Highway Distance</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/" class="archive-article-date">
-  	<time datetime="2017-03-21T14:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间限制:10000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>Little Hi and Little Ho are playing a construction simulation game. They build N cities (numbered from 1 to N) in the game and connect them by N-1 highways. It is guaranteed that each pair of cities are connected by the highways directly or indirectly.</p>
-<p>The game has a very important value called Total Highway Distance (THD) which is the total distances of all pairs of cities. Suppose there are 3 cities and 2 highways. The highway between City 1 and City 2 is 200 miles and the highway between City 2 and City 3 is 300 miles. So the THD is 1000(200 + 500 + 300) miles because the distances between City 1 and City 2, City 1 and City 3, City 2 and City 3 are 200 miles, 500 miles and 300 miles respectively.</p>
-<p>During the game Little Hi and Little Ho may change the length of some highways. They want to know the latest THD. Can you help them?</p>
-        
-          <a class="article-more-a" href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/21/hihoCoder-1238-Total-Highway-Distance/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hihoCoder-1399-Shortening-Sequence" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/">hihoCoder 1399 Shortening Sequence</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/" class="archive-article-date">
-  	<time datetime="2017-03-21T14:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间限制:10000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>There is an integer array A1, A2 …AN. Each round you may choose two adjacent integers. If their sum is an odd number, the two adjacent integers can be deleted.</p>
-<p>Can you work out the minimum length of the final array after elaborate deletions?</p>
-        
-          <a class="article-more-a" href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/21/hihoCoder-1399-Shortening-Sequence/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hihoCoder-1288-Font-Size" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/21/hihoCoder-1288-Font-Size/">hihoCoder 1288 Font Size</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/21/hihoCoder-1288-Font-Size/" class="archive-article-date">
-  	<time datetime="2017-03-21T14:21:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间限制:10000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>Steven loves reading book on his phone. The book he reads now consists of N paragraphs and the i-th paragraph contains ai characters.</p>
-<p>Steven wants to make the characters easier to read, so he decides to increase the font size of characters. But the size of Steven’s phone screen is limited. Its width is W and height is H. As a result, if the font size of characters is S then it can only show ⌊W / S⌋ characters in a line and ⌊H / S⌋ lines in a page. (⌊x⌋ is the largest integer no more than x)  </p>
-<p>So here’s the question, if Steven wants to control the number of pages no more than P, what’s the maximum font size he can set? Note that paragraphs must start in a new line and there is no empty line between paragraphs.</p>
-        
-          <a class="article-more-a" href="/2017/03/21/hihoCoder-1288-Font-Size/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/21/hihoCoder-1288-Font-Size/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-蓝桥杯-历届试题-小朋友排队" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/">蓝桥杯 历届试题 小朋友排队</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/" class="archive-article-date">
-  	<time datetime="2017-03-17T15:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述<br>　　n 个小朋友站成一排。现在要把他们按身高从低到高的顺序排列，但是每次只能交换位置相邻的两个小朋友。</p>
-<p>　　每个小朋友都有一个不高兴的程度。开始的时候，所有小朋友的不高兴程度都是0。</p>
-<p>　　如果某个小朋友第一次被要求交换，则他的不高兴程度增加1，如果第二次要求他交换，则他的不高兴程度增加2（即不高兴程度为3），依次类推。当要求某个小朋友第k次交换时，他的不高兴程度增加k。</p>
-<p>　　请问，要让所有小朋友按从低到高排队，他们的不高兴程度之和最小是多少。</p>
-        
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-小朋友排队/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-蓝桥杯-历届试题-高僧斗法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/">蓝桥杯 历届试题 高僧斗法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/" class="archive-article-date">
-  	<time datetime="2017-03-17T15:00:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述<br>　　古时丧葬活动中经常请高僧做法事。仪式结束后，有时会有“高僧斗法”的趣味节目，以舒缓压抑的气氛。<br>　　节目大略步骤为：先用粮食（一般是稻米）在地上“画”出若干级台阶（表示N级浮屠）。又有若干小和尚随机地“站”在某个台阶上。最高一级台阶必须站人，其它任意。(如图1所示)<br>　　两位参加游戏的法师分别指挥某个小和尚向上走任意多级的台阶，但会被站在高级台阶上的小和尚阻挡，不能越过。两个小和尚也不能站在同一台阶，也不能向低级台阶移动。<br>　　两法师轮流发出指令，最后所有小和尚必然会都挤在高段台阶，再也不能向上移动。轮到哪个法师指挥时无法继续移动，则游戏结束，该法师认输。<br>　　对于已知的台阶数和小和尚的分布位置，请你计算先发指令的法师该如何决策才能保证胜出。</p>
-        
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -873,7 +1263,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sherl
+    		&copy; 2020 Sherl
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -953,6 +1343,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
@@ -966,10 +1360,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hihoCoder</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
               </li>
              
               <li class="article-tag-list-item">

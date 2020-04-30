@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://lossherl.club">
+  <link rel="dns-prefetch" href="http://lossherl.github.io">
   <title>CSP第九次认证 压缩编码 | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="问题描述　　给定一段文字，已知单词a1, a2, …, an出现的频率分别t1, t2, …, tn。可以用01串给这些单词编码，即将每个单词与一个01串对应，使得任何一个单词的编码（对应的01串）不是另一个单词编码的前缀，这种编码称为前缀码。　　使用前缀码编码一段文字是指将这段文字中的每个单词依次对应到其编码。一段文字经过前缀编码后的长度为：　　L=a1的编码长度×t1+a2的编码长度×t2+…">
 <meta name="keywords" content="题解,CSP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSP第九次认证 压缩编码">
-<meta property="og:url" content="http://lossherl.club/2017/03/06/CSP第九次认证-压缩编码/index.html">
+<meta property="og:url" content="http://lossherl.github.io/2017/03/06/CSP第九次认证-压缩编码/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
 <meta property="og:description" content="问题描述　　给定一段文字，已知单词a1, a2, …, an出现的频率分别t1, t2, …, tn。可以用01串给这些单词编码，即将每个单词与一个01串对应，使得任何一个单词的编码（对应的01串）不是另一个单词编码的前缀，这种编码称为前缀码。　　使用前缀码编码一段文字是指将这段文字中的每个单词依次对应到其编码。一段文字经过前缀编码后的长度为：　　L=a1的编码长度×t1+a2的编码长度×t2+…">
 <meta property="og:locale" content="zh-CN">
@@ -66,6 +66,10 @@
 				<li><a href="/tags/题解/">题解</a></li>
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
+	        
+				<li><a href="/tag/CV/">视觉</a></li>
+	        
+				<li><a href="/tag/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -121,6 +125,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -137,11 +145,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/题解/">题解</a></li>
+					<li style="width: 20%"><a href="/tags/题解/">题解</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/RecSys/">推荐系统</a></li>
+					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
+		        
+					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+		        
+					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -317,7 +329,7 @@ int main()
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.club/2017/03/06/CSP第九次认证-压缩编码/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2017/03/06/CSP第九次认证-压缩编码/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -351,7 +363,7 @@ int main()
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="CSP第九次认证-压缩编码" data-title="CSP第九次认证 压缩编码" data-url="http://lossherl.club/2017/03/06/CSP第九次认证-压缩编码/"></div>
+	<div class="ds-thread" data-thread-key="CSP第九次认证-压缩编码" data-title="CSP第九次认证 压缩编码" data-url="http://lossherl.github.io/2017/03/06/CSP第九次认证-压缩编码/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -380,7 +392,7 @@ int main()
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sherl
+    		&copy; 2020 Sherl
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -460,6 +472,10 @@ int main()
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
@@ -473,10 +489,6 @@ int main()
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hihoCoder</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSP</a>
               </li>
              
               <li class="article-tag-list-item">

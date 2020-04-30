@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>蓝桥杯 历届试题 国王的烦恼 | Sherl&#39;s</title>
+  <title>Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。 　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到">
-<meta name="keywords" content="题解,蓝桥杯">
+  <meta name="description" content="title: Squeeze-and-Excitation Networksdate: 2020-03-29 18:20:48tags:  CV  Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蓝桥杯 历届试题 国王的烦恼">
-<meta property="og:url" content="http://lossherl.github.io/2017/03/17/蓝桥杯-历届试题-国王的烦恼/index.html">
+<meta property="og:title" content="Sherl&#39;s">
+<meta property="og:url" content="http://lossherl.github.io/2020/04/30/2017 Squeeze-and-Excitation Networks/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="问题描述　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。 　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到">
+<meta property="og:description" content="title: Squeeze-and-Excitation Networksdate: 2020-03-29 18:20:48tags:  CV  Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T08:21:19.904Z">
+<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Squeeze-and-Excitation%20Networks/SE_Block.png">
+<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Squeeze-and-Excitation%20Networks/SE_ResNet.png">
+<meta property="og:updated_time" content="2020-04-30T12:16:47.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蓝桥杯 历届试题 国王的烦恼">
-<meta name="twitter:description" content="问题描述　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。 　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到">
+<meta name="twitter:title" content="Sherl&#39;s">
+<meta name="twitter:description" content="title: Squeeze-and-Excitation Networksdate: 2020-03-29 18:20:48tags:  CV  Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻">
+<meta name="twitter:image" content="http://lossherl.github.io/2020/04/30/2017%20Squeeze-and-Excitation%20Networks/SE_Block.png">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -168,112 +170,77 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-蓝桥杯-历届试题-国王的烦恼" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017 Squeeze-and-Excitation Networks" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      蓝桥杯 历届试题 国王的烦恼
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/蓝桥杯-历届试题-国王的烦恼/" class="archive-article-date">
-  	<time datetime="2017-03-17T14:57:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>问题描述<br>　　C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。</p>
-<p>　　如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到达了，居民们就会一起抗议。</p>
-<a id="more"></a>
-<p>　　现在C国的国王已经知道了每座桥能使用的天数，超过这个天数就不能使用了。现在他想知道居民们会有多少天进行抗议。<br>输入格式<br>　　输入的第一行包含两个整数n, m，分别表示小岛的个数和桥的数量。<br>　　接下来m行，每行三个整数a, b, t，分别表示该座桥连接a号和b号两个小岛，能使用t天。小岛的编号从1开始递增。<br>输出格式<br>　　输出一个整数，表示居民们会抗议的天数。<br>样例输入<br>4 4<br>1 2 2<br>1 3 2<br>2 3 1<br>3 4 3<br>样例输出<br>2<br>样例说明<br>　　第一天后2和3之间的桥不能使用，不影响。<br>　　第二天后1和2之间，以及1和3之间的桥不能使用，居民们会抗议。<br>　　第三天后3和4之间的桥不能使用，居民们会抗议。<br>数据规模和约定<br>　　对于30%的数据，1&lt;=n&lt;=20，1&lt;=m&lt;=100；<br>　　对于50%的数据，1&lt;=n&lt;=500，1&lt;=m&lt;=10000；<br>　　对于100%的数据，1&lt;=n&lt;=10000，1&lt;=m&lt;=100000，1&lt;=a, b&lt;=n， 1&lt;=t&lt;=100000。</p>
-<p>思路：<br>  使用并查集，按损坏时间倒序添加路径。</p>
-<p>AC代码:</p>
-<pre><code>#include &lt;iostream&gt;
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
+        <p>title: Squeeze-and-Excitation Networks<br>date: 2020-03-29 18:20:48<br>tags:</p>
+<ul>
+<li>CV</li>
+</ul>
+<h1 id="Squeeze-and-Excitation-Networks"><a href="#Squeeze-and-Excitation-Networks" class="headerlink" title="Squeeze-and-Excitation Networks"></a>Squeeze-and-Excitation Networks</h1><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示</li>
+<li>本文提出的<strong>Squeeze-and-Excitation（SE） Block</strong>通过建模通道间的相互依赖关系，重新刻画通道维度上的特征。</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li>本文提出的机制能够使网络能够利用全局信息来强调重要的特征同时压制不重要的部分。</li>
+<li>SE Block结构如下图：输入X由卷积操作得到特征矩阵U，特征U首先通过Squeeze操作，即在空间维度上聚合特征，目的是获得各个通道的全局分布特征。</li>
+<li>Excitation操作紧跟Squeeze操作，通过一个简单的self-gate机制，为输入的每个通道输出权重。这些权重随后应用在特征矩阵U上。</li>
+<li>SE块在网络的不同深度起到不同的作用。<ul>
+<li>在网络浅层，与类别无关，增强低层面公共的特征。</li>
+<li>在网络深层，越来越细化，给出与类别更为相关的反馈。</li>
+<li>因此，SE Block得到的特征增强会随着层数加深不断累积。</li>
+</ul>
+</li>
+<li>结构简单，可直接替换成熟网络中的block。</li>
+</ul>
+<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_Block.png" alt="SE Block"></p>
+<h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><ul>
+<li>此前跨通道的操作一般为1x1卷积，大多集中于降低模型计算复杂度。本文认为在通道间使用全局信息施加动态非线性依赖能够加快学习过程，并提升网络的特征表示能力。</li>
+</ul>
+<h4 id="Squeeze-and-Excitation-Blocks"><a href="#Squeeze-and-Excitation-Blocks" class="headerlink" title="Squeeze-and-Excitation Blocks"></a>Squeeze-and-Excitation Blocks</h4><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><p>输入：$\mathbf{X} \in \mathbb{R}^{H^{\prime} \times W^{\prime} \times C^{\prime}}$</p>
+<p>输出：$\mathbf{U} \in \mathbb{R}^{H \times W \times C}$，$\mathbf{U}=\left[\mathbf{u}<em>{1}, \mathbf{u}</em>{2}, \ldots, \mathbf{u}<em>{C}\right]$，$\mathbf{u}</em>{c} \in \mathbb{R}^{H \times W}$</p>
+<p>卷积核：$$\mathbf{V}=\left[\mathbf{v}<em>{1}, \mathbf{v}</em>{2}, \dots, \mathbf{v}_{C}\right]$$，</p>
+<p>$$\mathbf{u}<em>{c}=\mathbf{v}</em>{c} <em> \mathbf{X}=\sum_{s=1}^{C^{\prime}} \mathbf{v}_{c}^{s} </em> \mathbf{x}^{s}$$</p>
+<ul>
+<li>实质上，卷积输出是各个通道间结果的加和，因此，通道间的依赖关系也隐含在了卷积核$\mathbf{V}_{c}$中，但是与卷积核捕捉到局部关联性纠缠在了一起。</li>
+<li>因此SE-block用全局信息以显式地建模通道间的关系。</li>
+</ul>
+<h5 id="Squeeze"><a href="#Squeeze" class="headerlink" title="Squeeze"></a>Squeeze</h5><ul>
+<li><p>卷积操作仅在局部感受野上操作，因此输出的每个单元都无法利区域周边的信息。</p>
+</li>
+<li><p>为减轻上述问题，Squeeze操作将空间上的全局信息作为通道描述信息（Global Avgpooling），$z_{c}=\mathbf{F}<em>{s q}\left(\mathbf{u}</em>{c}\right)=\frac{1}{H \times W} \sum_{i=1}^{n} \sum_{j=1}^{w} u_{c}(i, j)$</p>
+</li>
+</ul>
+<h5 id="Excitation：Adaptive-Recalibration"><a href="#Excitation：Adaptive-Recalibration" class="headerlink" title="Excitation：Adaptive Recalibration"></a>Excitation：Adaptive Recalibration</h5><ul>
+<li>利用Squeeze得到的全局信息，捕捉通道间的依赖关系。</li>
+<li>两点要求：<ul>
+<li>此操作能够学习通道间的非线性交互关系</li>
+<li>学习的是不互斥的关系，我们需要多个通道可以被同时高亮。</li>
+</ul>
+</li>
+<li>简单地用sigmoid激活：$\mathbf{s}=\mathbf{F}<em>{e x}(\mathbf{z}, \mathbf{W})=\sigma(g(\mathbf{z}, \mathbf{W}))=\sigma\left(\mathbf{W}</em>{2} \delta\left(\mathbf{W}<em>{1 \mathbf{Z}}\right)\right)$，其中，$\mathbf{W}</em>{1} \in \mathbb{R}^{\frac{c}{r} \times C}$， $\mathbf{W}_{2} \in \mathbb{R}^{C \times \frac{c}{r}}$，δ为ReLU。即两个FC层之间插入非线性层。</li>
+<li>$\widetilde{\mathbf{x}}<em>{c}=\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)=s_{c} \mathbf{u}<em>{c}$，$\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)$为通道维度乘法。</li>
+<li>Excitation操作将输入的通道描述映射为一系列的通道权重。可视为通道上的自注意力机制，但不局限于感受野的大小。</li>
+</ul>
+<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_ResNet.png" alt="SE_ResNet"></p>
+<h4 id="模型与计算复杂度"><a href="#模型与计算复杂度" class="headerlink" title="模型与计算复杂度"></a>模型与计算复杂度</h4><ul>
+<li>相比ResNet，SE-ResNet增加了0.26%的浮点运算次数（3.87GFLOPs），得到的精度接近ResNet-101（7.58GFLOPs）。</li>
+<li>增加的参数数量为两个fc的参数。</li>
+</ul>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
+<li><p>SE在各个深度网络中得到的收益是一致的，表明SE block得到的收益可以与深度提升的收益互补。</p>
+</li>
+<li><p>r的选取是鲁邦的， 提高复杂度并不能不断提高准确度，r=16是平衡的取值。</p>
+</li>
+<li>Squeeze操作中，平均池化与最大池化效果相当，平均池化略好。</li>
+<li>Excitation中，非线性函数改用ReLU的效果最差，tanh居中，Sigmoid最好，非线性函数的选取较为重要。</li>
+<li>在不同阶段添加SE Block精度均有提升，且不同阶段的提升是互补的，在所有阶段均添加能得到最大的提升。</li>
+<li>比较SE添加的位置（残差前、残差后等），发现SE对添加的位置也具有鲁棒性。</li>
+<li>若将全局池化替换为1x1卷积，失去了全剧信息，精度略有下降，但仍高于原本的ResNet。</li>
+</ul>
 
-struct node{
-    int s;
-    int e;
-    int t;
-}b[100010];
-
-bool cmp(node a,node b)
-{
-    return a.t &gt; b.t;
-}
-
-int a[10001] = {0};
-
-int find(int x)
-{
-    int tx = x;
-    int root;
-
-    while(a[tx] != tx)
-    {
-        tx = a[tx];
-    }
-    root = tx;
-    while(a[x] != root)
-    {
-        tx = a[x];
-        a[x] = root;
-        x = tx;
-    }
-    return root;
-}
-
-bool Union(int x,int y)
-{
-    int tx = find(x);
-    int ty = find(y);
-    if(tx != ty)
-    {
-        a[tx] = ty;
-        return true;
-    }
-    return false;
-}
-
-int n,m;
-
-int main()
-{
-    cin &gt;&gt; n &gt;&gt; m;
-
-    for(int i = 1; i &lt;= m; i++)
-    {
-        scanf(&quot;%d %d %d&quot;,&amp;b[i].s,&amp;b[i].e,&amp;b[i].t);
-    }
-
-    sort(b + 1, b + m + 1,cmp);
-
-    for(int i = 1; i &lt;= n; i++)
-    {
-        a[i] = i;
-    }
-    int cnt = 0;
-    int last = 0;
-    for(int i = 1; i &lt;= m; i++)
-    {
-        if(Union(b[i].s,b[i].e) &amp;&amp; last != b[i].t)
-        {
-            last = b[i].t;
-            cnt++;
-        }
-    }
-    cout &lt;&lt; cnt;
-}
-</code></pre>
       
 
       
@@ -302,21 +269,6 @@ int main()
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -367,7 +319,7 @@ int main()
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2017/03/17/蓝桥杯-历届试题-国王的烦恼/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/04/30/2017 Squeeze-and-Excitation Networks/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -381,18 +333,18 @@ int main()
   
 <nav id="article-nav">
   
-    <a href="/2017/03/17/蓝桥杯-历届试题-高僧斗法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/30/2018 Non-local Neural Networks/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          蓝桥杯 历届试题 高僧斗法
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2017/03/17/蓝桥杯-历届试题-最大子阵/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">蓝桥杯 历届试题 最大子阵</div>
+    <a href="/2020/04/30/2017 Attention Is All You Need/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -406,7 +358,7 @@ int main()
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="蓝桥杯-历届试题-国王的烦恼" data-title="蓝桥杯 历届试题 国王的烦恼" data-url="http://lossherl.github.io/2017/03/17/蓝桥杯-历届试题-国王的烦恼/"></div>
+	<div class="ds-thread" data-thread-key="2017 Squeeze-and-Excitation Networks" data-title data-url="http://lossherl.github.io/2020/04/30/2017 Squeeze-and-Excitation Networks/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
