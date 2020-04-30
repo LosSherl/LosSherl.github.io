@@ -65,9 +65,9 @@
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
 	        
-				<li><a href="/tag/CV/">视觉</a></li>
+				<li><a href="/tags/CV/">视觉</a></li>
 	        
-				<li><a href="/tag/NLP/">自然语言处理</a></li>
+				<li><a href="/tags/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -149,9 +149,9 @@
 		        
 					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+					<li style="width: 20%"><a href="/tags/CV/">视觉</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
+					<li style="width: 20%"><a href="/tags/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -168,289 +168,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2020 Unpaired Photo-to-manga Translation Based on The" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title: Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing<br>date: 2020-04-27 12:29:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h3 id="Unpaired-Photo-to-manga-Translation-Based-on-The-Methodology-of-Manga-Drawing"><a href="#Unpaired-Photo-to-manga-Translation-Based-on-The-Methodology-of-Manga-Drawing" class="headerlink" title="Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing"></a>Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
-<li>首个彩色照片转黑白漫画的方法。</li>
-<li>细致地将每个面部区域转化成漫画风格。</li>
-<li>收集数据集，包含面部特征，特征点，身体等</li>
-<li>提出结构化平滑loss，用于平滑线条避免噪声像素。</li>
-<li>提出照片和漫画的相似度量</li>
-</ul>
-<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
-<li>漫画生成的挑战<ul>
-<li>相比现实照片，漫画中的人脸是抽象的、表情是夸张的。</li>
-<li>不同漫画家有不同的风格，外貌、位置、大小和风格这些要素很难仅用一个网络同时抽取。</li>
-<li>维持个体特征的同时融入漫画风格</li>
-<li>数据难获取</li>
-</ul>
-</li>
-<li>画家绘制漫画的过程<ul>
-<li>画出大致面部轮廓</li>
-<li>分布面部特征</li>
-<li>精细的绘制每个部分</li>
-</ul>
-</li>
-<li>MangaGAN遵循这个过程，使用多个GAN转换不同的部位特征，再用另外的GAN完成映射。</li>
-<li>利用相似度模块维持个体身份，并通过结构平滑loss避免噪声。</li>
-<li>主要贡献：<ul>
-<li>仿照绘制漫画的过程，使用多个部位GAN将照片转化为漫画</li>
-<li>提出相似度维持模块保证面部特征不变、提出平滑loss防止噪声。</li>
-<li>构造数据集</li>
-</ul>
-</li>
-</ul>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p><img src="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/MangaGAN.png" alt="MangaGAN"></p>
-<ul>
-<li>MangaGAN有两个分支<ul>
-<li>Geometric Transformation Network （GTN）学习面部的几何映射。</li>
-<li>Appearance Transformation Network （ATN）学习外貌映射。</li>
-</ul>
-</li>
-<li>最后由生成模块聚合各个组件，输出漫画头像。</li>
-</ul>
-<h5 id="ATN"><a href="#ATN" class="headerlink" title="ATN"></a>ATN</h5><ul>
-<li>包含四个局部GAN，分别对应眼睛、鼻子、嘴巴、头发。</li>
-</ul>
-<h5 id="眼睛和嘴"><a href="#眼睛和嘴" class="headerlink" title="眼睛和嘴"></a>眼睛和嘴</h5><ul>
-<li>眼睛和嘴是漫画中的最重要的部分，也是最难转换的<ul>
-<li>使用类似CycleGAN的方法来回映射</li>
-<li>生成器使用Resnet 6 blocks，辨别器使用马尔科夫70x70的patchGANs。</li>
-<li>均方误差loss代替极大似然作为对抗损失（更稳定）</li>
-<li>Cycle Loss采用一阶范数差</li>
-<li>上述两种Loss在实验中仍让不足以保证相似度。</li>
-</ul>
-</li>
-<li>提出Similarity Preserving (SP) module<ul>
-<li>主要思想是维持低分辨率时的相似度能够在上采样后给出尅死的空间分布和不同的像素细节。</li>
-<li>使用一个预训练的卷积网络抽取不同尺寸的图像特征</li>
-<li>最小化不同之尺寸下生成部件图像与真实部件图像的特征二阶范数和像素二阶范数</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/SP_Modules.png" alt="SP Module"></p>
-<ul>
-<li>训练编码器$E_{eye}$得到眼睛的01特征，对嘴巴同理，将其转化为二进制的线条。</li>
-<li>结构化平滑Loss<ul>
-<li>基于高斯模型。</li>
-<li>主要思想是给予灰度值接近黑和白的像素更低 loss，从而让结果更清晰。</li>
-</ul>
-</li>
-</ul>
-<h5 id="头发和鼻子"><a href="#头发和鼻子" class="headerlink" title="头发和鼻子"></a>头发和鼻子</h5><ul>
-<li><p>漫画脸中鼻子并不重要，因为大多数漫画人物的鼻子都很相似，因此鼻子的部分采用的是生成的方法，而不是转换的方法。</p>
-<ul>
-<li>采用类似ProGAN的方式，训练变分自编码器将鼻子编码为特征向量，再作为种子生成默认的漫画鼻子。</li>
-<li>允许用户对其进行修改。</li>
-</ul>
-</li>
-<li><p>头发的部分采用预训练的APDdrawingGAN，能够生成风格类似漫画的黑白头发。</p>
-<ul>
-<li>首先使用头发分割模型抽取粗略的头发区域，再去除背景区域。</li>
-</ul>
-</li>
-</ul>
-<h5 id="GTN"><a href="#GTN" class="headerlink" title="GTN"></a>GTN</h5><ul>
-<li><p>目标</p>
-<ul>
-<li>面部的几何特征（106个面部特征点）的风格迁移</li>
-</ul>
-</li>
-<li><p>将几何属性分为脸型、面部特征位置、大小，对应三个子GAN</p>
-<ul>
-<li>为增强多样性，使用相对位置而不是直接生成特征点坐标</li>
-<li>位置：<ul>
-<li>特征点坐标被表示成｛左眼、右眼、鼻子、嘴｝四个部分，每个部分用若干个相对位置标量表示，例如鼻子由到左侧脸颊的距离、到右侧脸颊的距离、到底部的距离表示。</li>
-</ul>
-</li>
-<li>大小：<ul>
-<li>眼睛、鼻子、嘴巴的宽度</li>
-</ul>
-</li>
-<li>脸型：<ul>
-<li>17个脸颊轮廓特征点</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>训练同样采用Cycle Loss + Adversial Loss，额外加入角色Loss，通过比较一张脸与平均脸的差异（特征点的余弦相似度）</li>
-</ul>
-<p><img src="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/GTN_Pipeline.png" alt="GTN PipeLine" style="zoom:200%;"></p>
-<h5 id="生成组件"><a href="#生成组件" class="headerlink" title="生成组件"></a>生成组件</h5><ul>
-<li>首先缩放各面部部件并根据几何特征放置</li>
-<li>脸型部分用曲线链接生成的特征点（Piecewise Cubic Hermite Interpolating Polynomial (PCHIP)），该方法能够得到平滑曲线，维持面部形状</li>
-<li>对于耳朵区域，使用十个备选。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2020 Unpaired Photo-to-manga Translation Based on The/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title: Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization<br>date: 2020-03-14 19:20:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h3 id="Attention-Convolutional-Binary-Neural-Tree-for-Fine-Grained-Visual-Categorization"><a href="#Attention-Convolutional-Binary-Neural-Tree-for-Fine-Grained-Visual-Categorization" class="headerlink" title="Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization"></a>Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</h3><h4 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h4><ul>
-<li>在树结构的边上结合卷积操作，使用路由方法定义叶子节点到根节点的计算路径，树的不同分支关注不同的局部区域，最终的预测结果为叶子节点的预测之和。</li>
-<li>卷积操作用于捕捉目标的特征表示，树结构使得网络能够以由粗到细的层级模式进行特征学习。</li>
-<li>使用attention transformer模块帮助网络捕捉具有高辨别力的区域。</li>
-</ul>
-<h4 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h4><ul>
-<li>（Peng 2017）Object-part Attention model,  证实使用多个深度模型关注目标的不同区域是有效的</li>
-<li>（Tanno 2019）类似本文的树结构方法，其中树结构随着学习进程推进增长。</li>
-</ul>
-<h4 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h4><ul>
-<li><p>Deep supervised methods</p>
-<ul>
-<li>（zhang 2014）双detector，在pose-normalized的特征表示上预测。</li>
-<li>（Llu 2016）fully convolutional attention networks, glimpses local discriminative regions to adapt to different fine-grained domains</li>
-<li>（Huang 2016）part-stacked CNN architecture，对目标各part的细微差别建模。</li>
-<li>这类方法依赖大量标注，限制了应用范围。</li>
-</ul>
-</li>
-<li><p>Deep weakly supervised methods</p>
-<ul>
-<li>（zheng 2017）Multi-attention CNN，part生成与特征学习互相促进。</li>
-<li>（Fu 2017）recurrent attention module，在不同尺寸上递归学习高辨别度区域注意力和区域特征表示并互相促进。</li>
-<li>（Sun 2018）使用多个目标part的注意力区域特征对不同输入图片的多个目标part进行约束（regulate）。</li>
-<li>上述方法近将注意力进制与单网络结合。</li>
-</ul>
-</li>
-<li>决策树<ul>
-<li>解释性优势</li>
-<li>（xiao 2017）神经决策树模型用于分类任务</li>
-<li>（Frosst 2017）将深度神经决策树模型用于理解一个特定case的决策机制</li>
-<li>本文结合决策树与神经网络同时实现分支选择和特征学习</li>
-</ul>
-</li>
-<li>注意力机制<ul>
-<li>级联注意力</li>
-<li>通道注意力</li>
-<li>结合区域注意力与特征矩阵注意力</li>
-<li>本文在树结构的分支上应用注意力</li>
-</ul>
-</li>
-</ul>
-<h4 id="Attention-Convolution-Binary-Neural-Tree-ACNet"><a href="#Attention-Convolution-Binary-Neural-Tree-ACNet" class="headerlink" title="Attention Convolution Binary Neural Tree ( ACNet )"></a>Attention Convolution Binary Neural Tree ( ACNet )</h4><p>ACNet表示为二元组$(\mathbb{T}, \mathbb{O})$，$\mathbb{T}$为树的拓扑，$\mathbb{O}$为树边上的操作集合。$\mathbb{T}={\mathcal{V}, \mathcal{E}},$ $\mathcal{V}=\left{v_{1}, \cdots, v_{n}\right}$ 为节点集合，$n$为节点个数， $\mathcal{E}=\left{e_{1}, \cdots, e_{k}\right}$为边的集合，由于树为二叉完全树，有$n=2^{h}-1$，$k=2^{h}-2$。树中的每个节点由路由模块产生，决定样本的传输分发路径。attention transform即边上的操作。</p>
-<p><img src="/2020/04/30/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/ACNet.png" alt="ACNet Architecture"></p>
-<ul>
-<li>Backbone Network<ul>
-<li>由于细粒度分类中的高辨别度区域通常是局部的，因此需要小感受野（小步长、小池化核），因此使用VGG-16（Conv1_1 to Conv4_3），预训练于ILSVRC CLS-LOC数据集。 </li>
-<li>输入图像尺寸修改为448 x 448（原本224 x 224）</li>
-<li>可使用其他网络作为主干</li>
-</ul>
-</li>
-<li>Branch Routing<ul>
-<li>用于确定样本接下来分发至左子树还是右子树</li>
-<li>1x1卷积 -&gt; global context block（Non-local与Squeeze-Excitation的融合）-&gt; 全局平均池化 -&gt;元素平方根、L2正则化 -&gt; 全连接层、Sigmoid得到[0,1]值，对应左子树及右子树的概率。</li>
-</ul>
-</li>
-<li>Attention Transformer Module<ul>
-<li><img src="/2020/04/30/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/Attention_Transformer.png" alt="Attention Transformer"></li>
-<li>在3x3卷积后插入注意力模块（如上图所示），产生通道注意力矩阵。</li>
-</ul>
-</li>
-<li>Label Prediction Module<ul>
-<li>由BN，1x1卷积、最大池化、平方根、L2政治则、全连接层组成。</li>
-<li>最终预测$\mathcal{C}\left(x_{j}\right)=\sum_{i=1}^{2^{h-1}} \mathcal{P}<em>{i}\left(x</em>{j}\right) r_{i}^{h}\left(x_{j}\right)$，其中$\mathcal{P}<em>{i}$为第i个叶子节点的分类概率，$r</em>{i}^{k}\left(x_{j}\right)$为由根节点分发到第k层第i个节点的概率。</li>
-</ul>
-</li>
-</ul>
-<h4 id="Trainning"><a href="#Trainning" class="headerlink" title="Trainning"></a>Trainning</h4><ul>
-<li><p>数据增强</p>
-<ul>
-<li>crop, flip</li>
-<li>短边缩放到512像素</li>
-</ul>
-</li>
-<li>Loss Function<ul>
-<li>$\mathcal{L}=L\left(\mathcal{C}\left(x_{j}\right), y^{<em>}\right)+\sum_{i=1}^{2^{n-1}} L\left(\mathcal{P}<em>{i}\left(x</em>{j}\right), y^{</em>}\right)$</li>
-<li>分为所有叶子节点的预测loss之和，最终预测loss两部分</li>
-</ul>
-</li>
-<li>优化<ul>
-<li>哈维初始化</li>
-<li>前60轮fix VGG参数，之后finetune</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-2019 Why do deep convolutional networks generalize so poorly to small image transformation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/2019 Why do deep convolutional networks generalize so poorly to small image transformation/">Why do deep convolutional networks generalize so poorly to small image transformation?</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/28/2019 Why do deep convolutional networks generalize so poorly to small image transformation/" class="archive-article-date">
+  	<time datetime="2020-04-28T14:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Why do deep convolutional networks generalize so poorly to small image transformation?<br>date: 2020-04-28 22:20:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h3 id="Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation"><a href="#Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation" class="headerlink" title="Why do deep convolutional networks generalize so poorly to small image transformation?"></a>Why do deep convolutional networks generalize so poorly to small image transformation?</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+        <h3 id="Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation"><a href="#Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation" class="headerlink" title="Why do deep convolutional networks generalize so poorly to small image transformation?"></a>Why do deep convolutional networks generalize so poorly to small image transformation?</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
 <li>CNN通常被认为是对较小的图像变换具有不变性的。<ul>
 <li>或因为卷积的架构</li>
 <li>或因为训练时进行了数据增强</li>
@@ -564,11 +302,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2019 Why do deep convolutional networks generalize so poorly to small image transformation/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/28/2019 Why do deep convolutional networks generalize so poorly to small image transformation/">展开全文 >></a>
         </p>
       
 
@@ -586,67 +335,136 @@
 
 
   
-    <article id="post-2019 Stacked capsule autoencodersmd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2020 Unpaired Photo-to-manga Translation Based on The" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/">Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/" class="archive-article-date">
+  	<time datetime="2020-04-27T04:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Stacked capsule autoencoders<br>date: 2020-03-10 17:20:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h3 id="Stacked-capsule-autoencoders"><a href="#Stacked-capsule-autoencoders" class="headerlink" title="Stacked capsule autoencoders"></a>Stacked capsule autoencoders</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
-<li><p><strong>物体是由一系列几何部分组成的</strong></p>
-</li>
-<li><p>提出了无监督胶囊自编码器（<strong>SCAE</strong>），利用物体各部分（template）之间的几何关系对物体进行推理</p>
-</li>
-<li><p>这些几何关系与视角无关，因此提出的模型对<strong>视角变换</strong>具有鲁棒性。</p>
-</li>
-<li><p><strong>SCEA</strong>由两个阶段组成</p>
-<ul>
-<li>第一阶段：Part CAE直接从图像中预测各part template的presence与pose，并尝试通过arrange这些template以重构图像。</li>
-<li>第二阶段：Object CAE预测一些物体胶囊的参数。首先组织此前发现part和pose得到一系列物体，再重构part和pose，其中inference是摊还的，且由现成的编码器实现。</li>
-</ul>
-</li>
-<li><p>与此前的胶囊网络不同</p>
-<blockquote>
-<p>object capsule presences are highly informative of the object class，which leads to state-of-the-art results for unsupervised classification on SVHN (55%) and MNIST (98.7%).</p>
-</blockquote>
-</li>
+        <h3 id="Unpaired-Photo-to-manga-Translation-Based-on-The-Methodology-of-Manga-Drawing"><a href="#Unpaired-Photo-to-manga-Translation-Based-on-The-Methodology-of-Manga-Drawing" class="headerlink" title="Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing"></a>Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>首个彩色照片转黑白漫画的方法。</li>
+<li>细致地将每个面部区域转化成漫画风格。</li>
+<li>收集数据集，包含面部特征，特征点，身体等</li>
+<li>提出结构化平滑loss，用于平滑线条避免噪声像素。</li>
+<li>提出照片和漫画的相似度量</li>
 </ul>
 <h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
-<li><p>CNN效果好过无权重分享网络的原因在于CNN的归纳偏倚（Inductive Bias）：如果一个局部特征在某个图像区域中有效，那么该特征在其他位置也很可能有效。</p>
+<li>漫画生成的挑战<ul>
+<li>相比现实照片，漫画中的人脸是抽象的、表情是夸张的。</li>
+<li>不同漫画家有不同的风格，外貌、位置、大小和风格这些要素很难仅用一个网络同时抽取。</li>
+<li>维持个体特征的同时融入漫画风格</li>
+<li>数据难获取</li>
+</ul>
 </li>
-<li><p>当CNN试图探索视角变换的影响时，CNN则通过将特征复制成不同尺寸、方向、角度等，但此举很快导致冗长的高维的特征矩阵。</p>
+<li>画家绘制漫画的过程<ul>
+<li>画出大致面部轮廓</li>
+<li>分布面部特征</li>
+<li>精细的绘制每个部分</li>
+</ul>
 </li>
-<li><blockquote>
-<p>An alternative to replicating features across the non-translational degrees of freedom is to <strong>explicitly learn transformations between the natural coordinate frame of a whole object and the natural coordinate frames of each of its parts. </strong></p>
-<p>学习整体的坐标系和每个其各部分的坐标系之间的转换关系。计算机图形学就是就是以这样一种Object-&gt;part 坐标变换规则以获得具有视角不变性的几何体。人类的认知也是基于坐标系的。</p>
-</blockquote>
-</li>
-<li><p>用神经网络学习整体层面的变换是可行的，但是每种变换的表示都不尽想通。而整体与part之间的关系却是与视角无关的，近似于常数可以简单地用学习到的参数表示。</p>
-</li>
-<li><blockquote>
-<p>With this representation, the pose of a single object is represented by its relationship to the viewer. Consequently, representing a single object does not necessitate replicating neural activations across space, unlike in CNNs. It is only processing two (or more) different instances of the same type of object in parallel that requires spatial replicas of both model parameters and neural activations.</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>Every object capsule contributes components to each of these mixtures by multiplying its pose—the object-viewer-relationship (OV)—by the relevant object-part-relationship (OP).</p>
-</blockquote>
-<p><img src="/2020/04/30/2019 Stacked capsule autoencodersmd/SCAE.png" alt="SCAE"></p>
+<li>MangaGAN遵循这个过程，使用多个GAN转换不同的部位特征，再用另外的GAN完成映射。</li>
+<li>利用相似度模块维持个体身份，并通过结构平滑loss避免噪声。</li>
+<li>主要贡献：<ul>
+<li>仿照绘制漫画的过程，使用多个部位GAN将照片转化为漫画</li>
+<li>提出相似度维持模块保证面部特征不变、提出平滑loss防止噪声。</li>
+<li>构造数据集</li>
+</ul>
 </li>
 </ul>
-<h4 id="SCAE"><a href="#SCAE" class="headerlink" title="SCAE"></a>SCAE</h4><h5 id="Constellation-AutoEncoder-CCAE"><a href="#Constellation-AutoEncoder-CCAE" class="headerlink" title="Constellation AutoEncoder (CCAE)"></a>Constellation AutoEncoder (CCAE)</h5><ul>
-<li><p>$\left{\mathbf{x}<em>{m} | m=1, \ldots, M\right}$是输入的一个二维点集合，通过Set Transformer得到K个Object capsules，每一个capsule包含一个胶囊特征c，出现概率$a</em>{k} \in[0,1]$，以及Object-Viewer-relationship(OV)矩阵（表示物体（星座）和观察者的仿射变换）。</p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p><img src="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/MangaGAN.png" alt="MangaGAN"></p>
+<ul>
+<li>MangaGAN有两个分支<ul>
+<li>Geometric Transformation Network （GTN）学习面部的几何映射。</li>
+<li>Appearance Transformation Network （ATN）学习外貌映射。</li>
+</ul>
 </li>
-<li><p>每一个胶囊各自用一个多层感知机根据c来预测N个候选part，出现概率a，标准差$\lambda$以及OV矩阵。输入坐标建模为高斯混合，每个一元高斯的均值为$\mu=OV\times OP$，标准差为$\lambda$。</p>
+<li>最后由生成模块聚合各个组件，输出漫画头像。</li>
+</ul>
+<h5 id="ATN"><a href="#ATN" class="headerlink" title="ATN"></a>ATN</h5><ul>
+<li>包含四个局部GAN，分别对应眼睛、鼻子、嘴巴、头发。</li>
+</ul>
+<h5 id="眼睛和嘴"><a href="#眼睛和嘴" class="headerlink" title="眼睛和嘴"></a>眼睛和嘴</h5><ul>
+<li>眼睛和嘴是漫画中的最重要的部分，也是最难转换的<ul>
+<li>使用类似CycleGAN的方法来回映射</li>
+<li>生成器使用Resnet 6 blocks，辨别器使用马尔科夫70x70的patchGANs。</li>
+<li>均方误差loss代替极大似然作为对抗损失（更稳定）</li>
+<li>Cycle Loss采用一阶范数差</li>
+<li>上述两种Loss在实验中仍让不足以保证相似度。</li>
+</ul>
 </li>
-<li><p>使用无监督的方式训练，目标为最大化$p\left(\mathbf{x}_{1: M}\right)$的极大似然</p>
-<p>$$\mathrm{OV}<em>{1: K}, \mathbf{c}</em>{1: K}, a_{1: K}=\mathrm{h}^{\mathrm{caps}}\left(\mathbf{x}_{1: M}\right) \quad \text { predict object capsule parameters }=$$</p>
-<p>$$\mathrm{OP}<em>{k, 1: N}, a</em>{k, 1: N}, \lambda_{k, 1: N}=\mathrm{h}<em>{\mathrm{k}}^{\mathrm{part}}\left(\mathbf{c}</em>{k}\right) \quad \text { decode candidate parameters from } c_{k} \text { ‘s}$$</p>
-<p>$V_{k, n}=\mathrm{OV}<em>{k} \mathrm{OP}</em>{k, n} \quad \text { decode a part pose candidate } c_{k} \text { ‘s } $<br>$$p\left(\mathbf{x}<em>{m} | k, n\right)=\mathcal{N}\left(\mathbf{x}</em>{m} | \mu_{k, n}, \lambda_{k, n}\right) \quad \text { turn candidates into mixture components }$$</p>
-<p>$$p\left(\mathbf{x}<em>{1: M}\right)=\prod</em>{m=1}^{M} \sum_{k=1}^{K} \sum_{n=1}^{N} \frac{a_{k} a_{k, n}}{\sum_{i} a_{i} \sum_{j} a_{i, j}} p\left(\mathbf{x}_{m} | k, n\right)$$</p>
+<li>提出Similarity Preserving (SP) module<ul>
+<li>主要思想是维持低分辨率时的相似度能够在上采样后给出尅死的空间分布和不同的像素细节。</li>
+<li>使用一个预训练的卷积网络抽取不同尺寸的图像特征</li>
+<li>最小化不同之尺寸下生成部件图像与真实部件图像的特征二阶范数和像素二阶范数</li>
+</ul>
 </li>
+</ul>
+<p><img src="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/SP_Modules.png" alt="SP Module"></p>
+<ul>
+<li>训练编码器$E_{eye}$得到眼睛的01特征，对嘴巴同理，将其转化为二进制的线条。</li>
+<li>结构化平滑Loss<ul>
+<li>基于高斯模型。</li>
+<li>主要思想是给予灰度值接近黑和白的像素更低 loss，从而让结果更清晰。</li>
+</ul>
+</li>
+</ul>
+<h5 id="头发和鼻子"><a href="#头发和鼻子" class="headerlink" title="头发和鼻子"></a>头发和鼻子</h5><ul>
+<li><p>漫画脸中鼻子并不重要，因为大多数漫画人物的鼻子都很相似，因此鼻子的部分采用的是生成的方法，而不是转换的方法。</p>
+<ul>
+<li>采用类似ProGAN的方式，训练变分自编码器将鼻子编码为特征向量，再作为种子生成默认的漫画鼻子。</li>
+<li>允许用户对其进行修改。</li>
+</ul>
+</li>
+<li><p>头发的部分采用预训练的APDdrawingGAN，能够生成风格类似漫画的黑白头发。</p>
+<ul>
+<li>首先使用头发分割模型抽取粗略的头发区域，再去除背景区域。</li>
+</ul>
+</li>
+</ul>
+<h5 id="GTN"><a href="#GTN" class="headerlink" title="GTN"></a>GTN</h5><ul>
+<li><p>目标</p>
+<ul>
+<li>面部的几何特征（106个面部特征点）的风格迁移</li>
+</ul>
+</li>
+<li><p>将几何属性分为脸型、面部特征位置、大小，对应三个子GAN</p>
+<ul>
+<li>为增强多样性，使用相对位置而不是直接生成特征点坐标</li>
+<li>位置：<ul>
+<li>特征点坐标被表示成｛左眼、右眼、鼻子、嘴｝四个部分，每个部分用若干个相对位置标量表示，例如鼻子由到左侧脸颊的距离、到右侧脸颊的距离、到底部的距离表示。</li>
+</ul>
+</li>
+<li>大小：<ul>
+<li>眼睛、鼻子、嘴巴的宽度</li>
+</ul>
+</li>
+<li>脸型：<ul>
+<li>17个脸颊轮廓特征点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>训练同样采用Cycle Loss + Adversial Loss，额外加入角色Loss，通过比较一张脸与平均脸的差异（特征点的余弦相似度）</li>
+</ul>
+<p><img src="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/GTN_Pipeline.png" alt="GTN PipeLine" style="zoom:200%;"></p>
+<h5 id="生成组件"><a href="#生成组件" class="headerlink" title="生成组件"></a>生成组件</h5><ul>
+<li>首先缩放各面部部件并根据几何特征放置</li>
+<li>脸型部分用曲线链接生成的特征点（Piecewise Cubic Hermite Interpolating Polynomial (PCHIP)），该方法能够得到平滑曲线，维持面部形状</li>
+<li>对于耳朵区域，使用十个备选。</li>
 </ul>
 
       
@@ -656,11 +474,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2019 Stacked capsule autoencodersmd/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/">展开全文 >></a>
         </p>
       
 
@@ -678,74 +507,95 @@
 
 
   
-    <article id="post-2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2017 Attention Is All You Need" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/07/2017 Attention Is All You Need/">Attention Is All You Need</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/07/2017 Attention Is All You Need/" class="archive-article-date">
+  	<time datetime="2020-04-07T14:16:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Non-local Networks Meet Squeeze-Excitation Networks and Beyond<br>date: 2020-03-19 21:08:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h3 id="GCNet-Non-local-Networks-Meet-Squeeze-Excitation-Networks-and-Beyond"><a href="#GCNet-Non-local-Networks-Meet-Squeeze-Excitation-Networks-and-Beyond" class="headerlink" title="GCNet: Non-local Networks Meet Squeeze-Excitation Networks and Beyond"></a>GCNet: Non-local Networks Meet Squeeze-Excitation Networks and Beyond</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
-<li>发现在NL中，不同位置的query得到的反馈几乎是一样的</li>
-<li>本文提出基于query-independent formulation的简单网络，在保持NLNet精确度的同时大大减少了计算量。</li>
-<li>由于本文结构与SENet有着蕾丝的结构，因此本文将二者结合得到一个三步的全局上下文建模方法。</li>
+        <h3 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li><p>序列转换模型通常基于复杂的RNN或CNN，包含一个编码器和一个解码器。最表现最好的模型还在编解码器之间使用注意力机制链接。</p>
+</li>
+<li><p>他提出一个简单的网络结构<strong>Transformer</strong>，仅基于注意力机制。</p>
+</li>
 </ul>
 <h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
-<li>在NL中，对于每个位置query，模块输出该位置与所有位置的两两关系，产生注意力矩阵，再将各位置的特征加权求和累加在query位置上。</li>
-<li>但是在可视化分析中发现，不同位置query得到的注意力矩阵几乎是一样的，这表明学习到的只是与query无关的依赖关系。</li>
-<li>基于上述观察，本文简化了NL块，对所有位置使用一致的注意力矩阵，减少了大量的计算，同时没有精度损失。</li>
-<li>SENet与简化后的NL类似，区别在于聚合、变换、加强特征等方法的选用。将这些方法抽象化，得到一个三步框架。<ul>
-<li>context modeling module：聚合所有位置的特征得到全局特征。</li>
-<li>feature transform module：捕捉通道间的依赖关系。</li>
-<li>fusion module：合并全局信息与各位置的信息。</li>
+<li>序列化计算瓶颈：<ul>
+<li>循环神经网络将序列位置对齐到计算时的时间步，继承了序列的自然形式但使得并行计算无法进行。</li>
 </ul>
 </li>
+<li>注意力机制在许多任务模型中变得不可或缺，它使得不论二者在序列中距离远近都可以对其依赖关系进行建模。</li>
 </ul>
-<h4 id="Analysis-on-Non-local-Networks"><a href="#Analysis-on-Non-local-Networks" class="headerlink" title="Analysis on Non-local Networks"></a>Analysis on Non-local Networks</h4><p><img src="/2020/04/30/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/GCNet_A.png" alt="simplication"></p>
+<h4 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h4><ul>
+<li>大多数序列转换模型都采用编解码器结构，编码器将输入编号序列$x$转化为表示序列$z$，给定$z$，解码器生成输出序列$y$，生成时每一步的输入为上一时刻输出的编号。</li>
+<li>Transformer遵循类似的框架，编码器与解码器均是堆叠自注意力层、点乘和全连接层。</li>
+<li>编码器包含N=6个相同层，每层有两个子层，均采用参差连接紧接着一个Layer Normalization。<ul>
+<li>多头自注意力层。</li>
+<li>position-wise全连接前馈层。</li>
+</ul>
+</li>
+<li>解码器也包含N=6个相同层，在编码器两个子层的基础上添加了第三个子层，在编码器的输出上进行多头注意力机制。同时在自注意力层加上了mask，使得预测时仅能依赖前序已知的输出。</li>
+</ul>
+<p><img src="/2020/04/07/2017 Attention Is All You Need/transformer.png" alt="TransFormer"></p>
 <ul>
-<li>NL公式：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{z} \sum_{j=1}^{N_{p}} \frac{f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)}{\mathcal{C}(\mathbf{x})}\left(W_{v} \cdot \mathbf{x}<em>{j}\right)$，$\omega</em>{i j}=\frac{f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)}{\mathcal{C}(\mathbf{x})}$，Embedded Gaussian版本：$\omega_{i j}=\frac{\exp \left(\left\langle W_{q} \mathbf{x}<em>{i}, W</em>{k} \mathbf{x}<em>{j}\right\rangle\right)}{\sum</em>{m} \exp \left(\left\langle W_{q} \mathbf{x}<em>{i}, W</em>{k} \mathbf{x}<em>{m}\right\rangle\right)}$。最后一个卷积$W</em>{z}$加不加没有多大影响。</li>
-<li>NL可看作全局信息建模单元，将所有位置的信息加权君合到每个像素位置。复杂度是位置个数的四次方。</li>
-<li>对比输出特征矩阵之间的余弦距离可以发现不同位置得到的注意力矩阵相差不大。</li>
+<li>注意力可被看作是query与一系列key-val对匹配，得到输出。输出是val的加权和，每个val的权值通过query和对应key的相关程度计算得到。</li>
 </ul>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Simplify-NL-Block"><a href="#Simplify-NL-Block" class="headerlink" title="Simplify NL Block"></a>Simplify NL Block</h5><ul>
-<li>简化：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+\sum_{j=1}^{N_{p}} \frac{\exp \left(W_{k} \mathbf{x}<em>{j}\right)}{\sum</em>{m=1}^{N_{p}} \exp \left(W_{k} \mathbf{x}<em>{m}\right)}\left(W</em>{v} \cdot \mathbf{x}_{j}\right)$</li>
-<li>进一步简化降低复杂度，将$W_{v}$移到注意力模块后，最后的卷积复杂度从O（HWC^2）降低到O（CxC）：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{v} \sum_{j=1}^{N_{p}} \frac{\exp \left(W_{k} \mathbf{x}<em>{j}\right)}{\sum</em>{m=1}^{N_{p}} \exp \left(W_{k} \mathbf{x}<em>{m}\right)} \mathbf{x}</em>{j}$</li>
-<li>上述公式的第二项直接建模全局信息，并直接叠加到原本的各个像素位置。将原本的NL块替换为简化后的版本，精度没有太大损失。</li>
-</ul>
-<p><img src="/2020/04/30/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/GCNet_B.png" alt="Main Block"></p>
-<h5 id="Global-Context-Modeling-Framework"><a href="#Global-Context-Modeling-Framework" class="headerlink" title="Global Context Modeling Framework"></a>Global Context Modeling Framework</h5><ul>
-<li>最简化的NL Block可分为三步<ul>
-<li>global attention pooling：通过$W_{k}$和Softmax得到注意力权重，完成全局注意力池化</li>
-<li>feature transform： 1x1卷积$W_{v}$，建模通道间的依赖。</li>
-<li>feature aggregation：每个元素累加全局特征</li>
-</ul>
-</li>
-<li>公式化：$\mathbf{z}<em>{i}=F\left(\mathbf{x}</em>{i}, \delta\left(\sum_{j=1}^{N_{p}} \alpha_{j} \mathbf{x}_{j}\right)\right)$，对应上图a。</li>
-<li>SENet同样遵循上述流程。</li>
-</ul>
-<h5 id="Global-Context-Block"><a href="#Global-Context-Block" class="headerlink" title="Global Context Block"></a>Global Context Block</h5><ul>
-<li>结合NL的长距离依赖和SE的轻量级优势</li>
-<li>将SNL中的1x1卷积$W_{v}$替换为SE中的bottleneck减少计算量（CxC -&gt; 2 x C x C/r）RELU前添加layer norm。</li>
-<li>另一个角度相当于将SE中的全局池化换成SNL的1x1卷积+softmax。</li>
-<li><p>公式：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{v 2} \operatorname{Re} \mathrm{L} \mathrm{U}\left(\mathrm{LN}\left(W_{v 1} \sum_{j=1}^{N_{p}} \frac{e^{W_{k} \mathbf{x}<em>{j}}}{\sum</em>{m=1}^{N_{p}} e^{W_{k} \mathbf{x}<em>{m}}} \mathbf{x}</em>{j}\right)\right)$</p>
-</li>
-<li><p>三步：</p>
+<p><img src="/2020/04/07/2017 Attention Is All You Need/Multi-Head.png" alt="MultiHead"></p>
 <ul>
-<li>全局注意力池化</li>
-<li>bottleneck捕捉通道间依赖</li>
-<li>元素级加和聚合</li>
+<li>Scaled Dot-Product Attetnion<ul>
+<li>$Attention (Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V$</li>
+<li>Q,K的维度为 $d_k$，V的维度为$d_v$</li>
+<li>注意力两种常见形式：Additive Attention和dot-product。后者计算更亏且空间更高效（由于高效的矩阵乘法），Additive Attention是通过有一个隐层的前馈网络计算相似度的。二者在$d_k$较小时表现相当，但若$d_k$变大且没有scale（保证方差为1，维持标准正态分布）项时，前者表现更好。</li>
 </ul>
 </li>
-<li>GC-ResNet-50增加了9.89%的参数，0.26%的浮点运算。</li>
+<li>Multi-Head Attention<ul>
+<li>实验发现使用多个不同线性层分别映射QKV到各自子空间带来了好的效果。在各自子空间计算输出后再连接并经过线性映射得到最终输出。</li>
+<li>$\operatorname{MultiHead}(Q, K, V) { Concat(head }<em>{1}, \ldots, \text { head }</em>{\mathbf{h}}) W^{O}$</li>
+<li>$head <em>{\mathbf{i}}Attention(Q W</em>{i}^{Q}, K W_{i}^{K}, V W_{i}^{V})$</li>
+<li>$W_{i}^{Q} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{K} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{V} \in \mathbb{R}^{d_{\text {model }} \times d_{v}}$ and $W^{O} \in \mathbb{R}^{h d_{u} \times d_{\text {matel }}}$</li>
+<li>文章中h=8，$d_k=d_v=d_{model}/h=64$，随着维度降低，总体计算复杂度与单头类似、</li>
 </ul>
-<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
-<li>GC Block插入位置不敏感</li>
-<li>在所有阶段使用好过单一阶段</li>
-<li>池化-聚合的策略：att+add &gt; avg+add &gt; att+scale &gt; avg+scale (SE)</li>
-<li></li>
+</li>
+<li>Transformer中使用了三种形式的注意力<ul>
+<li>Encoder-Decoder Attention：Query来自前一层的解码器，key和value来自编码器的输出，使得解码器的每个位置都可以注意到输入序列的每个位置。类似传统编解码器结构。</li>
+<li>编码器自注意力：qkv均为上一层的编码器输出，编码器的每个位置都可以关注到上一层编码器输出的所有位置。</li>
+<li>解码器自注意力：类似编码器中的自注意力，但是使用mask阻断由后往前不合法的连接。</li>
 </ul>
+</li>
+<li><p>另外一个子层为Position-wise前馈层。包含两个线性层以及一个ReLU。</p>
+</li>
+<li><p>使用embedding得到每个输入token的$d_{model}$向量形式，同时使用线性层和softmax将解码器输出转换为下一个单词的预测概率。</p>
+</li>
+<li>Positional Encoding<ul>
+<li>由于没有循环和卷积操作，为了让模型感知输入序列的顺序，必须置入token之间的相关位置或绝对位置信息。</li>
+<li>Positional Encoding和输入有着相同的维度，直接加和。</li>
+<li>使用不同频率的正余弦函数构造出各位置的独立编码。</li>
+<li>使正余弦函数的原因：作者假设模型能够简单地学到如何attend by relative positions，由于对于任何offset k，在正余弦函数中， $PE_{pos+k}$都能通过$PE_{pos}$的线性变换表示。</li>
+<li>由于后续注意力前都使用线性层映射特征到低维形式，输入特征都被重组，因此相加和拼接差别应该不大，直接累加起到的作用可能是神经网络在训练中识别得出的。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Why-Self-Attention"><a href="#Why-Self-Attention" class="headerlink" title="Why Self-Attention"></a>Why Self-Attention</h4><ul>
+<li>单层计算复杂度</li>
+<li>可并行计算的计算量</li>
+<li>最长距离依赖的计算路径长度（对学习长期依赖十分关键），距离越短越容易学习关系（在网络中传输的次数越少）</li>
+<li>可解释性</li>
+</ul>
+<p><img src="/2020/04/07/2017 Attention Is All You Need/Self-Attention VS.png" alt="Versus"></p>
 
       
 
@@ -754,11 +604,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/07/2017 Attention Is All You Need/">展开全文 >></a>
         </p>
       
 
@@ -779,13 +640,24 @@
     <article id="post-2018 Non-local Neural Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/29/2018 Non-local Neural Networks/">Non-local Neural Networks</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/29/2018 Non-local Neural Networks/" class="archive-article-date">
+  	<time datetime="2020-03-29T11:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Non-local Neural Networks<br>date: 2020-03-29 19:20:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h3 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+        <h3 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
 <li>卷积和递归操作都是每次处理局部周边的信息。</li>
 <li>本文受Non-local means启发，提出一种Non-local Block用于长距离依赖，在Non-local中，每个位置的反馈为所有位置特征的加权求和，该block能够插入任意的神经网络中。</li>
 </ul>
@@ -844,7 +716,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2020/04/30/2018 Non-local Neural Networks/Non-local_A.png" alt="Spacetime example"></p>
+<p><img src="/2020/03/29/2018 Non-local Neural Networks/Non-local_A.png" alt="Spacetime example"></p>
 <h4 id="Non-local-Neural-Networks-1"><a href="#Non-local-Neural-Networks-1" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h4><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><p>$$\mathbf{y}<em>{i}=\frac{1}{\mathcal{C}(\mathbf{x})} \sum</em>{\forall j} f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right) g\left(\mathbf{x}_{j}\right)$$</p>
 <p>其中，i为输出位置坐标，f为相似度计算函数，g计算每个输入信号的特征表示。</p>
 <ul>
@@ -860,7 +732,7 @@
 <li>f还可以定义为点积：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=\theta\left(\mathbf{x}<em>{i}\right)^{T} \phi\left(\mathbf{x}</em>{j}\right)$，同时规格化因子变为：$\mathcal{C}(\mathbf{x})=N$，N为x中位置的数量。点积版本与高斯版本的区别在于是否使用softmax。</li>
 <li>连接版本：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=\operatorname{ReLU}\left(\mathbf{w}<em>{f}^{T}\left[\theta\left(\mathbf{x}</em>{i}\right), \phi\left(\mathbf{x}_{j}\right)\right]\right)$，规格化因子与点积版本相同。</li>
 </ul>
-<p><img src="/2020/04/30/2018 Non-local Neural Networks/non-local_B.png" alt="Non-local Block"></p>
+<p><img src="/2020/03/29/2018 Non-local Neural Networks/non-local_B.png" alt="Non-local Block"></p>
 <h5 id="Non-local-Block"><a href="#Non-local-Block" class="headerlink" title="Non-local Block"></a>Non-local Block</h5><ul>
 <li>可定义为：$\mathbf{z}<em>{i}=W</em>{z} \mathbf{y}<em>{i}+\mathbf{x}</em>{i}$，$+\mathbf{x}<em>{i}$为残差连接，加入残差连接并将$W</em>{z}$初始化为零使得Non-local block可以插入任何预训练模型中，且不影响初始形态的动作。</li>
 <li>在计算上，pair间的计算可通过矩阵相乘完成，类似卷积层的计算量。</li>
@@ -882,11 +754,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2018 Non-local Neural Networks/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/29/2018 Non-local Neural Networks/">展开全文 >></a>
         </p>
       
 
@@ -907,13 +790,24 @@
     <article id="post-2017 Squeeze-and-Excitation Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/29/2017 Squeeze-and-Excitation Networks/">Squeeze-and-Excitation Networks</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/29/2017 Squeeze-and-Excitation Networks/" class="archive-article-date">
+  	<time datetime="2020-03-29T10:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Squeeze-and-Excitation Networks<br>date: 2020-03-29 18:20:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h1 id="Squeeze-and-Excitation-Networks"><a href="#Squeeze-and-Excitation-Networks" class="headerlink" title="Squeeze-and-Excitation Networks"></a>Squeeze-and-Excitation Networks</h1><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+        <h1 id="Squeeze-and-Excitation-Networks"><a href="#Squeeze-and-Excitation-Networks" class="headerlink" title="Squeeze-and-Excitation Networks"></a>Squeeze-and-Excitation Networks</h1><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
 <li>卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示</li>
 <li>本文提出的<strong>Squeeze-and-Excitation（SE） Block</strong>通过建模通道间的相互依赖关系，重新刻画通道维度上的特征。</li>
 </ul>
@@ -929,7 +823,7 @@
 </li>
 <li>结构简单，可直接替换成熟网络中的block。</li>
 </ul>
-<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_Block.png" alt="SE Block"></p>
+<p><img src="/2020/03/29/2017 Squeeze-and-Excitation Networks/SE_Block.png" alt="SE Block"></p>
 <h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><ul>
 <li>此前跨通道的操作一般为1x1卷积，大多集中于降低模型计算复杂度。本文认为在通道间使用全局信息施加动态非线性依赖能够加快学习过程，并提升网络的特征表示能力。</li>
 </ul>
@@ -958,7 +852,7 @@
 <li>$\widetilde{\mathbf{x}}<em>{c}=\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)=s_{c} \mathbf{u}<em>{c}$，$\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)$为通道维度乘法。</li>
 <li>Excitation操作将输入的通道描述映射为一系列的通道权重。可视为通道上的自注意力机制，但不局限于感受野的大小。</li>
 </ul>
-<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_ResNet.png" alt="SE_ResNet"></p>
+<p><img src="/2020/03/29/2017 Squeeze-and-Excitation Networks/SE_ResNet.png" alt="SE_ResNet"></p>
 <h4 id="模型与计算复杂度"><a href="#模型与计算复杂度" class="headerlink" title="模型与计算复杂度"></a>模型与计算复杂度</h4><ul>
 <li>相比ResNet，SE-ResNet增加了0.26%的浮点运算次数（3.87GFLOPs），得到的精度接近ResNet-101（7.58GFLOPs）。</li>
 <li>增加的参数数量为两个fc的参数。</li>
@@ -982,11 +876,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2017 Squeeze-and-Excitation Networks/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/29/2017 Squeeze-and-Excitation Networks/">展开全文 >></a>
         </p>
       
 
@@ -1004,84 +909,85 @@
 
 
   
-    <article id="post-2017 Attention Is All You Need" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/">Non-local Networks Meet Squeeze-Excitation Networks and Beyond</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/" class="archive-article-date">
+  	<time datetime="2020-03-19T13:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Attention Is All You Need<br>date: 2020-04-07 22:16:48<br>tags:</p>
-<ul>
-<li>NLP</li>
-</ul>
-<h3 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
-<li><p>序列转换模型通常基于复杂的RNN或CNN，包含一个编码器和一个解码器。最表现最好的模型还在编解码器之间使用注意力机制链接。</p>
-</li>
-<li><p>他提出一个简单的网络结构<strong>Transformer</strong>，仅基于注意力机制。</p>
-</li>
+        <h3 id="GCNet-Non-local-Networks-Meet-Squeeze-Excitation-Networks-and-Beyond"><a href="#GCNet-Non-local-Networks-Meet-Squeeze-Excitation-Networks-and-Beyond" class="headerlink" title="GCNet: Non-local Networks Meet Squeeze-Excitation Networks and Beyond"></a>GCNet: Non-local Networks Meet Squeeze-Excitation Networks and Beyond</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li>发现在NL中，不同位置的query得到的反馈几乎是一样的</li>
+<li>本文提出基于query-independent formulation的简单网络，在保持NLNet精确度的同时大大减少了计算量。</li>
+<li>由于本文结构与SENet有着蕾丝的结构，因此本文将二者结合得到一个三步的全局上下文建模方法。</li>
 </ul>
 <h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
-<li>序列化计算瓶颈：<ul>
-<li>循环神经网络将序列位置对齐到计算时的时间步，继承了序列的自然形式但使得并行计算无法进行。</li>
+<li>在NL中，对于每个位置query，模块输出该位置与所有位置的两两关系，产生注意力矩阵，再将各位置的特征加权求和累加在query位置上。</li>
+<li>但是在可视化分析中发现，不同位置query得到的注意力矩阵几乎是一样的，这表明学习到的只是与query无关的依赖关系。</li>
+<li>基于上述观察，本文简化了NL块，对所有位置使用一致的注意力矩阵，减少了大量的计算，同时没有精度损失。</li>
+<li>SENet与简化后的NL类似，区别在于聚合、变换、加强特征等方法的选用。将这些方法抽象化，得到一个三步框架。<ul>
+<li>context modeling module：聚合所有位置的特征得到全局特征。</li>
+<li>feature transform module：捕捉通道间的依赖关系。</li>
+<li>fusion module：合并全局信息与各位置的信息。</li>
 </ul>
 </li>
-<li>注意力机制在许多任务模型中变得不可或缺，它使得不论二者在序列中距离远近都可以对其依赖关系进行建模。</li>
 </ul>
-<h4 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h4><ul>
-<li>大多数序列转换模型都采用编解码器结构，编码器将输入编号序列$x$转化为表示序列$z$，给定$z$，解码器生成输出序列$y$，生成时每一步的输入为上一时刻输出的编号。</li>
-<li>Transformer遵循类似的框架，编码器与解码器均是堆叠自注意力层、点乘和全连接层。</li>
-<li>编码器包含N=6个相同层，每层有两个子层，均采用参差连接紧接着一个Layer Normalization。<ul>
-<li>多头自注意力层。</li>
-<li>position-wise全连接前馈层。</li>
-</ul>
-</li>
-<li>解码器也包含N=6个相同层，在编码器两个子层的基础上添加了第三个子层，在编码器的输出上进行多头注意力机制。同时在自注意力层加上了mask，使得预测时仅能依赖前序已知的输出。</li>
-</ul>
-<p><img src="/2020/04/30/2017 Attention Is All You Need/transformer.png" alt="TransFormer"></p>
+<h4 id="Analysis-on-Non-local-Networks"><a href="#Analysis-on-Non-local-Networks" class="headerlink" title="Analysis on Non-local Networks"></a>Analysis on Non-local Networks</h4><p><img src="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/GCNet_A.png" alt="simplication"></p>
 <ul>
-<li>注意力可被看作是query与一系列key-val对匹配，得到输出。输出是val的加权和，每个val的权值通过query和对应key的相关程度计算得到。</li>
+<li>NL公式：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{z} \sum_{j=1}^{N_{p}} \frac{f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)}{\mathcal{C}(\mathbf{x})}\left(W_{v} \cdot \mathbf{x}<em>{j}\right)$，$\omega</em>{i j}=\frac{f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)}{\mathcal{C}(\mathbf{x})}$，Embedded Gaussian版本：$\omega_{i j}=\frac{\exp \left(\left\langle W_{q} \mathbf{x}<em>{i}, W</em>{k} \mathbf{x}<em>{j}\right\rangle\right)}{\sum</em>{m} \exp \left(\left\langle W_{q} \mathbf{x}<em>{i}, W</em>{k} \mathbf{x}<em>{m}\right\rangle\right)}$。最后一个卷积$W</em>{z}$加不加没有多大影响。</li>
+<li>NL可看作全局信息建模单元，将所有位置的信息加权君合到每个像素位置。复杂度是位置个数的四次方。</li>
+<li>对比输出特征矩阵之间的余弦距离可以发现不同位置得到的注意力矩阵相差不大。</li>
 </ul>
-<p><img src="/2020/04/30/2017 Attention Is All You Need/Multi-Head.png" alt="MultiHead"></p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Simplify-NL-Block"><a href="#Simplify-NL-Block" class="headerlink" title="Simplify NL Block"></a>Simplify NL Block</h5><ul>
+<li>简化：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+\sum_{j=1}^{N_{p}} \frac{\exp \left(W_{k} \mathbf{x}<em>{j}\right)}{\sum</em>{m=1}^{N_{p}} \exp \left(W_{k} \mathbf{x}<em>{m}\right)}\left(W</em>{v} \cdot \mathbf{x}_{j}\right)$</li>
+<li>进一步简化降低复杂度，将$W_{v}$移到注意力模块后，最后的卷积复杂度从O（HWC^2）降低到O（CxC）：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{v} \sum_{j=1}^{N_{p}} \frac{\exp \left(W_{k} \mathbf{x}<em>{j}\right)}{\sum</em>{m=1}^{N_{p}} \exp \left(W_{k} \mathbf{x}<em>{m}\right)} \mathbf{x}</em>{j}$</li>
+<li>上述公式的第二项直接建模全局信息，并直接叠加到原本的各个像素位置。将原本的NL块替换为简化后的版本，精度没有太大损失。</li>
+</ul>
+<p><img src="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/GCNet_B.png" alt="Main Block"></p>
+<h5 id="Global-Context-Modeling-Framework"><a href="#Global-Context-Modeling-Framework" class="headerlink" title="Global Context Modeling Framework"></a>Global Context Modeling Framework</h5><ul>
+<li>最简化的NL Block可分为三步<ul>
+<li>global attention pooling：通过$W_{k}$和Softmax得到注意力权重，完成全局注意力池化</li>
+<li>feature transform： 1x1卷积$W_{v}$，建模通道间的依赖。</li>
+<li>feature aggregation：每个元素累加全局特征</li>
+</ul>
+</li>
+<li>公式化：$\mathbf{z}<em>{i}=F\left(\mathbf{x}</em>{i}, \delta\left(\sum_{j=1}^{N_{p}} \alpha_{j} \mathbf{x}_{j}\right)\right)$，对应上图a。</li>
+<li>SENet同样遵循上述流程。</li>
+</ul>
+<h5 id="Global-Context-Block"><a href="#Global-Context-Block" class="headerlink" title="Global Context Block"></a>Global Context Block</h5><ul>
+<li>结合NL的长距离依赖和SE的轻量级优势</li>
+<li>将SNL中的1x1卷积$W_{v}$替换为SE中的bottleneck减少计算量（CxC -&gt; 2 x C x C/r）RELU前添加layer norm。</li>
+<li>另一个角度相当于将SE中的全局池化换成SNL的1x1卷积+softmax。</li>
+<li><p>公式：$\mathbf{z}<em>{i}=\mathbf{x}</em>{i}+W_{v 2} \operatorname{Re} \mathrm{L} \mathrm{U}\left(\mathrm{LN}\left(W_{v 1} \sum_{j=1}^{N_{p}} \frac{e^{W_{k} \mathbf{x}<em>{j}}}{\sum</em>{m=1}^{N_{p}} e^{W_{k} \mathbf{x}<em>{m}}} \mathbf{x}</em>{j}\right)\right)$</p>
+</li>
+<li><p>三步：</p>
 <ul>
-<li>Scaled Dot-Product Attetnion<ul>
-<li>$Attention (Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V$</li>
-<li>Q,K的维度为 $d_k$，V的维度为$d_v$</li>
-<li>注意力两种常见形式：Additive Attention和dot-product。后者计算更亏且空间更高效（由于高效的矩阵乘法），Additive Attention是通过有一个隐层的前馈网络计算相似度的。二者在$d_k$较小时表现相当，但若$d_k$变大且没有scale（保证方差为1，维持标准正态分布）项时，前者表现更好。</li>
+<li>全局注意力池化</li>
+<li>bottleneck捕捉通道间依赖</li>
+<li>元素级加和聚合</li>
 </ul>
 </li>
-<li>Multi-Head Attention<ul>
-<li>实验发现使用多个不同线性层分别映射QKV到各自子空间带来了好的效果。在各自子空间计算输出后再连接并经过线性映射得到最终输出。</li>
-<li>$\operatorname{MultiHead}(Q, K, V) { Concat(head }<em>{1}, \ldots, \text { head }</em>{\mathbf{h}}) W^{O}$</li>
-<li>$head <em>{\mathbf{i}}Attention(Q W</em>{i}^{Q}, K W_{i}^{K}, V W_{i}^{V})$</li>
-<li>$W_{i}^{Q} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{K} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{V} \in \mathbb{R}^{d_{\text {model }} \times d_{v}}$ and $W^{O} \in \mathbb{R}^{h d_{u} \times d_{\text {matel }}}$</li>
-<li>文章中h=8，$d_k=d_v=d_{model}/h=64$，随着维度降低，总体计算复杂度与单头类似、</li>
+<li>GC-ResNet-50增加了9.89%的参数，0.26%的浮点运算。</li>
 </ul>
-</li>
-<li>Transformer中使用了三种形式的注意力<ul>
-<li>Encoder-Decoder Attention：Query来自前一层的解码器，key和value来自编码器的输出，使得解码器的每个位置都可以注意到输入序列的每个位置。类似传统编解码器结构。</li>
-<li>编码器自注意力：qkv均为上一层的编码器输出，编码器的每个位置都可以关注到上一层编码器输出的所有位置。</li>
-<li>解码器自注意力：类似编码器中的自注意力，但是使用mask阻断由后往前不合法的连接。</li>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
+<li>GC Block插入位置不敏感</li>
+<li>在所有阶段使用好过单一阶段</li>
+<li>池化-聚合的策略：att+add &gt; avg+add &gt; att+scale &gt; avg+scale (SE)</li>
+<li></li>
 </ul>
-</li>
-<li><p>另外一个子层为Position-wise前馈层。包含两个线性层以及一个ReLU。</p>
-</li>
-<li><p>使用embedding得到每个输入token的$d_{model}$向量形式，同时使用线性层和softmax将解码器输出转换为下一个单词的预测概率。</p>
-</li>
-<li>Positional Encoding<ul>
-<li>由于没有循环和卷积操作，为了让模型感知输入序列的顺序，必须置入token之间的相关位置或绝对位置信息。</li>
-<li>Positional Encoding和输入有着相同的维度，直接加和。</li>
-<li>使用不同频率的正余弦函数构造出各位置的独立编码。</li>
-<li>使正余弦函数的原因：作者假设模型能够简单地学到如何attend by relative positions，由于对于任何offset k，在正余弦函数中， $PE_{pos+k}$都能通过$PE_{pos}$的线性变换表示。</li>
-<li>由于后续注意力前都使用线性层映射特征到低维形式，输入特征都被重组，因此相加和拼接差别应该不大，直接累加起到的作用可能是神经网络在训练中识别得出的。</li>
-</ul>
-</li>
-</ul>
-<h4 id="Why-Self-Attention"><a href="#Why-Self-Attention" class="headerlink" title="Why Self-Attention"></a>Why Self-Attention</h4><ul>
-<li>单层计算复杂度</li>
-<li>可并行计算的计算量</li>
-<li>最长距离依赖的计算路径长度（对学习长期依赖十分关键），距离越短越容易学习关系（在网络中传输的次数越少）</li>
-<li>可解释性</li>
-</ul>
-<p><img src="/2020/04/30/2017 Attention Is All You Need/Self-Attention VS.png" alt="Versus"></p>
 
       
 
@@ -1090,11 +996,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2017 Attention Is All You Need/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/">展开全文 >></a>
         </p>
       
 
@@ -1115,11 +1032,24 @@
     <article id="post-2017 Aggregated Residual Transformations for Deep Neural Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/">Aggregated Residual Transformations for Deep Neural Networks</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/" class="archive-article-date">
+  	<time datetime="2020-03-15T13:14:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Aggregated Residual Transformations for Deep Neural Networks<br>date: 2020-03-15 21:14:48<br>tags:</p>
-<pre><code>- CV
-</code></pre><h3 id="Aggregated-Residual-Transformations-for-Deep-Neural-Networks"><a href="#Aggregated-Residual-Transformations-for-Deep-Neural-Networks" class="headerlink" title="Aggregated Residual Transformations for Deep Neural Networks"></a>Aggregated Residual Transformations for Deep Neural Networks</h3><h4 id="Abstract-amp-Introduction"><a href="#Abstract-amp-Introduction" class="headerlink" title="Abstract &amp; Introduction"></a>Abstract &amp; Introduction</h4><ul>
+        <h3 id="Aggregated-Residual-Transformations-for-Deep-Neural-Networks"><a href="#Aggregated-Residual-Transformations-for-Deep-Neural-Networks" class="headerlink" title="Aggregated Residual Transformations for Deep Neural Networks"></a>Aggregated Residual Transformations for Deep Neural Networks</h3><h4 id="Abstract-amp-Introduction"><a href="#Abstract-amp-Introduction" class="headerlink" title="Abstract &amp; Introduction"></a>Abstract &amp; Introduction</h4><ul>
 <li>VGG模型展示一种简单高效的网络搭建策略：堆叠相同构造的block。ResNet继承了这一策略，减少了超参的可选度，使得网络深度成为一个需要重要考量的维度。作者认为这种简单的策略同时减少了过拟合数据集的风险。</li>
 <li>Inception系列的网络通过精细设计网络拓扑，使得其能在低复杂度的情况下达到很高的准确率。在Inception模块中，一个核心的策略为<strong>split-transform-merge</strong>，输入先由1x1卷积分成多个低通道的嵌入，再分别经过一组变换（不同卷积核大小的卷积）后，连接得到结果。正是由这种策略达到高效且低计算复杂度。但是，精细设计的Inception模块中有很多超参（卷积核大小、个数等）需要设定，不易迁移到其他数据集。</li>
 <li>本文贡献：<ul>
@@ -1129,8 +1059,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_A.png" alt="ResNext Compared to ResNet"></p>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h5><p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_B.png" alt="ResNext Blocks"></p>
+<p><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_A.png" alt="ResNext Compared to ResNet"></p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h5><p><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_B.png" alt="ResNext Blocks"></p>
 <ul>
 <li><p>ResNeXt是通过堆叠残差块构成的。</p>
 </li>
@@ -1143,7 +1073,7 @@
 </ul>
 <h5 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h5><h6 id="Simple-Neuron"><a href="#Simple-Neuron" class="headerlink" title="Simple Neuron"></a>Simple Neuron</h6><p>$$\sum_{i=1}^{D} w_{i} x_{i}$$</p>
 <h6 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h6><p>$$\mathbf{y}=\mathbf{x}+\sum_{i=1}^{C} \mathcal{T}_{i}(\mathbf{x})$$</p>
-<h5 id="Equivalent"><a href="#Equivalent" class="headerlink" title="Equivalent"></a>Equivalent</h5><p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_C.png" alt="Equivalent"><br><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_D.png" alt="Proof"></p>
+<h5 id="Equivalent"><a href="#Equivalent" class="headerlink" title="Equivalent"></a>Equivalent</h5><p><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_C.png" alt="Equivalent"><br><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_D.png" alt="Proof"></p>
 <h5 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h5><p>ResNeXt-50 (32×4d) 输入输出通道数为256，32x4d 指的是 32组3x3卷积核，每个卷积核的通道数为4，</p>
 <h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><ul>
 <li>相比于ResNet-50，32×4d ResNeXt-50的错误率降低了1.7%，同时随着Cardinalty从1增大到32，其错误率逐渐降低。且32×4d ResNeXt-50相比ResNet，训练错误了也低了很多，因此该模型的准确度提升并不是来源于正则化，而是在特征表达上得到了提升。</li>
@@ -1157,11 +1087,281 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/">Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/" class="archive-article-date">
+  	<time datetime="2020-03-14T11:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Attention-Convolutional-Binary-Neural-Tree-for-Fine-Grained-Visual-Categorization"><a href="#Attention-Convolutional-Binary-Neural-Tree-for-Fine-Grained-Visual-Categorization" class="headerlink" title="Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization"></a>Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</h3><h4 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h4><ul>
+<li>在树结构的边上结合卷积操作，使用路由方法定义叶子节点到根节点的计算路径，树的不同分支关注不同的局部区域，最终的预测结果为叶子节点的预测之和。</li>
+<li>卷积操作用于捕捉目标的特征表示，树结构使得网络能够以由粗到细的层级模式进行特征学习。</li>
+<li>使用attention transformer模块帮助网络捕捉具有高辨别力的区域。</li>
+</ul>
+<h4 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h4><ul>
+<li>（Peng 2017）Object-part Attention model,  证实使用多个深度模型关注目标的不同区域是有效的</li>
+<li>（Tanno 2019）类似本文的树结构方法，其中树结构随着学习进程推进增长。</li>
+</ul>
+<h4 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h4><ul>
+<li><p>Deep supervised methods</p>
+<ul>
+<li>（zhang 2014）双detector，在pose-normalized的特征表示上预测。</li>
+<li>（Llu 2016）fully convolutional attention networks, glimpses local discriminative regions to adapt to different fine-grained domains</li>
+<li>（Huang 2016）part-stacked CNN architecture，对目标各part的细微差别建模。</li>
+<li>这类方法依赖大量标注，限制了应用范围。</li>
+</ul>
+</li>
+<li><p>Deep weakly supervised methods</p>
+<ul>
+<li>（zheng 2017）Multi-attention CNN，part生成与特征学习互相促进。</li>
+<li>（Fu 2017）recurrent attention module，在不同尺寸上递归学习高辨别度区域注意力和区域特征表示并互相促进。</li>
+<li>（Sun 2018）使用多个目标part的注意力区域特征对不同输入图片的多个目标part进行约束（regulate）。</li>
+<li>上述方法近将注意力进制与单网络结合。</li>
+</ul>
+</li>
+<li>决策树<ul>
+<li>解释性优势</li>
+<li>（xiao 2017）神经决策树模型用于分类任务</li>
+<li>（Frosst 2017）将深度神经决策树模型用于理解一个特定case的决策机制</li>
+<li>本文结合决策树与神经网络同时实现分支选择和特征学习</li>
+</ul>
+</li>
+<li>注意力机制<ul>
+<li>级联注意力</li>
+<li>通道注意力</li>
+<li>结合区域注意力与特征矩阵注意力</li>
+<li>本文在树结构的分支上应用注意力</li>
+</ul>
+</li>
+</ul>
+<h4 id="Attention-Convolution-Binary-Neural-Tree-ACNet"><a href="#Attention-Convolution-Binary-Neural-Tree-ACNet" class="headerlink" title="Attention Convolution Binary Neural Tree ( ACNet )"></a>Attention Convolution Binary Neural Tree ( ACNet )</h4><p>ACNet表示为二元组$(\mathbb{T}, \mathbb{O})$，$\mathbb{T}$为树的拓扑，$\mathbb{O}$为树边上的操作集合。$\mathbb{T}={\mathcal{V}, \mathcal{E}},$ $\mathcal{V}=\left{v_{1}, \cdots, v_{n}\right}$ 为节点集合，$n$为节点个数， $\mathcal{E}=\left{e_{1}, \cdots, e_{k}\right}$为边的集合，由于树为二叉完全树，有$n=2^{h}-1$，$k=2^{h}-2$。树中的每个节点由路由模块产生，决定样本的传输分发路径。attention transform即边上的操作。</p>
+<p><img src="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/ACNet.png" alt="ACNet Architecture"></p>
+<ul>
+<li>Backbone Network<ul>
+<li>由于细粒度分类中的高辨别度区域通常是局部的，因此需要小感受野（小步长、小池化核），因此使用VGG-16（Conv1_1 to Conv4_3），预训练于ILSVRC CLS-LOC数据集。 </li>
+<li>输入图像尺寸修改为448 x 448（原本224 x 224）</li>
+<li>可使用其他网络作为主干</li>
+</ul>
+</li>
+<li>Branch Routing<ul>
+<li>用于确定样本接下来分发至左子树还是右子树</li>
+<li>1x1卷积 -&gt; global context block（Non-local与Squeeze-Excitation的融合）-&gt; 全局平均池化 -&gt;元素平方根、L2正则化 -&gt; 全连接层、Sigmoid得到[0,1]值，对应左子树及右子树的概率。</li>
+</ul>
+</li>
+<li>Attention Transformer Module<ul>
+<li><img src="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/Attention_Transformer.png" alt="Attention Transformer"></li>
+<li>在3x3卷积后插入注意力模块（如上图所示），产生通道注意力矩阵。</li>
+</ul>
+</li>
+<li>Label Prediction Module<ul>
+<li>由BN，1x1卷积、最大池化、平方根、L2政治则、全连接层组成。</li>
+<li>最终预测$\mathcal{C}\left(x_{j}\right)=\sum_{i=1}^{2^{h-1}} \mathcal{P}<em>{i}\left(x</em>{j}\right) r_{i}^{h}\left(x_{j}\right)$，其中$\mathcal{P}<em>{i}$为第i个叶子节点的分类概率，$r</em>{i}^{k}\left(x_{j}\right)$为由根节点分发到第k层第i个节点的概率。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Trainning"><a href="#Trainning" class="headerlink" title="Trainning"></a>Trainning</h4><ul>
+<li><p>数据增强</p>
+<ul>
+<li>crop, flip</li>
+<li>短边缩放到512像素</li>
+</ul>
+</li>
+<li>Loss Function<ul>
+<li>$\mathcal{L}=L\left(\mathcal{C}\left(x_{j}\right), y^{<em>}\right)+\sum_{i=1}^{2^{n-1}} L\left(\mathcal{P}<em>{i}\left(x</em>{j}\right), y^{</em>}\right)$</li>
+<li>分为所有叶子节点的预测loss之和，最终预测loss两部分</li>
+</ul>
+</li>
+<li>优化<ul>
+<li>哈维初始化</li>
+<li>前60轮fix VGG参数，之后finetune</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2019 Stacked capsule autoencodersmd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/2019 Stacked capsule autoencodersmd/">Stacked capsule autoencoders</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/10/2019 Stacked capsule autoencodersmd/" class="archive-article-date">
+  	<time datetime="2020-03-10T09:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Stacked-capsule-autoencoders"><a href="#Stacked-capsule-autoencoders" class="headerlink" title="Stacked capsule autoencoders"></a>Stacked capsule autoencoders</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li><p><strong>物体是由一系列几何部分组成的</strong></p>
+</li>
+<li><p>提出了无监督胶囊自编码器（<strong>SCAE</strong>），利用物体各部分（template）之间的几何关系对物体进行推理</p>
+</li>
+<li><p>这些几何关系与视角无关，因此提出的模型对<strong>视角变换</strong>具有鲁棒性。</p>
+</li>
+<li><p><strong>SCEA</strong>由两个阶段组成</p>
+<ul>
+<li>第一阶段：Part CAE直接从图像中预测各part template的presence与pose，并尝试通过arrange这些template以重构图像。</li>
+<li>第二阶段：Object CAE预测一些物体胶囊的参数。首先组织此前发现part和pose得到一系列物体，再重构part和pose，其中inference是摊还的，且由现成的编码器实现。</li>
+</ul>
+</li>
+<li><p>与此前的胶囊网络不同</p>
+<blockquote>
+<p>object capsule presences are highly informative of the object class，which leads to state-of-the-art results for unsupervised classification on SVHN (55%) and MNIST (98.7%).</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li><p>CNN效果好过无权重分享网络的原因在于CNN的归纳偏倚（Inductive Bias）：如果一个局部特征在某个图像区域中有效，那么该特征在其他位置也很可能有效。</p>
+</li>
+<li><p>当CNN试图探索视角变换的影响时，CNN则通过将特征复制成不同尺寸、方向、角度等，但此举很快导致冗长的高维的特征矩阵。</p>
+</li>
+<li><blockquote>
+<p>An alternative to replicating features across the non-translational degrees of freedom is to <strong>explicitly learn transformations between the natural coordinate frame of a whole object and the natural coordinate frames of each of its parts. </strong></p>
+<p>学习整体的坐标系和每个其各部分的坐标系之间的转换关系。计算机图形学就是就是以这样一种Object-&gt;part 坐标变换规则以获得具有视角不变性的几何体。人类的认知也是基于坐标系的。</p>
+</blockquote>
+</li>
+<li><p>用神经网络学习整体层面的变换是可行的，但是每种变换的表示都不尽想通。而整体与part之间的关系却是与视角无关的，近似于常数可以简单地用学习到的参数表示。</p>
+</li>
+<li><blockquote>
+<p>With this representation, the pose of a single object is represented by its relationship to the viewer. Consequently, representing a single object does not necessitate replicating neural activations across space, unlike in CNNs. It is only processing two (or more) different instances of the same type of object in parallel that requires spatial replicas of both model parameters and neural activations.</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Every object capsule contributes components to each of these mixtures by multiplying its pose—the object-viewer-relationship (OV)—by the relevant object-part-relationship (OP).</p>
+</blockquote>
+<p><img src="/2020/03/10/2019 Stacked capsule autoencodersmd/SCAE.png" alt="SCAE"></p>
+</li>
+</ul>
+<h4 id="SCAE"><a href="#SCAE" class="headerlink" title="SCAE"></a>SCAE</h4><h5 id="Constellation-AutoEncoder-CCAE"><a href="#Constellation-AutoEncoder-CCAE" class="headerlink" title="Constellation AutoEncoder (CCAE)"></a>Constellation AutoEncoder (CCAE)</h5><ul>
+<li><p>$\left{\mathbf{x}<em>{m} | m=1, \ldots, M\right}$是输入的一个二维点集合，通过Set Transformer得到K个Object capsules，每一个capsule包含一个胶囊特征c，出现概率$a</em>{k} \in[0,1]$，以及Object-Viewer-relationship(OV)矩阵（表示物体（星座）和观察者的仿射变换）。</p>
+</li>
+<li><p>每一个胶囊各自用一个多层感知机根据c来预测N个候选part，出现概率a，标准差$\lambda$以及OV矩阵。输入坐标建模为高斯混合，每个一元高斯的均值为$\mu=OV\times OP$，标准差为$\lambda$。</p>
+</li>
+<li><p>使用无监督的方式训练，目标为最大化$p\left(\mathbf{x}_{1: M}\right)$的极大似然</p>
+<p>$$\mathrm{OV}<em>{1: K}, \mathbf{c}</em>{1: K}, a_{1: K}=\mathrm{h}^{\mathrm{caps}}\left(\mathbf{x}_{1: M}\right) \quad \text { predict object capsule parameters }=$$</p>
+<p>$$\mathrm{OP}<em>{k, 1: N}, a</em>{k, 1: N}, \lambda_{k, 1: N}=\mathrm{h}<em>{\mathrm{k}}^{\mathrm{part}}\left(\mathbf{c}</em>{k}\right) \quad \text { decode candidate parameters from } c_{k} \text { ‘s}$$</p>
+<p>$V_{k, n}=\mathrm{OV}<em>{k} \mathrm{OP}</em>{k, n} \quad \text { decode a part pose candidate } c_{k} \text { ‘s } $<br>$$p\left(\mathbf{x}<em>{m} | k, n\right)=\mathcal{N}\left(\mathbf{x}</em>{m} | \mu_{k, n}, \lambda_{k, n}\right) \quad \text { turn candidates into mixture components }$$</p>
+<p>$$p\left(\mathbf{x}<em>{1: M}\right)=\prod</em>{m=1}^{M} \sum_{k=1}^{K} \sum_{n=1}^{N} \frac{a_{k} a_{k, n}}{\sum_{i} a_{i} \sum_{j} a_{i, j}} p\left(\mathbf{x}_{m} | k, n\right)$$</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/10/2019 Stacked capsule autoencodersmd/">展开全文 >></a>
         </p>
       
 
@@ -1337,6 +1537,14 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>

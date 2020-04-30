@@ -6,24 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>Sherl&#39;s</title>
+  <title>Archives: 2020/3 | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: Aggregated Residual Transformations for Deep Neural Networksdate: 2020-03-15 21:14:48tags: - CV Aggregated Residual Transformations for Deep Neural NetworksAbstract &amp;amp; Introduction VGG模型展示一种">
-<meta property="og:type" content="article">
+  <meta name="description" content="Sherl&apos;s blog">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Sherl&#39;s">
-<meta property="og:url" content="http://lossherl.github.io/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/index.html">
+<meta property="og:url" content="http://lossherl.github.io/archives/2020/03/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="title: Aggregated Residual Transformations for Deep Neural Networksdate: 2020-03-15 21:14:48tags: - CV Aggregated Residual Transformations for Deep Neural NetworksAbstract &amp;amp; Introduction VGG模型展示一种">
+<meta property="og:description" content="Sherl&apos;s blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_A.png">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_B.png">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_C.png">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_D.png">
-<meta property="og:updated_time" content="2020-04-30T12:15:10.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sherl&#39;s">
-<meta name="twitter:description" content="title: Aggregated Residual Transformations for Deep Neural Networksdate: 2020-03-15 21:14:48tags: - CV Aggregated Residual Transformations for Deep Neural NetworksAbstract &amp;amp; Introduction VGG模型展示一种">
-<meta name="twitter:image" content="http://lossherl.github.io/2020/04/30/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_A.png">
+<meta name="twitter:description" content="Sherl&apos;s blog">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -71,9 +65,9 @@
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
 	        
-				<li><a href="/tag/CV/">视觉</a></li>
+				<li><a href="/tags/CV/">视觉</a></li>
 	        
-				<li><a href="/tag/NLP/">自然语言处理</a></li>
+				<li><a href="/tags/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -155,9 +149,9 @@
 		        
 					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+					<li style="width: 20%"><a href="/tags/CV/">视觉</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
+					<li style="width: 20%"><a href="/tags/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,181 +166,250 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2017 Aggregated Residual Transformations for Deep Neural Networks" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-    <div class="article-entry" itemprop="articleBody">
+    
       
-        <p>title: Aggregated Residual Transformations for Deep Neural Networks<br>date: 2020-03-15 21:14:48<br>tags:</p>
-<pre><code>- CV
-</code></pre><h3 id="Aggregated-Residual-Transformations-for-Deep-Neural-Networks"><a href="#Aggregated-Residual-Transformations-for-Deep-Neural-Networks" class="headerlink" title="Aggregated Residual Transformations for Deep Neural Networks"></a>Aggregated Residual Transformations for Deep Neural Networks</h3><h4 id="Abstract-amp-Introduction"><a href="#Abstract-amp-Introduction" class="headerlink" title="Abstract &amp; Introduction"></a>Abstract &amp; Introduction</h4><ul>
-<li>VGG模型展示一种简单高效的网络搭建策略：堆叠相同构造的block。ResNet继承了这一策略，减少了超参的可选度，使得网络深度成为一个需要重要考量的维度。作者认为这种简单的策略同时减少了过拟合数据集的风险。</li>
-<li>Inception系列的网络通过精细设计网络拓扑，使得其能在低复杂度的情况下达到很高的准确率。在Inception模块中，一个核心的策略为<strong>split-transform-merge</strong>，输入先由1x1卷积分成多个低通道的嵌入，再分别经过一组变换（不同卷积核大小的卷积）后，连接得到结果。正是由这种策略达到高效且低计算复杂度。但是，精细设计的Inception模块中有很多超参（卷积核大小、个数等）需要设定，不易迁移到其他数据集。</li>
-<li>本文贡献：<ul>
-<li>提出一个简单的网络架构，类似VGG/ResNet的堆叠相同层，同时以简单可扩展的形式利用split-transfrom-merge策略，各transform使用相同的拓扑结构，通过累加结果进行聚合，这种设计使得网络能够在不进行特殊改造的情况下扩展。</li>
-<li>主张提升<strong>cardinality</strong>（Transform set的大小）是相比于宽提升度和深度更为高效的提升准确率的途径。</li>
-<li>证实了在相同参数和计算量的情况下好过原本的ResNet。</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_A.png" alt="ResNext Compared to ResNet"></p>
-<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h5><p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_B.png" alt="ResNext Blocks"></p>
-<ul>
-<li><p>ResNeXt是通过堆叠残差块构成的。</p>
-</li>
-<li><p>这些残差块有着相同的拓扑结构，并遵循两个规则：</p>
-<ul>
-<li>每个残差块输出相同大小的feature map，卷积核大小和个数相同。</li>
-<li>每当feature map降采样为1/2，残差块宽度（通道数）乘以2。</li>
-</ul>
-</li>
-</ul>
-<h5 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h5><h6 id="Simple-Neuron"><a href="#Simple-Neuron" class="headerlink" title="Simple Neuron"></a>Simple Neuron</h6><p>$$\sum_{i=1}^{D} w_{i} x_{i}$$</p>
-<h6 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h6><p>$$\mathbf{y}=\mathbf{x}+\sum_{i=1}^{C} \mathcal{T}_{i}(\mathbf{x})$$</p>
-<h5 id="Equivalent"><a href="#Equivalent" class="headerlink" title="Equivalent"></a>Equivalent</h5><p><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_C.png" alt="Equivalent"><br><img src="/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_D.png" alt="Proof"></p>
-<h5 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h5><p>ResNeXt-50 (32×4d) 输入输出通道数为256，32x4d 指的是 32组3x3卷积核，每个卷积核的通道数为4，</p>
-<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><ul>
-<li>相比于ResNet-50，32×4d ResNeXt-50的错误率降低了1.7%，同时随着Cardinalty从1增大到32，其错误率逐渐降低。且32×4d ResNeXt-50相比ResNet，训练错误了也低了很多，因此该模型的准确度提升并不是来源于正则化，而是在特征表达上得到了提升。</li>
-<li>在维持复杂度不变的情况下，相比提升宽度和深度，提升基数对性能提升更好。</li>
-</ul>
-
       
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/29/2018 Non-local Neural Networks/" class="archive-article-date">
+  	<time datetime="2020-03-29T11:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+</a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/29/2018 Non-local Neural Networks/">Non-local Neural Networks</a>
+    </h1>
+  
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/" alt="微信分享二维码">
-    </div>
-</div>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/29/2017 Squeeze-and-Excitation Networks/" class="archive-article-date">
+  	<time datetime="2020-03-29T10:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+</a>
+        </div>
+    	 
   
-    <a href="/2020/04/30/2017 Attention Is All You Need/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/04/23/hihoCoder-1364-奖券兑换/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hihoCoder 1364 奖券兑换</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017 Aggregated Residual Transformations for Deep Neural Networks" data-title data-url="http://lossherl.github.io/2020/04/30/2017 Aggregated Residual Transformations for Deep Neural Networks/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/29/2017 Squeeze-and-Excitation Networks/">Squeeze-and-Excitation Networks</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/" class="archive-article-date">
+  	<time datetime="2020-03-19T13:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/">Non-local Networks Meet Squeeze-Excitation Networks and Beyond</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/" class="archive-article-date">
+  	<time datetime="2020-03-15T13:14:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/">Aggregated Residual Transformations for Deep Neural Networks</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/" class="archive-article-date">
+  	<time datetime="2020-03-14T11:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/">Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/10/2019 Stacked capsule autoencodersmd/" class="archive-article-date">
+  	<time datetime="2020-03-10T09:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/10/2019 Stacked capsule autoencodersmd/">Stacked capsule autoencoders</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -369,8 +432,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -430,6 +493,14 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>

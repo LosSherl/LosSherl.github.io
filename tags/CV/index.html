@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>hihoCoder 1364 奖券兑换 | Sherl&#39;s</title>
+  <title>Tag: CV | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
-<meta name="keywords" content="题解,hihoCoder">
-<meta property="og:type" content="article">
-<meta property="og:title" content="hihoCoder 1364 奖券兑换">
-<meta property="og:url" content="http://lossherl.github.io/2019/04/23/hihoCoder-1364-奖券兑换/index.html">
+  <meta name="description" content="Sherl&apos;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sherl&#39;s">
+<meta property="og:url" content="http://lossherl.github.io/tags/CV/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
+<meta property="og:description" content="Sherl&apos;s blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-23T04:44:20.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hihoCoder 1364 奖券兑换">
-<meta name="twitter:description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
+<meta name="twitter:title" content="Sherl&#39;s">
+<meta name="twitter:description" content="Sherl&apos;s blog">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -168,202 +166,326 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hihoCoder-1364-奖券兑换" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      hihoCoder 1364 奖券兑换
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/04/28/2019 Why do deep convolutional networks generalize so poorly to small image transformation/" class="archive-article-date">
+  	<time datetime="2020-04-28T14:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/04/28/2019 Why do deep convolutional networks generalize so poorly to small image transformation/">Why do deep convolutional networks generalize so poorly to small image transformation?</a>
     </h1>
   
 
-        
-        <a href="/2019/04/23/hihoCoder-1364-奖券兑换/" class="archive-article-date">
-  	<time datetime="2019-04-23T04:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>时间限制:20000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。</p>
-<p>可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。  </p>
-<p>小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？</p>
-<a id="more"></a>
-<p>输入<br>第一行两个整数N，M。  </p>
-<p>接下来N行，每行两个整数Wi，Pi。  </p>
-<p>对于 50%的数据： 1≤N,M≤1000  </p>
-<p>对于 100%的数据： 1≤N,M≤105,1≤Pi,Wi≤10。  </p>
-<p>输出<br>一行一个整数，表示最大的价值。</p>
-<p>样例输入<br>3 10<br>2 3<br>8 8<br>10 10<br>样例输出<br>11 </p>
-<h4 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h4><p>这道题一眼看去是个01背包问题。但是N和M范围都在10万，O(NM)的DP没办法在时限内出解。</p>
-<p>进一步分析我们可以发现Wi和Pi的范围都很小，在10以内，所有本质上不同的奖品最多有100种，每种物品可能有很多件。</p>
-<p>于是这道题又变成了一道多重背包问题。不过多重背包如果直接DP仍然是O(NM)的。这里我们介绍一种”二进制分解”的优化方法。</p>
-<p>这种优化的思想是这样的：假设我有100件费用是W、价值的P的物品(用(W, P)表示)，意味着最优解可能从中选取0~100件。现在我把这100件(W, P)换成：</p>
-<p>1) 1件(W, P)<br>2) 1件(2W, 2P)<br>3) 1件(4W, 4P)<br>4) 1件(8W, 8P)<br>5) 1件(16W, 16P)<br>6) 1件(32W, 32P)<br>7) 1件(37W， 37P)</p>
-<p>一种7件物品。我们可以发现，假设最优解选择了K件(W, P)，无论K是多少，都可以通过选择以上7件中的若干件使得总费用和总价值也是(KW, KP)。换句话说，与最优解等价。反之，无论从7件中选取哪种组合，也都有一个K(0 &lt;= K &lt;= 100)与之对应，使得选择K件(W, P)的总费用和总价值与这种组合等价。</p>
-<p>于是我们把100件相同的物品的背包，等价变成了7件不相同物品的背包。</p>
-<p>具体来说，就是：假设有C件(W, P)，我们把C拆成尽可能多的2的幂之和以及剩余不足下一个2的幂的部分R，即C=1+2+4+8+…+2^K+R，其中R &lt; 2^(K+1)。</p>
-<p>我们用(W, P), (2W, 2P), (4W, 4P), … (2^KW, 2^KP), (RW， RP)这K+2个物品代替原C个物品，新的背包问题与原问题是等价的。</p>
-<p>将每种物品都做相同的二进制分解之后，对所有分解后得到的物品做01背包。</p>
-<p>由于我们是把同类的C件物品分解成了O(logC)件物品。所以最大数据100种，总计10万件物品最多被分解成大约1000件物品。</p>
-<p>使用01背包的DP，复杂度O(1000M)。</p>
-<p>BTW多重背包还有一种使用单调队列优化的方法。大家感兴趣可以搜索相关的资料。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2019/04/23/hihoCoder-1364-奖券兑换/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/" class="archive-article-date">
+  	<time datetime="2020-04-27T04:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+</a>
+        </div>
+    	 
   
-    <a href="/2020/03/10/2019 Stacked capsule autoencodersmd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Stacked capsule autoencoders
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Notes-Deep learning based RecSys utilizing visual content(3)</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hihoCoder-1364-奖券兑换" data-title="hihoCoder 1364 奖券兑换" data-url="http://lossherl.github.io/2019/04/23/hihoCoder-1364-奖券兑换/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/">Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/29/2018 Non-local Neural Networks/" class="archive-article-date">
+  	<time datetime="2020-03-29T11:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/29/2018 Non-local Neural Networks/">Non-local Neural Networks</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/29/2017 Squeeze-and-Excitation Networks/" class="archive-article-date">
+  	<time datetime="2020-03-29T10:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/29/2017 Squeeze-and-Excitation Networks/">Squeeze-and-Excitation Networks</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/" class="archive-article-date">
+  	<time datetime="2020-03-19T13:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/">Non-local Networks Meet Squeeze-Excitation Networks and Beyond</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/" class="archive-article-date">
+  	<time datetime="2020-03-15T13:14:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/">Aggregated Residual Transformations for Deep Neural Networks</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/" class="archive-article-date">
+  	<time datetime="2020-03-14T11:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/">Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/10/2019 Stacked capsule autoencodersmd/" class="archive-article-date">
+  	<time datetime="2020-03-10T09:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/10/2019 Stacked capsule autoencodersmd/">Stacked capsule autoencoders</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -386,9 +508,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

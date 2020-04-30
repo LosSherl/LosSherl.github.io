@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>hihoCoder 1364 奖券兑换 | Sherl&#39;s</title>
+  <title>Stacked capsule autoencoders | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
-<meta name="keywords" content="题解,hihoCoder">
+  <meta name="description" content="Stacked capsule autoencodersAbstract 物体是由一系列几何部分组成的  提出了无监督胶囊自编码器（SCAE），利用物体各部分（template）之间的几何关系对物体进行推理  这些几何关系与视角无关，因此提出的模型对视角变换具有鲁棒性。  SCEA由两个阶段组成  第一阶段：Part CAE直接从图像中预测各part template的presence与pose，">
+<meta name="keywords" content="CV">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hihoCoder 1364 奖券兑换">
-<meta property="og:url" content="http://lossherl.github.io/2019/04/23/hihoCoder-1364-奖券兑换/index.html">
+<meta property="og:title" content="Stacked capsule autoencoders">
+<meta property="og:url" content="http://lossherl.github.io/2020/03/10/2019 Stacked capsule autoencodersmd/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
+<meta property="og:description" content="Stacked capsule autoencodersAbstract 物体是由一系列几何部分组成的  提出了无监督胶囊自编码器（SCAE），利用物体各部分（template）之间的几何关系对物体进行推理  这些几何关系与视角无关，因此提出的模型对视角变换具有鲁棒性。  SCEA由两个阶段组成  第一阶段：Part CAE直接从图像中预测各part template的presence与pose，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-23T04:44:20.909Z">
+<meta property="og:image" content="http://lossherl.github.io/2020/03/10/2019%20Stacked%20capsule%20autoencodersmd/SCAE.png">
+<meta property="og:updated_time" content="2020-04-30T12:31:19.663Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hihoCoder 1364 奖券兑换">
-<meta name="twitter:description" content="时间限制:20000ms单点时限:1000ms内存限制:256MB描述小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。 可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。   小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？">
+<meta name="twitter:title" content="Stacked capsule autoencoders">
+<meta name="twitter:description" content="Stacked capsule autoencodersAbstract 物体是由一系列几何部分组成的  提出了无监督胶囊自编码器（SCAE），利用物体各部分（template）之间的几何关系对物体进行推理  这些几何关系与视角无关，因此提出的模型对视角变换具有鲁棒性。  SCEA由两个阶段组成  第一阶段：Part CAE直接从图像中预测各part template的presence与pose，">
+<meta name="twitter:image" content="http://lossherl.github.io/2020/03/10/2019%20Stacked%20capsule%20autoencodersmd/SCAE.png">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -168,49 +170,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hihoCoder-1364-奖券兑换" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2019 Stacked capsule autoencodersmd" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hihoCoder 1364 奖券兑换
+      Stacked capsule autoencoders
     </h1>
   
 
         
-        <a href="/2019/04/23/hihoCoder-1364-奖券兑换/" class="archive-article-date">
-  	<time datetime="2019-04-23T04:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
+        <a href="/2020/03/10/2019 Stacked capsule autoencodersmd/" class="archive-article-date">
+  	<time datetime="2020-03-10T09:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>时间限制:20000ms<br>单点时限:1000ms<br>内存限制:256MB<br>描述<br>小Hi在游乐园中获得了M张奖券，这些奖券可以用来兑换奖品。</p>
-<p>可供兑换的奖品一共有N件。第i件奖品需要Wi张奖券才能兑换到，其价值是Pi。  </p>
-<p>小Hi使用不超过M张奖券所能兑换到的最大奖品总价值是多少？</p>
-<a id="more"></a>
-<p>输入<br>第一行两个整数N，M。  </p>
-<p>接下来N行，每行两个整数Wi，Pi。  </p>
-<p>对于 50%的数据： 1≤N,M≤1000  </p>
-<p>对于 100%的数据： 1≤N,M≤105,1≤Pi,Wi≤10。  </p>
-<p>输出<br>一行一个整数，表示最大的价值。</p>
-<p>样例输入<br>3 10<br>2 3<br>8 8<br>10 10<br>样例输出<br>11 </p>
-<h4 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h4><p>这道题一眼看去是个01背包问题。但是N和M范围都在10万，O(NM)的DP没办法在时限内出解。</p>
-<p>进一步分析我们可以发现Wi和Pi的范围都很小，在10以内，所有本质上不同的奖品最多有100种，每种物品可能有很多件。</p>
-<p>于是这道题又变成了一道多重背包问题。不过多重背包如果直接DP仍然是O(NM)的。这里我们介绍一种”二进制分解”的优化方法。</p>
-<p>这种优化的思想是这样的：假设我有100件费用是W、价值的P的物品(用(W, P)表示)，意味着最优解可能从中选取0~100件。现在我把这100件(W, P)换成：</p>
-<p>1) 1件(W, P)<br>2) 1件(2W, 2P)<br>3) 1件(4W, 4P)<br>4) 1件(8W, 8P)<br>5) 1件(16W, 16P)<br>6) 1件(32W, 32P)<br>7) 1件(37W， 37P)</p>
-<p>一种7件物品。我们可以发现，假设最优解选择了K件(W, P)，无论K是多少，都可以通过选择以上7件中的若干件使得总费用和总价值也是(KW, KP)。换句话说，与最优解等价。反之，无论从7件中选取哪种组合，也都有一个K(0 &lt;= K &lt;= 100)与之对应，使得选择K件(W, P)的总费用和总价值与这种组合等价。</p>
-<p>于是我们把100件相同的物品的背包，等价变成了7件不相同物品的背包。</p>
-<p>具体来说，就是：假设有C件(W, P)，我们把C拆成尽可能多的2的幂之和以及剩余不足下一个2的幂的部分R，即C=1+2+4+8+…+2^K+R，其中R &lt; 2^(K+1)。</p>
-<p>我们用(W, P), (2W, 2P), (4W, 4P), … (2^KW, 2^KP), (RW， RP)这K+2个物品代替原C个物品，新的背包问题与原问题是等价的。</p>
-<p>将每种物品都做相同的二进制分解之后，对所有分解后得到的物品做01背包。</p>
-<p>由于我们是把同类的C件物品分解成了O(logC)件物品。所以最大数据100种，总计10万件物品最多被分解成大约1000件物品。</p>
-<p>使用01背包的DP，复杂度O(1000M)。</p>
-<p>BTW多重背包还有一种使用单调队列优化的方法。大家感兴趣可以搜索相关的资料。</p>
+        <h3 id="Stacked-capsule-autoencoders"><a href="#Stacked-capsule-autoencoders" class="headerlink" title="Stacked capsule autoencoders"></a>Stacked capsule autoencoders</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li><p><strong>物体是由一系列几何部分组成的</strong></p>
+</li>
+<li><p>提出了无监督胶囊自编码器（<strong>SCAE</strong>），利用物体各部分（template）之间的几何关系对物体进行推理</p>
+</li>
+<li><p>这些几何关系与视角无关，因此提出的模型对<strong>视角变换</strong>具有鲁棒性。</p>
+</li>
+<li><p><strong>SCEA</strong>由两个阶段组成</p>
+<ul>
+<li>第一阶段：Part CAE直接从图像中预测各part template的presence与pose，并尝试通过arrange这些template以重构图像。</li>
+<li>第二阶段：Object CAE预测一些物体胶囊的参数。首先组织此前发现part和pose得到一系列物体，再重构part和pose，其中inference是摊还的，且由现成的编码器实现。</li>
+</ul>
+</li>
+<li><p>与此前的胶囊网络不同</p>
+<blockquote>
+<p>object capsule presences are highly informative of the object class，which leads to state-of-the-art results for unsupervised classification on SVHN (55%) and MNIST (98.7%).</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li><p>CNN效果好过无权重分享网络的原因在于CNN的归纳偏倚（Inductive Bias）：如果一个局部特征在某个图像区域中有效，那么该特征在其他位置也很可能有效。</p>
+</li>
+<li><p>当CNN试图探索视角变换的影响时，CNN则通过将特征复制成不同尺寸、方向、角度等，但此举很快导致冗长的高维的特征矩阵。</p>
+</li>
+<li><blockquote>
+<p>An alternative to replicating features across the non-translational degrees of freedom is to <strong>explicitly learn transformations between the natural coordinate frame of a whole object and the natural coordinate frames of each of its parts. </strong></p>
+<p>学习整体的坐标系和每个其各部分的坐标系之间的转换关系。计算机图形学就是就是以这样一种Object-&gt;part 坐标变换规则以获得具有视角不变性的几何体。人类的认知也是基于坐标系的。</p>
+</blockquote>
+</li>
+<li><p>用神经网络学习整体层面的变换是可行的，但是每种变换的表示都不尽想通。而整体与part之间的关系却是与视角无关的，近似于常数可以简单地用学习到的参数表示。</p>
+</li>
+<li><blockquote>
+<p>With this representation, the pose of a single object is represented by its relationship to the viewer. Consequently, representing a single object does not necessitate replicating neural activations across space, unlike in CNNs. It is only processing two (or more) different instances of the same type of object in parallel that requires spatial replicas of both model parameters and neural activations.</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Every object capsule contributes components to each of these mixtures by multiplying its pose—the object-viewer-relationship (OV)—by the relevant object-part-relationship (OP).</p>
+</blockquote>
+<p><img src="/2020/03/10/2019 Stacked capsule autoencodersmd/SCAE.png" alt="SCAE"></p>
+</li>
+</ul>
+<h4 id="SCAE"><a href="#SCAE" class="headerlink" title="SCAE"></a>SCAE</h4><h5 id="Constellation-AutoEncoder-CCAE"><a href="#Constellation-AutoEncoder-CCAE" class="headerlink" title="Constellation AutoEncoder (CCAE)"></a>Constellation AutoEncoder (CCAE)</h5><ul>
+<li><p>$\left{\mathbf{x}<em>{m} | m=1, \ldots, M\right}$是输入的一个二维点集合，通过Set Transformer得到K个Object capsules，每一个capsule包含一个胶囊特征c，出现概率$a</em>{k} \in[0,1]$，以及Object-Viewer-relationship(OV)矩阵（表示物体（星座）和观察者的仿射变换）。</p>
+</li>
+<li><p>每一个胶囊各自用一个多层感知机根据c来预测N个候选part，出现概率a，标准差$\lambda$以及OV矩阵。输入坐标建模为高斯混合，每个一元高斯的均值为$\mu=OV\times OP$，标准差为$\lambda$。</p>
+</li>
+<li><p>使用无监督的方式训练，目标为最大化$p\left(\mathbf{x}_{1: M}\right)$的极大似然</p>
+<p>$$\mathrm{OV}<em>{1: K}, \mathbf{c}</em>{1: K}, a_{1: K}=\mathrm{h}^{\mathrm{caps}}\left(\mathbf{x}_{1: M}\right) \quad \text { predict object capsule parameters }=$$</p>
+<p>$$\mathrm{OP}<em>{k, 1: N}, a</em>{k, 1: N}, \lambda_{k, 1: N}=\mathrm{h}<em>{\mathrm{k}}^{\mathrm{part}}\left(\mathbf{c}</em>{k}\right) \quad \text { decode candidate parameters from } c_{k} \text { ‘s}$$</p>
+<p>$V_{k, n}=\mathrm{OV}<em>{k} \mathrm{OP}</em>{k, n} \quad \text { decode a part pose candidate } c_{k} \text { ‘s } $<br>$$p\left(\mathbf{x}<em>{m} | k, n\right)=\mathcal{N}\left(\mathbf{x}</em>{m} | \mu_{k, n}, \lambda_{k, n}\right) \quad \text { turn candidates into mixture components }$$</p>
+<p>$$p\left(\mathbf{x}<em>{1: M}\right)=\prod</em>{m=1}^{M} \sum_{k=1}^{K} \sum_{n=1}^{N} \frac{a_{k} a_{k, n}}{\sum_{i} a_{i} \sum_{j} a_{i, j}} p\left(\mathbf{x}_{m} | k, n\right)$$</p>
+</li>
+</ul>
 
       
 
@@ -245,11 +277,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hihoCoder</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
         		</li>
       		
 		</ul>
@@ -305,7 +333,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2019/04/23/hihoCoder-1364-奖券兑换/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/03/10/2019 Stacked capsule autoencodersmd/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,18 +347,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/10/2019 Stacked capsule autoencodersmd/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Stacked capsule autoencoders
+          Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization
         
       </div>
     </a>
   
   
-    <a href="/2019/04/22/Notes-Deep-learning-based-RecSys-utilizing-visual-content-3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Notes-Deep learning based RecSys utilizing visual content(3)</div>
+    <a href="/2019/04/23/hihoCoder-1364-奖券兑换/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hihoCoder 1364 奖券兑换</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -344,7 +372,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hihoCoder-1364-奖券兑换" data-title="hihoCoder 1364 奖券兑换" data-url="http://lossherl.github.io/2019/04/23/hihoCoder-1364-奖券兑换/"></div>
+	<div class="ds-thread" data-thread-key="2019 Stacked capsule autoencodersmd" data-title="Stacked capsule autoencoders" data-url="http://lossherl.github.io/2020/03/10/2019 Stacked capsule autoencodersmd/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

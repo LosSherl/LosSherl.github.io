@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>Sherl&#39;s</title>
+  <title>Aggregated Residual Transformations for Deep Neural Networks | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: Why do deep convolutional networks generalize so poorly to small image transformation?date: 2020-04-28 22:20:48tags:  CV  Why do deep convolutional networks generalize so poorly to small image">
+  <meta name="description" content="Aggregated Residual Transformations for Deep Neural NetworksAbstract &amp;amp; Introduction VGG模型展示一种简单高效的网络搭建策略：堆叠相同构造的block。ResNet继承了这一策略，减少了超参的可选度，使得网络深度成为一个需要重要考量的维度。作者认为这种简单的策略同时减少了过拟合数据集的风险。 Incepti">
+<meta name="keywords" content="CV">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sherl&#39;s">
-<meta property="og:url" content="http://lossherl.github.io/2020/04/30/2019 Why do deep convolutional networks generalize so poorly to small image transformation/index.html">
+<meta property="og:title" content="Aggregated Residual Transformations for Deep Neural Networks">
+<meta property="og:url" content="http://lossherl.github.io/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="title: Why do deep convolutional networks generalize so poorly to small image transformation?date: 2020-04-28 22:20:48tags:  CV  Why do deep convolutional networks generalize so poorly to small image">
+<meta property="og:description" content="Aggregated Residual Transformations for Deep Neural NetworksAbstract &amp;amp; Introduction VGG模型展示一种简单高效的网络搭建策略：堆叠相同构造的block。ResNet继承了这一策略，减少了超参的可选度，使得网络深度成为一个需要重要考量的维度。作者认为这种简单的策略同时减少了过拟合数据集的风险。 Incepti">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-30T12:19:30.516Z">
+<meta property="og:image" content="http://lossherl.github.io/2020/03/15/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_A.png">
+<meta property="og:image" content="http://lossherl.github.io/2020/03/15/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_B.png">
+<meta property="og:image" content="http://lossherl.github.io/2020/03/15/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_C.png">
+<meta property="og:image" content="http://lossherl.github.io/2020/03/15/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_D.png">
+<meta property="og:updated_time" content="2020-04-30T12:28:49.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sherl&#39;s">
-<meta name="twitter:description" content="title: Why do deep convolutional networks generalize so poorly to small image transformation?date: 2020-04-28 22:20:48tags:  CV  Why do deep convolutional networks generalize so poorly to small image">
+<meta name="twitter:title" content="Aggregated Residual Transformations for Deep Neural Networks">
+<meta name="twitter:description" content="Aggregated Residual Transformations for Deep Neural NetworksAbstract &amp;amp; Introduction VGG模型展示一种简单高效的网络搭建策略：堆叠相同构造的block。ResNet继承了这一策略，减少了超参的可选度，使得网络深度成为一个需要重要考量的维度。作者认为这种简单的策略同时减少了过拟合数据集的风险。 Incepti">
+<meta name="twitter:image" content="http://lossherl.github.io/2020/03/15/2017%20Aggregated%20Residual%20Transformations%20for%20Deep%20Neural%20Networks/ResNeXt_A.png">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -66,9 +72,9 @@
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
 	        
-				<li><a href="/tag/CV/">视觉</a></li>
+				<li><a href="/tags/CV/">视觉</a></li>
 	        
-				<li><a href="/tag/NLP/">自然语言处理</a></li>
+				<li><a href="/tags/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -150,9 +156,9 @@
 		        
 					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+					<li style="width: 20%"><a href="/tags/CV/">视觉</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
+					<li style="width: 20%"><a href="/tags/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -167,120 +173,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2019 Why do deep convolutional networks generalize so poorly to small image transformation" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017 Aggregated Residual Transformations for Deep Neural Networks" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Aggregated Residual Transformations for Deep Neural Networks
+    </h1>
+  
+
+        
+        <a href="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/" class="archive-article-date">
+  	<time datetime="2020-03-15T13:14:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Why do deep convolutional networks generalize so poorly to small image transformation?<br>date: 2020-04-28 22:20:48<br>tags:</p>
+        <h3 id="Aggregated-Residual-Transformations-for-Deep-Neural-Networks"><a href="#Aggregated-Residual-Transformations-for-Deep-Neural-Networks" class="headerlink" title="Aggregated Residual Transformations for Deep Neural Networks"></a>Aggregated Residual Transformations for Deep Neural Networks</h3><h4 id="Abstract-amp-Introduction"><a href="#Abstract-amp-Introduction" class="headerlink" title="Abstract &amp; Introduction"></a>Abstract &amp; Introduction</h4><ul>
+<li>VGG模型展示一种简单高效的网络搭建策略：堆叠相同构造的block。ResNet继承了这一策略，减少了超参的可选度，使得网络深度成为一个需要重要考量的维度。作者认为这种简单的策略同时减少了过拟合数据集的风险。</li>
+<li>Inception系列的网络通过精细设计网络拓扑，使得其能在低复杂度的情况下达到很高的准确率。在Inception模块中，一个核心的策略为<strong>split-transform-merge</strong>，输入先由1x1卷积分成多个低通道的嵌入，再分别经过一组变换（不同卷积核大小的卷积）后，连接得到结果。正是由这种策略达到高效且低计算复杂度。但是，精细设计的Inception模块中有很多超参（卷积核大小、个数等）需要设定，不易迁移到其他数据集。</li>
+<li>本文贡献：<ul>
+<li>提出一个简单的网络架构，类似VGG/ResNet的堆叠相同层，同时以简单可扩展的形式利用split-transfrom-merge策略，各transform使用相同的拓扑结构，通过累加结果进行聚合，这种设计使得网络能够在不进行特殊改造的情况下扩展。</li>
+<li>主张提升<strong>cardinality</strong>（Transform set的大小）是相比于宽提升度和深度更为高效的提升准确率的途径。</li>
+<li>证实了在相同参数和计算量的情况下好过原本的ResNet。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_A.png" alt="ResNext Compared to ResNet"></p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><h5 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h5><p><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_B.png" alt="ResNext Blocks"></p>
 <ul>
-<li>CV</li>
-</ul>
-<h3 id="Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation"><a href="#Why-do-deep-convolutional-networks-generalize-so-poorly-to-small-image-transformation" class="headerlink" title="Why do deep convolutional networks generalize so poorly to small image transformation?"></a>Why do deep convolutional networks generalize so poorly to small image transformation?</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
-<li>CNN通常被认为是对较小的图像变换具有不变性的。<ul>
-<li>或因为卷积的架构</li>
-<li>或因为训练时进行了数据增强</li>
-</ul>
+<li><p>ResNeXt是通过堆叠残差块构成的。</p>
 </li>
-<li>近期，不少作者发现实际情况并不是这样。<ul>
-<li>较小的图像变换或缩放导致网络的预测结果变换极大。</li>
-</ul>
-</li>
-<li>本文对该现象进行了量化，分析了数据增强和卷积结构不足以带来不变性的原因。</li>
-<li>作者观点：<ul>
-<li>由于卷积架构忽视了传统的采样定理。</li>
-<li>数据增强仅能让CNN对类似训练集中的变换具有不变性。</li>
-</ul>
-</li>
-<li>提出两个解决方法：<ul>
-<li>对中间特征表示进行抗锯齿处理</li>
-<li>进一步进行数据增强</li>
-</ul>
-</li>
-<li>提出的解决方法仅解决了部分问题，因此如何使得模型具备轻微变换不变性仍然未被解决。</li>
-</ul>
-<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
-<li>深层卷积网络的成功已经彻底改变了计算机视觉领域<ul>
-<li>尤其在目标识别领域中，达到了super-human</li>
-</ul>
-</li>
-<li>CNN中的归纳偏置<ul>
-<li>CNN中卷积和池化操作的设计思路就是为了使网络对变换、缩放、变形等不敏感</li>
-<li>数据增强<ul>
-<li>crop：随机位置、随机大小，因此图像会以不同偏移形式或大小进行训练。</li>
-<li>从而让模型学到与平移缩放无关的判别特征。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>实际上CNN十分脆弱，细微变化都带来巨大的预测变化，图1<ul>
-<li>一个像素的平移</li>
-<li>一个像素的缩放</li>
-<li>难以察觉的姿势变换</li>
-</ul>
-</li>
-<li>本文解释归纳偏置失败的原因<ul>
-<li>首先对该现象系统地进行量化</li>
-<li>并展示该现象出现在不同结构的CNN中，同时与缩放和变换算法无关，向下平移一个像素可能导致分类概率变化多达30%。</li>
-<li>分别介绍两个归纳偏置失败的原因<ul>
-<li>CNN忽略传统采样定理，因此锯齿效应导致不变性缺失</li>
-<li>数据增强使网络学到类似训练数据集中的变换模式，由于数据集中的分布本身就有bias，故导致与训练数据分布不同的图像缺失不变性。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Quantifying-the-lack-of-invariance-in-modern-CNNs"><a href="#Quantifying-the-lack-of-invariance-in-modern-CNNs" class="headerlink" title="Quantifying the lack of invariance in modern CNNs"></a>Quantifying the lack of invariance in modern CNNs</h4><ul>
-<li>使用六种不同CNN，为每种CNN以4种方式展示了1000张图片</li>
-<li>基础实验：<ul>
-<li>从ImageNet测试集中随机选取一张图片，用四种方式对图片进行一个像素的扰动，测量网络的敏感程度。</li>
-<li>敏感程度的测量使用两种方法：<ul>
-<li>P(Top-1 change)： Top-1预测的变化概率。</li>
-<li>mean absolute change： Top-1概率的平均变化值</li>
-<li>二者捕捉不同的稳定性特征：<ul>
-<li>P(Top-1 change) 对最后一层输出的单调变换具有不变性</li>
-<li>mean absolute change 用于排除相近类别带来的top1预测变化</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>四种方式：<ul>
-<li>在图像中随机截取一个框再resize到224x224。再进行一个像素的对角线平移</li>
-<li>embedding: 保持长宽比降采样到短边尺寸为100，再随机嵌入到224x224图像中的随机位置，空余用黑色像素填充。再进行一个像素平移</li>
-<li>类似第二种方法，但是用图像修复算法补全空余部分。</li>
-<li>类似第二种方法，增大被嵌入图像一个像素单位。</li>
-<li>优劣势：<ul>
-<li>第一种方法可能导致重要信息丢失，平移后边缘信息会有区别。</li>
-<li>第二种方法虽然保留了所有信息，但是可能引入非典型边界像素。</li>
-</ul>
-</li>
-<li>带来的细微变化都是人类无法感知到的、可辨识度没有变化</li>
-<li>景观变化是人类难以感知的，但模型预测类别变化的概率可以达到30%，故此前论文中关于CNN缺乏不变性的报告不是偶然而有着很高的出现频率。</li>
-</ul>
-</li>
-<li>对于此结果的质疑可以是这些变换的图像在训练集中没有见过。引出两个对不变性的定义<ul>
-<li>完全不变性：对任何模式以及其变换的形式输出相同的结果</li>
-<li>部分不变性：在某种模式或与其类似的模式在训练集中出现的前提下，输出相同的结果。</li>
-</ul>
-</li>
-<li>实验结果指明CNN并不是完全不变性。</li>
-</ul>
-<h4 id="Ignoring-the-Sampling-Theorem"><a href="#Ignoring-the-Sampling-Theorem" class="headerlink" title="Ignoring the Sampling Theorem"></a>Ignoring the Sampling Theorem</h4><ul>
-<li><p>直觉上，如果网络所有层都是卷积的，那么特征表示应该随着图像变换而变换。</p>
-</li>
-<li><p>这种直觉忽视了CNN中的下采样。1992年文献”Shiftable multiscale transforms.”中提到：我们不能指望基于卷积和下采样的系统拥有变换不变性，除非变换的幅度为下采样的整数倍</p>
-</li>
-</ul>
-<blockquote>
-<p>“We cannot literally expect<br>translation invariance in a system based on convolution and subsampling: translation of<br>the input signal cannot produce simple translations of the transform coefficients, unless the<br>translation is a multiple of each of the subsampling factors in the system”.</p>
-</blockquote>
+<li><p>这些残差块有着相同的拓扑结构，并遵循两个规则：</p>
 <ul>
-<li>由于CNN包含很多下采样操作，因此网络深层的下采样系数会变得很大，因此变换不变性仅对某些特定的变换成立。文献“Making convolutional networks shift-invariant again.”正式了CNN确实能在平移恰好为下采样因子的整数倍时成立。</li>
-<li>Simoncelli还定义了变换不变性的一种较弱的形式“Shiftability”，并展示了它在存在下采样的系统中仍然成立，在此基础上，本文展示当“Shiftability”成立时，使用全局平均池化能够获得不变的特征表示。</li>
-<li>定义$r(x)$为特征提取器在位置$x$的response，$r(x)$是convolutional当且仅当平移输入图像$δ$个像素，得到的response也平移$δ$个像素。</li>
-<li>如果$r(x)$是convolutional的，全局池化$r=\sum_{x} r(x)$是平移不变的，不论该模式是否在训练集中出现。（卷积步长为1时）</li>
+<li>每个残差块输出相同大小的feature map，卷积核大小和个数相同。</li>
+<li>每当feature map降采样为1/2，残差块宽度（通道数）乘以2。</li>
+</ul>
+</li>
+</ul>
+<h5 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h5><h6 id="Simple-Neuron"><a href="#Simple-Neuron" class="headerlink" title="Simple Neuron"></a>Simple Neuron</h6><p>$$\sum_{i=1}^{D} w_{i} x_{i}$$</p>
+<h6 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h6><p>$$\mathbf{y}=\mathbf{x}+\sum_{i=1}^{C} \mathcal{T}_{i}(\mathbf{x})$$</p>
+<h5 id="Equivalent"><a href="#Equivalent" class="headerlink" title="Equivalent"></a>Equivalent</h5><p><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_C.png" alt="Equivalent"><br><img src="/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/ResNeXt_D.png" alt="Proof"></p>
+<h5 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h5><p>ResNeXt-50 (32×4d) 输入输出通道数为256，32x4d 指的是 32组3x3卷积核，每个卷积核的通道数为4，</p>
+<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><ul>
+<li>相比于ResNet-50，32×4d ResNeXt-50的错误率降低了1.7%，同时随着Cardinalty从1增大到32，其错误率逐渐降低。且32×4d ResNeXt-50相比ResNet，训练错误了也低了很多，因此该模型的准确度提升并不是来源于正则化，而是在特征表达上得到了提升。</li>
+<li>在维持复杂度不变的情况下，相比提升宽度和深度，提升基数对性能提升更好。</li>
 </ul>
 
       
@@ -311,6 +252,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -361,7 +313,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/04/30/2019 Why do deep convolutional networks generalize so poorly to small image transformation/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -375,18 +327,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/30/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          Non-local Networks Meet Squeeze-Excitation Networks and Beyond
         
       </div>
     </a>
   
   
-    <a href="/2020/04/30/2019 Stacked capsule autoencodersmd/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2020/03/14/2020 Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -400,7 +352,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2019 Why do deep convolutional networks generalize so poorly to small image transformation" data-title data-url="http://lossherl.github.io/2020/04/30/2019 Why do deep convolutional networks generalize so poorly to small image transformation/"></div>
+	<div class="ds-thread" data-thread-key="2017 Aggregated Residual Transformations for Deep Neural Networks" data-title="Aggregated Residual Transformations for Deep Neural Networks" data-url="http://lossherl.github.io/2020/03/15/2017 Aggregated Residual Transformations for Deep Neural Networks/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -503,6 +455,14 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>

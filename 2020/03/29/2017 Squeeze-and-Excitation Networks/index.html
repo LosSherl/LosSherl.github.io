@@ -6,22 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>Sherl&#39;s</title>
+  <title>Squeeze-and-Excitation Networks | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: Squeeze-and-Excitation Networksdate: 2020-03-29 18:20:48tags:  CV  Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻">
+  <meta name="description" content="Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻画通道维度上的特征。  Introduction 本文提出的机制能够使网络能够利用全局信息来强调重要的特征同时压制不重要的部分。 SE Block结">
+<meta name="keywords" content="CV">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sherl&#39;s">
-<meta property="og:url" content="http://lossherl.github.io/2020/04/30/2017 Squeeze-and-Excitation Networks/index.html">
+<meta property="og:title" content="Squeeze-and-Excitation Networks">
+<meta property="og:url" content="http://lossherl.github.io/2020/03/29/2017 Squeeze-and-Excitation Networks/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="title: Squeeze-and-Excitation Networksdate: 2020-03-29 18:20:48tags:  CV  Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻">
+<meta property="og:description" content="Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻画通道维度上的特征。  Introduction 本文提出的机制能够使网络能够利用全局信息来强调重要的特征同时压制不重要的部分。 SE Block结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Squeeze-and-Excitation%20Networks/SE_Block.png">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2017%20Squeeze-and-Excitation%20Networks/SE_ResNet.png">
-<meta property="og:updated_time" content="2020-04-30T12:16:47.694Z">
+<meta property="og:image" content="http://lossherl.github.io/2020/03/29/2017%20Squeeze-and-Excitation%20Networks/SE_Block.png">
+<meta property="og:image" content="http://lossherl.github.io/2020/03/29/2017%20Squeeze-and-Excitation%20Networks/SE_ResNet.png">
+<meta property="og:updated_time" content="2020-04-30T12:30:38.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sherl&#39;s">
-<meta name="twitter:description" content="title: Squeeze-and-Excitation Networksdate: 2020-03-29 18:20:48tags:  CV  Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻">
-<meta name="twitter:image" content="http://lossherl.github.io/2020/04/30/2017%20Squeeze-and-Excitation%20Networks/SE_Block.png">
+<meta name="twitter:title" content="Squeeze-and-Excitation Networks">
+<meta name="twitter:description" content="Squeeze-and-Excitation NetworksAbstract 卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示 本文提出的Squeeze-and-Excitation（SE） Block通过建模通道间的相互依赖关系，重新刻画通道维度上的特征。  Introduction 本文提出的机制能够使网络能够利用全局信息来强调重要的特征同时压制不重要的部分。 SE Block结">
+<meta name="twitter:image" content="http://lossherl.github.io/2020/03/29/2017%20Squeeze-and-Excitation%20Networks/SE_Block.png">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -69,9 +70,9 @@
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
 	        
-				<li><a href="/tag/CV/">视觉</a></li>
+				<li><a href="/tags/CV/">视觉</a></li>
 	        
-				<li><a href="/tag/NLP/">自然语言处理</a></li>
+				<li><a href="/tags/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -153,9 +154,9 @@
 		        
 					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+					<li style="width: 20%"><a href="/tags/CV/">视觉</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
+					<li style="width: 20%"><a href="/tags/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,13 +174,24 @@
             <article id="post-2017 Squeeze-and-Excitation Networks" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Squeeze-and-Excitation Networks
+    </h1>
+  
+
+        
+        <a href="/2020/03/29/2017 Squeeze-and-Excitation Networks/" class="archive-article-date">
+  	<time datetime="2020-03-29T10:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Squeeze-and-Excitation Networks<br>date: 2020-03-29 18:20:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h1 id="Squeeze-and-Excitation-Networks"><a href="#Squeeze-and-Excitation-Networks" class="headerlink" title="Squeeze-and-Excitation Networks"></a>Squeeze-and-Excitation Networks</h1><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+        <h1 id="Squeeze-and-Excitation-Networks"><a href="#Squeeze-and-Excitation-Networks" class="headerlink" title="Squeeze-and-Excitation Networks"></a>Squeeze-and-Excitation Networks</h1><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
 <li>卷积操作是通过聚合局部空间上和各通道上的信息从而增强特征表示</li>
 <li>本文提出的<strong>Squeeze-and-Excitation（SE） Block</strong>通过建模通道间的相互依赖关系，重新刻画通道维度上的特征。</li>
 </ul>
@@ -195,7 +207,7 @@
 </li>
 <li>结构简单，可直接替换成熟网络中的block。</li>
 </ul>
-<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_Block.png" alt="SE Block"></p>
+<p><img src="/2020/03/29/2017 Squeeze-and-Excitation Networks/SE_Block.png" alt="SE Block"></p>
 <h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><ul>
 <li>此前跨通道的操作一般为1x1卷积，大多集中于降低模型计算复杂度。本文认为在通道间使用全局信息施加动态非线性依赖能够加快学习过程，并提升网络的特征表示能力。</li>
 </ul>
@@ -224,7 +236,7 @@
 <li>$\widetilde{\mathbf{x}}<em>{c}=\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)=s_{c} \mathbf{u}<em>{c}$，$\mathbf{F}</em>{\text {scale }}\left(\mathbf{u}<em>{c}, s</em>{c}\right)$为通道维度乘法。</li>
 <li>Excitation操作将输入的通道描述映射为一系列的通道权重。可视为通道上的自注意力机制，但不局限于感受野的大小。</li>
 </ul>
-<p><img src="/2020/04/30/2017 Squeeze-and-Excitation Networks/SE_ResNet.png" alt="SE_ResNet"></p>
+<p><img src="/2020/03/29/2017 Squeeze-and-Excitation Networks/SE_ResNet.png" alt="SE_ResNet"></p>
 <h4 id="模型与计算复杂度"><a href="#模型与计算复杂度" class="headerlink" title="模型与计算复杂度"></a>模型与计算复杂度</h4><ul>
 <li>相比ResNet，SE-ResNet增加了0.26%的浮点运算次数（3.87GFLOPs），得到的精度接近ResNet-101（7.58GFLOPs）。</li>
 <li>增加的参数数量为两个fc的参数。</li>
@@ -269,6 +281,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -319,7 +342,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/04/30/2017 Squeeze-and-Excitation Networks/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/03/29/2017 Squeeze-and-Excitation Networks/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -333,18 +356,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/30/2018 Non-local Neural Networks/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/29/2018 Non-local Neural Networks/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          Non-local Neural Networks
         
       </div>
     </a>
   
   
-    <a href="/2020/04/30/2017 Attention Is All You Need/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2020/03/19/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Non-local Networks Meet Squeeze-Excitation Networks and Beyond</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -358,7 +381,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017 Squeeze-and-Excitation Networks" data-title data-url="http://lossherl.github.io/2020/04/30/2017 Squeeze-and-Excitation Networks/"></div>
+	<div class="ds-thread" data-thread-key="2017 Squeeze-and-Excitation Networks" data-title="Squeeze-and-Excitation Networks" data-url="http://lossherl.github.io/2020/03/29/2017 Squeeze-and-Excitation Networks/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -461,6 +484,14 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>

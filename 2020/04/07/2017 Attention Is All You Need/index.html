@@ -6,22 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://lossherl.github.io">
-  <title>Sherl&#39;s</title>
+  <title>Attention Is All You Need | Sherl&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: Non-local Neural Networksdate: 2020-03-29 19:20:48tags:  CV  Non-local Neural NetworksAbstract 卷积和递归操作都是每次处理局部周边的信息。 本文受Non-local means启发，提出一种Non-local Block用于长距离依赖，在Non-local中，每个位置的反馈为所有位置特征的加">
+  <meta name="description" content="Attention Is All You NeedAbstract 序列转换模型通常基于复杂的RNN或CNN，包含一个编码器和一个解码器。最表现最好的模型还在编解码器之间使用注意力机制链接。  他提出一个简单的网络结构Transformer，仅基于注意力机制。   Introduction 序列化计算瓶颈： 循环神经网络将序列位置对齐到计算时的时间步，继承了序列的自然形式但使得并行计算无法进行。">
+<meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sherl&#39;s">
-<meta property="og:url" content="http://lossherl.github.io/2020/04/30/2018 Non-local Neural Networks/index.html">
+<meta property="og:title" content="Attention Is All You Need">
+<meta property="og:url" content="http://lossherl.github.io/2020/04/07/2017 Attention Is All You Need/index.html">
 <meta property="og:site_name" content="Sherl&#39;s">
-<meta property="og:description" content="title: Non-local Neural Networksdate: 2020-03-29 19:20:48tags:  CV  Non-local Neural NetworksAbstract 卷积和递归操作都是每次处理局部周边的信息。 本文受Non-local means启发，提出一种Non-local Block用于长距离依赖，在Non-local中，每个位置的反馈为所有位置特征的加">
+<meta property="og:description" content="Attention Is All You NeedAbstract 序列转换模型通常基于复杂的RNN或CNN，包含一个编码器和一个解码器。最表现最好的模型还在编解码器之间使用注意力机制链接。  他提出一个简单的网络结构Transformer，仅基于注意力机制。   Introduction 序列化计算瓶颈： 循环神经网络将序列位置对齐到计算时的时间步，继承了序列的自然形式但使得并行计算无法进行。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2018%20Non-local%20Neural%20Networks/Non-local_A.png">
-<meta property="og:image" content="http://lossherl.github.io/2020/04/30/2018%20Non-local%20Neural%20Networks/non-local_B.png">
-<meta property="og:updated_time" content="2020-04-30T12:18:14.602Z">
+<meta property="og:image" content="http://lossherl.github.io/2020/04/07/2017%20Attention%20Is%20All%20You%20Need/transformer.png">
+<meta property="og:image" content="http://lossherl.github.io/2020/04/07/2017%20Attention%20Is%20All%20You%20Need/Multi-Head.png">
+<meta property="og:image" content="http://lossherl.github.io/2020/04/07/2017%20Attention%20Is%20All%20You%20Need/Self-Attention%20VS.png">
+<meta property="og:updated_time" content="2020-04-30T12:30:32.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sherl&#39;s">
-<meta name="twitter:description" content="title: Non-local Neural Networksdate: 2020-03-29 19:20:48tags:  CV  Non-local Neural NetworksAbstract 卷积和递归操作都是每次处理局部周边的信息。 本文受Non-local means启发，提出一种Non-local Block用于长距离依赖，在Non-local中，每个位置的反馈为所有位置特征的加">
-<meta name="twitter:image" content="http://lossherl.github.io/2020/04/30/2018%20Non-local%20Neural%20Networks/Non-local_A.png">
+<meta name="twitter:title" content="Attention Is All You Need">
+<meta name="twitter:description" content="Attention Is All You NeedAbstract 序列转换模型通常基于复杂的RNN或CNN，包含一个编码器和一个解码器。最表现最好的模型还在编解码器之间使用注意力机制链接。  他提出一个简单的网络结构Transformer，仅基于注意力机制。   Introduction 序列化计算瓶颈： 循环神经网络将序列位置对齐到计算时的时间步，继承了序列的自然形式但使得并行计算无法进行。">
+<meta name="twitter:image" content="http://lossherl.github.io/2020/04/07/2017%20Attention%20Is%20All%20You%20Need/transformer.png">
   
     <link rel="alternative" href="/atom.xml" title="Sherl&#39;s" type="application/atom+xml">
   
@@ -69,9 +71,9 @@
 	        
 				<li><a href="/tags/RecSys/">推荐系统</a></li>
 	        
-				<li><a href="/tag/CV/">视觉</a></li>
+				<li><a href="/tags/CV/">视觉</a></li>
 	        
-				<li><a href="/tag/NLP/">自然语言处理</a></li>
+				<li><a href="/tags/NLP/">自然语言处理</a></li>
 	        
 			</ul>
 		</nav>
@@ -153,9 +155,9 @@
 		        
 					<li style="width: 20%"><a href="/tags/RecSys/">推荐系统</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/CV/">视觉</a></li>
+					<li style="width: 20%"><a href="/tags/CV/">视觉</a></li>
 		        
-					<li style="width: 20%"><a href="/tag/NLP/">自然语言处理</a></li>
+					<li style="width: 20%"><a href="/tags/NLP/">自然语言处理</a></li>
 		        
 				</ul>
 			</nav>
@@ -170,104 +172,95 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2018 Non-local Neural Networks" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017 Attention Is All You Need" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Attention Is All You Need
+    </h1>
+  
+
+        
+        <a href="/2020/04/07/2017 Attention Is All You Need/" class="archive-article-date">
+  	<time datetime="2020-04-07T14:16:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Non-local Neural Networks<br>date: 2020-03-29 19:20:48<br>tags:</p>
-<ul>
-<li>CV</li>
-</ul>
-<h3 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
-<li>卷积和递归操作都是每次处理局部周边的信息。</li>
-<li>本文受Non-local means启发，提出一种Non-local Block用于长距离依赖，在Non-local中，每个位置的反馈为所有位置特征的加权求和，该block能够插入任意的神经网络中。</li>
+        <h3 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h3><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><ul>
+<li><p>序列转换模型通常基于复杂的RNN或CNN，包含一个编码器和一个解码器。最表现最好的模型还在编解码器之间使用注意力机制链接。</p>
+</li>
+<li><p>他提出一个简单的网络结构<strong>Transformer</strong>，仅基于注意力机制。</p>
+</li>
 </ul>
 <h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
-<li>捕捉长距离依赖的重要性<ul>
-<li>CNN：通过增大感受野</li>
-<li>RNN：序列递归</li>
-<li>上述两种操作分别在时间和空间上是局部的，因此长距离依赖仅能通过不断重复操作达到。</li>
-<li>重复操作有着许多局限性<ul>
-<li>计算不高效</li>
-<li>优化困难</li>
-<li>多跳依赖困难（信息在距离较远的位置间来回传播）</li>
+<li>序列化计算瓶颈：<ul>
+<li>循环神经网络将序列位置对齐到计算时的时间步，继承了序列的自然形式但使得并行计算无法进行。</li>
 </ul>
 </li>
+<li>注意力机制在许多任务模型中变得不可或缺，它使得不论二者在序列中距离远近都可以对其依赖关系进行建模。</li>
+</ul>
+<h4 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h4><ul>
+<li>大多数序列转换模型都采用编解码器结构，编码器将输入编号序列$x$转化为表示序列$z$，给定$z$，解码器生成输出序列$y$，生成时每一步的输入为上一时刻输出的编号。</li>
+<li>Transformer遵循类似的框架，编码器与解码器均是堆叠自注意力层、点乘和全连接层。</li>
+<li>编码器包含N=6个相同层，每层有两个子层，均采用参差连接紧接着一个Layer Normalization。<ul>
+<li>多头自注意力层。</li>
+<li>position-wise全连接前馈层。</li>
 </ul>
 </li>
-<li>本文提出的Non-local操作是Non-local means的一般化版本。其中，每个位置的反馈为所有位置特征的加权求和，这些位置可以是时间、空间或是时空（视频的不同帧）上的。</li>
-<li>Non-local的优势<ul>
-<li>与CNN、RNN逐步递进的方式不同，Non-local直接计算各位置间的交互获取长距离依赖，无视二者间的距离。</li>
-<li>运算高效，仅需要很少的层数就能达到好的效果。</li>
-<li>维持了输入特征的尺寸，因此容易和其他操作结合。</li>
-<li>在视频分类中，长距离依赖发生在时间上和空间上，单个Non-local block都能直接捕捉这些依赖，通过堆叠多个non-local block，本文提出的模型在视频任务中超过了2D和3D的CNN模型，且相比3D CNN，Non-local计算上更经济。</li>
-<li>实验中通过目标检测和姿势预测等任务证实了该模块在视觉任务上的效果，仅增加了些许额外计算代价便带来了精度提升。</li>
+<li>解码器也包含N=6个相同层，在编码器两个子层的基础上添加了第三个子层，在编码器的输出上进行多头注意力机制。同时在自注意力层加上了mask，使得预测时仅能依赖前序已知的输出。</li>
 </ul>
-</li>
-</ul>
-<h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><ul>
-<li><p>Non-local image processing</p>
+<p><img src="/2020/04/07/2017 Attention Is All You Need/transformer.png" alt="TransFormer"></p>
 <ul>
-<li>非局部均值</li>
-<li>BM3D （图像去噪算法）</li>
-<li>Non-local匹配也在纹理生成、超分辨率以及图像修复等领域中有着重要作用。</li>
+<li>注意力可被看作是query与一系列key-val对匹配，得到输出。输出是val的加权和，每个val的权值通过query和对应key的相关程度计算得到。</li>
 </ul>
-</li>
-<li><p>图模型</p>
+<p><img src="/2020/04/07/2017 Attention Is All You Need/Multi-Head.png" alt="MultiHead"></p>
 <ul>
-<li>长距离依赖也可以用图建模，例如条件随机场 （CRF）。    </li>
-<li>在神经网络中，条件随机场可以用于后处理语义分割的结果。</li>
-<li>本文的Non-local是更简单的前馈操作。</li>
+<li>Scaled Dot-Product Attetnion<ul>
+<li>$Attention (Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V$</li>
+<li>Q,K的维度为 $d_k$，V的维度为$d_v$</li>
+<li>注意力两种常见形式：Additive Attention和dot-product。后者计算更亏且空间更高效（由于高效的矩阵乘法），Additive Attention是通过有一个隐层的前馈网络计算相似度的。二者在$d_k$较小时表现相当，但若$d_k$变大且没有scale（保证方差为1，维持标准正态分布）项时，前者表现更好。</li>
 </ul>
 </li>
-<li>序列的前馈建模<ul>
-<li>这类方法中，长距离依赖通过大感受野的一维卷积得到。且能够并行实现。</li>
+<li>Multi-Head Attention<ul>
+<li>实验发现使用多个不同线性层分别映射QKV到各自子空间带来了好的效果。在各自子空间计算输出后再连接并经过线性映射得到最终输出。</li>
+<li>$\operatorname{MultiHead}(Q, K, V) { Concat(head }<em>{1}, \ldots, \text { head }</em>{\mathbf{h}}) W^{O}$</li>
+<li>$head <em>{\mathbf{i}}Attention(Q W</em>{i}^{Q}, K W_{i}^{K}, V W_{i}^{V})$</li>
+<li>$W_{i}^{Q} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{K} \in \mathbb{R}^{d_{\text {model }} \times d_{k}}, W_{i}^{V} \in \mathbb{R}^{d_{\text {model }} \times d_{v}}$ and $W^{O} \in \mathbb{R}^{h d_{u} \times d_{\text {matel }}}$</li>
+<li>文章中h=8，$d_k=d_v=d_{model}/h=64$，随着维度降低，总体计算复杂度与单头类似、</li>
 </ul>
 </li>
-<li>自注意力<ul>
-<li>本文提出的方法类似于机器翻译中的自注意力。</li>
-<li>机器翻译中的注意力是计算每个位置与其他位置的对其关系，得到加权平均值。</li>
-<li>自注意力可看作是非局部均值的一钟形式。</li>
+<li>Transformer中使用了三种形式的注意力<ul>
+<li>Encoder-Decoder Attention：Query来自前一层的解码器，key和value来自编码器的输出，使得解码器的每个位置都可以注意到输入序列的每个位置。类似传统编解码器结构。</li>
+<li>编码器自注意力：qkv均为上一层的编码器输出，编码器的每个位置都可以关注到上一层编码器输出的所有位置。</li>
+<li>解码器自注意力：类似编码器中的自注意力，但是使用mask阻断由后往前不合法的连接。</li>
 </ul>
 </li>
-<li>交互网络</li>
-<li>视频分类框架<ul>
-<li>沿用CNN并用RNN处理序列。</li>
-<li>光流和轨迹是有效的，包含了长距离非局部的依赖。</li>
+<li><p>另外一个子层为Position-wise前馈层。包含两个线性层以及一个ReLU。</p>
+</li>
+<li><p>使用embedding得到每个输入token的$d_{model}$向量形式，同时使用线性层和softmax将解码器输出转换为下一个单词的预测概率。</p>
+</li>
+<li>Positional Encoding<ul>
+<li>由于没有循环和卷积操作，为了让模型感知输入序列的顺序，必须置入token之间的相关位置或绝对位置信息。</li>
+<li>Positional Encoding和输入有着相同的维度，直接加和。</li>
+<li>使用不同频率的正余弦函数构造出各位置的独立编码。</li>
+<li>使正余弦函数的原因：作者假设模型能够简单地学到如何attend by relative positions，由于对于任何offset k，在正余弦函数中， $PE_{pos+k}$都能通过$PE_{pos}$的线性变换表示。</li>
+<li>由于后续注意力前都使用线性层映射特征到低维形式，输入特征都被重组，因此相加和拼接差别应该不大，直接累加起到的作用可能是神经网络在训练中识别得出的。</li>
 </ul>
 </li>
 </ul>
-<p><img src="/2020/04/30/2018 Non-local Neural Networks/Non-local_A.png" alt="Spacetime example"></p>
-<h4 id="Non-local-Neural-Networks-1"><a href="#Non-local-Neural-Networks-1" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h4><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><p>$$\mathbf{y}<em>{i}=\frac{1}{\mathcal{C}(\mathbf{x})} \sum</em>{\forall j} f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right) g\left(\mathbf{x}_{j}\right)$$</p>
-<p>其中，i为输出位置坐标，f为相似度计算函数，g计算每个输入信号的特征表示。</p>
-<ul>
-<li>由于所有位置都被考虑在内，故该操作为非局部操作。</li>
-<li>Non-local与全连接层也存在不同，Non-local的依据是位置间的相似关系，而fc仅使用学习到的参数。同时Non-local不限制输入的大小，且输出维持输入的尺寸。</li>
-<li>Non-local block是可扩展的，能够与卷积层或递归层一同使用。</li>
+<h4 id="Why-Self-Attention"><a href="#Why-Self-Attention" class="headerlink" title="Why Self-Attention"></a>Why Self-Attention</h4><ul>
+<li>单层计算复杂度</li>
+<li>可并行计算的计算量</li>
+<li>最长距离依赖的计算路径长度（对学习长期依赖十分关键），距离越短越容易学习关系（在网络中传输的次数越少）</li>
+<li>可解释性</li>
 </ul>
-<h5 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h5><ul>
-<li>Non-local对f和g函数的选取不敏感。</li>
-<li>简单起见，g使用线性映射：$g\left(\mathbf{x}<em>{j}\right)=W</em>{g} \mathbf{x}_{j}$</li>
-<li>类似Non-local means和双边滤波，f选用高斯函数：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=e^{\mathbf{x}<em>{i}^{T} \mathbf{x}</em>{j}}$。可简单扩展为：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=e^{\theta\left(\mathbf{x}<em>{i}\right)^{T} \phi\left(\mathbf{x}</em>{j}\right)}$，其中，$\theta\left(\mathbf{x}<em>{i}\right)=W</em>{\theta} \mathbf{x}<em>{i}$与$\phi\left(\mathbf{x}</em>{j}\right)=W_{\phi} \mathbf{x}<em>{j}$为两个嵌入。规格化函数：$\mathcal{C}(\mathbf{x})=\sum</em>{\forall j} f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)$</li>
-<li>机器翻译的自注意力可形式化为：$\mathbf{y}=\operatorname{softmax}\left(\mathbf{x}^{T} W_{\theta}^{T} W_{\phi} \mathbf{x}\right) g(\mathbf{x})$，本文将序列化的自注意力延伸到更一般的时空结构中。</li>
-<li>f还可以定义为点积：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=\theta\left(\mathbf{x}<em>{i}\right)^{T} \phi\left(\mathbf{x}</em>{j}\right)$，同时规格化因子变为：$\mathcal{C}(\mathbf{x})=N$，N为x中位置的数量。点积版本与高斯版本的区别在于是否使用softmax。</li>
-<li>连接版本：$f\left(\mathbf{x}<em>{i}, \mathbf{x}</em>{j}\right)=\operatorname{ReLU}\left(\mathbf{w}<em>{f}^{T}\left[\theta\left(\mathbf{x}</em>{i}\right), \phi\left(\mathbf{x}_{j}\right)\right]\right)$，规格化因子与点积版本相同。</li>
-</ul>
-<p><img src="/2020/04/30/2018 Non-local Neural Networks/non-local_B.png" alt="Non-local Block"></p>
-<h5 id="Non-local-Block"><a href="#Non-local-Block" class="headerlink" title="Non-local Block"></a>Non-local Block</h5><ul>
-<li>可定义为：$\mathbf{z}<em>{i}=W</em>{z} \mathbf{y}<em>{i}+\mathbf{x}</em>{i}$，$+\mathbf{x}<em>{i}$为残差连接，加入残差连接并将$W</em>{z}$初始化为零使得Non-local block可以插入任何预训练模型中，且不影响初始形态的动作。</li>
-<li>在计算上，pair间的计算可通过矩阵相乘完成，类似卷积层的计算量。</li>
-<li>实现上，$W_{g}, W_{\theta},$ 和 $W_{\phi}$的输出通道数减为x的一半，服从bottleneck的设计法则并减少了一半的计算量，最后的$W_{z}$将维度转换回x的维度。</li>
-<li>还可以通过下采样进一步降低计算量，在$\phi$ 和 $g$之后添加最大池化层。</li>
-</ul>
-<h4 id="视频分类模型"><a href="#视频分类模型" class="headerlink" title="视频分类模型"></a>视频分类模型</h4><ul>
-<li>2D卷积模型：时间维度上使用池化聚合各个帧的信息</li>
-<li>3D卷积模型：卷积核为t x k x k，覆盖t帧</li>
-<li><p>Non-local Network：在2D卷积和3D卷积模型中插入Non-local block</p>
-</li>
-<li></li>
-</ul>
+<p><img src="/2020/04/07/2017 Attention Is All You Need/Self-Attention VS.png" alt="Versus"></p>
 
       
 
@@ -297,6 +290,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -347,7 +351,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/04/30/2018 Non-local Neural Networks/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lossherl.github.io/2020/04/07/2017 Attention Is All You Need/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -361,18 +365,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/30/2019 GCNet Non-local Networks Meet Squeeze-Excitation Networks and Beyond/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/27/2020 Unpaired Photo-to-manga Translation Based on The/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          Unpaired Photo-to-manga Translation Based on The Methodology of Manga Drawing
         
       </div>
     </a>
   
   
-    <a href="/2020/04/30/2017 Squeeze-and-Excitation Networks/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2020/03/29/2018 Non-local Neural Networks/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Non-local Neural Networks</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -386,7 +390,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2018 Non-local Neural Networks" data-title data-url="http://lossherl.github.io/2020/04/30/2018 Non-local Neural Networks/"></div>
+	<div class="ds-thread" data-thread-key="2017 Attention Is All You Need" data-title="Attention Is All You Need" data-url="http://lossherl.github.io/2020/04/07/2017 Attention Is All You Need/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -489,6 +493,14 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
